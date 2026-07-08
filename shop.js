@@ -1321,7 +1321,7 @@
         '<div class="cart-ship-copy">' +
           (left > 0
             ? "You are <strong>" + money(left) + "</strong> away from complimentary delivery"
-            : "<strong>Complimentary delivery unlocked</strong> — with our compliments") +
+            : "<strong>Complimentary delivery</strong> applied to your order") +
         "</div>" +
         '<div class="cart-ship-bar"><div class="cart-ship-fill" style="width:' +
           Math.min(100, Math.round((sub / SHIP_THRESHOLD) * 100)) + '%"></div></div>';

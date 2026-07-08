@@ -3355,7 +3355,7 @@
 .pdp-body .pdp-reference-page .pdp-commerce-panel {
   margin-top: 22px;
   padding: 0;
-  border: 1px solid var(--pdp-craft-line);
+  /* border: 1px solid var(--pdp-craft-line); */
   border-radius: 6px;
   background: #fff;
   box-shadow: var(--pdp-craft-shadow);
@@ -5338,7 +5338,7 @@
   height: auto;
   aspect-ratio: 3 / 4;
   border-radius: 8px;
-  border: 1px solid var(--lux-line);
+  /* border: 1px solid var(--lux-line); */
   background: #fff;
 }
 .pdp-body .pdp-reference-page .pdp-related-grid.bs-shelf .bs-card-media img {
@@ -5347,4 +5347,252 @@
 .pdp-body .pdp-reference-page .pdp-related-grid.bs-shelf .bs-card-body {
   padding: 16px 2px 0;
   background: transparent;
+}
+
+/* ============================================================
+   PDP — THE OUTNET-STYLE CLEAN MONOCHROME + BOXED (FINAL)
+   Matches the cart + listing redesign. Step 1 re-points the
+   --lux-* accent tokens from navy → mono so the whole editorial
+   layer above collapses to black/grey automatically. Step 2
+   boxes each region, squares every corner, and makes headings
+   bold uppercase. No markup / JS changes.
+   ============================================================ */
+.pdp-body .pdp-reference-page {
+  --lux-primary: #171717;
+  --lux-secondary: #444444;
+  --lux-muted: #767676;
+  --lux-line: #e4e3e1;
+  --lux-line-soft: #f1f0ee;
+  --lux-bg: #f4f3f1;
+  --lux-card: #ffffff;
+  --lux-accent: #171717;
+  --lux-accent-deep: #000000;
+  --lux-accent-wash: rgba(23, 23, 23, 0.05);
+  --lux-accent-line: #d6d5d3;
+  /* neutralise global gold + card canvas within the PDP */
+  --gold-600: #171717;
+  --gold-500: #767676;
+  --gold-300: #d6d5d3;
+  --product-canvas: #f4f3f1;
+  --l-ink: #171717;
+  --l-ink-2: #444444;
+  --l-muted: #767676;
+  --l-faint: #9a9a9a;
+  --l-line: #e4e3e1;
+  --l-line-2: #d6d5d3;
+  --l-tile: #f4f3f1;
+  --l-sale: #b12704;
+}
+
+/* ── Gallery — grey product tile, square, black active thumb ── */
+.pdp-body .pdp-reference-page .pdp-frame {
+  border: 1px solid var(--l-line);
+  border-radius: 0;
+  background: var(--l-tile);
+}
+.pdp-body .pdp-reference-page .pdp-frame:hover { border-color: var(--l-line-2); }
+.pdp-body .pdp-reference-page .pdp-frame:hover img { transform: none; }
+.pdp-body .pdp-reference-page .pdp-thumb { border: 1px solid var(--l-line); border-radius: 0; background: var(--l-tile); }
+.pdp-body .pdp-reference-page .pdp-thumb:hover { border-color: var(--l-ink); transform: none; }
+.pdp-body .pdp-reference-page .pdp-thumb.is-active {
+  border-color: var(--l-ink);
+  box-shadow: inset 0 0 0 1px var(--l-ink);
+}
+
+/* ── Info column — one clean buy-box ──────────────────────── */
+.pdp-body .pdp-reference-page .pdp-info {
+  /* border: 1px solid var(--l-line); */
+  border-radius: 0;
+  background: #fff;
+  padding: 34px;
+  align-self: start;
+}
+.pdp-body .pdp-reference-page .pdp-rule { border: 0; border-top: 1px solid var(--l-line); }
+
+/* Vendor + title */
+.pdp-body .pdp-reference-page .pdp-vendor { color: var(--l-ink); }
+.pdp-body .pdp-reference-page .pdp-vendor::before { background: var(--l-line-2); }
+.pdp-body .pdp-reference-page .pdp-title {
+  font-family: var(--font-sans);
+  font-size: clamp(20px, 2.4vw, 26px);
+  font-weight: var(--fw-bold);
+  line-height: 1.12;
+  letter-spacing: 0.005em;
+  color: var(--l-ink);
+}
+.pdp-body .pdp-reference-page .pdp-price-current {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-bold);
+  color: var(--l-ink);
+}
+.pdp-body .pdp-reference-page .pdp-price-compare { color: var(--l-sale); }
+
+/* Options — square swatches / sizes, black active */
+.pdp-body .pdp-reference-page .pdp-opt-label { color: var(--l-ink); text-transform: uppercase; letter-spacing: 0.1em; font-size: 11px; font-weight: var(--fw-semibold); }
+.pdp-body .pdp-reference-page .pdp-size-guide { color: var(--l-muted); text-decoration: underline; text-underline-offset: 2px; }
+.pdp-body .pdp-reference-page .pdp-size-guide:hover { color: var(--l-ink); }
+.pdp-body .pdp-reference-page button.pdp-swatch { border-radius: 0; }
+.pdp-body .pdp-reference-page button.pdp-swatch.is-active { box-shadow: inset 0 0 0 2px #fff, 0 0 0 1px var(--l-ink); border-color: var(--l-ink); }
+.pdp-body .pdp-reference-page .pdp-size {
+  border-radius: 0;
+  border-color: var(--l-line-2);
+  color: var(--l-ink-2);
+  background: #fff;
+}
+.pdp-body .pdp-reference-page .pdp-size:hover { border-color: var(--l-ink); color: var(--l-ink); }
+.pdp-body .pdp-reference-page .pdp-size.is-active {
+  background: var(--l-ink);
+  border-color: var(--l-ink);
+  color: #fff;
+}
+
+/* Quantity + Add to bag — black, square, uppercase */
+.pdp-body .pdp-reference-page .pdp-qty { border-radius: 0; border-color: var(--l-line-2); }
+.pdp-body .pdp-reference-page .pdp-add,
+.pdp-body .pdp-reference-page .pdp-add:not(:disabled) {
+  border-radius: 0;
+  background: var(--l-ink);
+  border-color: var(--l-ink);
+  color: #fff;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.pdp-body .pdp-reference-page .pdp-add:hover:not(:disabled) {
+  background: #000;
+  border-color: #000;
+  box-shadow: none;
+  transform: none;
+}
+.pdp-body .pdp-reference-page .pdp-wish { border-radius: 0; border-color: var(--l-line-2); }
+
+/* Accordions + highlights */
+.pdp-body .pdp-reference-page .pdp-acc-btn { color: var(--l-ink); }
+.pdp-body .pdp-reference-page .pdp-acc-btn:hover,
+.pdp-body .pdp-reference-page .pdp-acc-btn svg { color: var(--l-ink); }
+.pdp-body .pdp-reference-page .pdp-highlight { color: var(--l-muted); }
+.pdp-body .pdp-reference-page .pdp-highlight svg { color: var(--l-ink); }
+.pdp-body .pdp-reference-page .pdp-share:hover { color: var(--l-ink); }
+
+/* ── Story tabs — boxed section, heavy uppercase heading ──── */
+.pdp-body .pdp-reference-page .pdp-detail-section {
+  margin-top: 24px;
+  padding: 40px 44px;
+  border: 1px solid var(--l-line);
+  background: #fff;
+}
+.pdp-body .pdp-reference-page .pdp-detail-tabs button { color: var(--l-muted); }
+.pdp-body .pdp-reference-page .pdp-detail-tabs button::after { background: var(--l-ink); }
+.pdp-body .pdp-reference-page .pdp-detail-tabs button:hover,
+.pdp-body .pdp-reference-page .pdp-detail-tabs button.is-active { color: var(--l-ink); }
+.pdp-body .pdp-reference-page .pdp-detail-copy .shop-head-kicker { color: var(--l-muted); }
+.pdp-body .pdp-reference-page .pdp-detail-copy h2,
+.pdp-body .pdp-reference-page .pdp-info-list h2,
+.pdp-body .pdp-reference-page .pdp-review-panel h2 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-bold);
+  font-size: clamp(24px, 2.6vw, 34px);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--l-ink);
+}
+.pdp-body .pdp-reference-page .pdp-info-list li::before { background: var(--l-ink); }
+
+/* ── Related — boxed section, heavy uppercase, unified cards ─ */
+.pdp-body .pdp-reference-page .pdp-related {
+  margin-top: 24px;
+  padding: 40px 44px;
+  /* border: 1px solid var(--l-line); */
+  background: #fff;
+}
+.pdp-body .pdp-reference-page .related-sub span { background: var(--l-line-2); }
+.pdp-body .pdp-reference-page .related-sub strong { color: var(--l-muted); }
+.pdp-body .pdp-reference-page .pdp-related-title {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-bold);
+  font-size: clamp(26px, 3vw, 38px);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--l-ink);
+}
+.pdp-body .pdp-reference-page .pdp-related-title em { color: var(--l-ink); font-style: normal; }
+.pdp-body .pdp-reference-page .pdp-related-head p { color: var(--l-muted); }
+
+/* Related cards → same unified flat box as cart/listing */
+.pdp-body .pdp-reference-page .pdp-related-grid.bs-shelf .bs-card {
+  /* border: 1px solid var(--l-line); */
+  border-radius: 0;
+  background: #fff;
+  overflow: hidden;
+}
+.pdp-body .pdp-reference-page .pdp-related .bs-card:hover { transform: none; border-color: var(--l-ink); }
+.pdp-body .pdp-reference-page .pdp-related-grid.bs-shelf .bs-card-media {
+  aspect-ratio: 3 / 4;
+  border: 0;
+  /* border-bottom: 1px solid var(--l-line); */
+  border-radius: 0;
+  background: var(--l-tile);
+}
+.pdp-body .pdp-reference-page .pdp-related .bs-card:hover .bs-card-media { border-color: var(--l-line); }
+.pdp-body .pdp-reference-page .pdp-related .bs-card-media img { inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.pdp-body .pdp-reference-page .pdp-related .cat-jewellery .bs-card-media img {
+  inset: 18px;
+  width: calc(100% - 36px);
+  height: calc(100% - 36px);
+  object-fit: contain;
+}
+.pdp-body .pdp-reference-page .pdp-related-grid.bs-shelf .bs-card-body { padding: 14px 16px 16px; }
+.pdp-body .pdp-reference-page .pdp-related .bs-card-vendor { color: var(--l-ink); text-transform: none; letter-spacing: 0.02em; font-size: 12px; }
+.pdp-body .pdp-reference-page .pdp-related .bs-card-name { color: var(--l-ink-2); font-weight: var(--fw-regular); font-size: 13px; }
+.pdp-body .pdp-reference-page .pdp-related .bs-price-current { color: var(--l-ink); }
+.pdp-body .pdp-reference-page .pdp-related .bs-price-compare { color: var(--l-sale); }
+.pdp-body .pdp-reference-page .pdp-related .bs-card-sizes button { border-radius: 0; border-color: var(--l-line-2); color: var(--l-muted); background: #fff; }
+.pdp-body .pdp-reference-page .pdp-related .bs-card-sizes button:hover,
+.pdp-body .pdp-reference-page .pdp-related .bs-card-sizes button.is-selected { border-color: var(--l-ink); color: var(--l-ink); box-shadow: none; }
+.pdp-body .pdp-reference-page .pdp-related .bs-badge { border-radius: 0; background: #fff; border-color: var(--l-line-2); color: var(--l-ink); -webkit-backdrop-filter: none; backdrop-filter: none; }
+.pdp-body .pdp-reference-page .pdp-related .bs-card-wish,
+.pdp-body .pdp-reference-page .pdp-related .bs-card-quick { border-radius: 0; background: #fff; border-color: var(--l-line-2); color: var(--l-ink); -webkit-backdrop-filter: none; backdrop-filter: none; }
+.pdp-body .pdp-reference-page .pdp-related .bs-card-quick:hover:not(:disabled) { background: var(--l-ink); border-color: var(--l-ink); color: #fff; }
+
+/* ── Mobile sticky bar — black button ─────────────────────── */
+.pdp-body .pdp-reference-page .pdp-mobilebar .bs-btn,
+.pdp-body .pdp-mobilebar .bs-btn {
+  border-radius: 0;
+  background: var(--l-ink);
+  border-color: var(--l-ink);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.pdp-body .pdp-mobilebar .bs-btn:hover:not(:disabled) { background: #000; border-color: #000; }
+.pdp-body .pdp-mobilebar .pdp-mobilebar-amount { color: var(--l-ink); font-family: var(--font-sans); font-weight: var(--fw-bold); }
+
+@media (max-width: 640px) {
+  .pdp-body .pdp-reference-page .pdp-info { padding: 24px 20px; }
+  .pdp-body .pdp-reference-page .pdp-detail-section,
+  .pdp-body .pdp-reference-page .pdp-related { padding: 28px 20px; }
+}
+
+/* ============================================================
+   MONOCHROME CONSISTENCY — final strays (kept LAST so it wins)
+   Aligns the PDP with the site-wide UPPERCASE-bold titles and the
+   squared, single-red sale treatment used on listing / cart.
+   ============================================================ */
+/* Page title → UPPERCASE bold (matches cart title + section heads) */
+.pdp-body .pdp-reference-page .pdp-title {
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+/* Sale badge → squared, single sale red #b12704 (no rounded pill) */
+.pdp-body .pdp-reference-page .pdp-price-save {
+  border-radius: 0;
+  border-color: rgba(177, 39, 4, 0.28);
+  color: #b12704;
+}
+/* Buy-box commerce panel → squared to match the rest of the box */
+.pdp-body .pdp-reference-page .pdp-commerce-panel { border-radius: 0; }
+/* Editorial pull-quote → on-palette body grey + ink accent rule */
+.pdp-body .pdp-reference-page .pdp-editorial-line {
+  color: #444444;
+  border-left-color: #171717;
 }

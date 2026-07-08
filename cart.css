@@ -545,9 +545,9 @@
 .cart-title {
   font-family: var(--font-sans);
   font-size: clamp(26px, 3vw, 34px);
-  font-weight: var(--fw-medium);
+  font-weight: var(--fw-bold);
   line-height: 1;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
   color: var(--c-ink);
 }
@@ -916,7 +916,114 @@
   white-space: nowrap;
 }
 .cart-related .bs-rule-gold { display: none; }
-.cart-related .cart-related-grid { gap: 32px 20px; }
+.cart-related .cart-related-grid { gap: 20px; }
+
+/* Product cards inside the box — one unified flat box each, so the
+   image tile and the text section read as a single component and
+   match the rest of the monochrome layout. */
+.cart-page .cart-related .bs-card {
+  border: 1px solid var(--c-line);
+  border-radius: 0;
+  background: var(--c-white);
+  overflow: hidden;
+  transition: border-color 200ms var(--ease-standard);
+}
+.cart-page .cart-related .bs-card:hover { transform: none; filter: none; border-color: var(--c-ink); }
+
+.cart-page .cart-related .bs-card-media {
+  aspect-ratio: 3 / 4;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid var(--c-line);
+  border-radius: 0;
+  background: var(--c-tile);
+  box-shadow: none;
+}
+.cart-page .cart-related .bs-card-media::after { display: none; }
+.cart-page .cart-related .bs-card:hover .bs-card-media { box-shadow: none; border-color: var(--c-line); }
+.cart-page .cart-related .bs-card-media img {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cart-page .cart-related .bs-card:hover .bs-card-media img { transform: none; }
+.cart-page .cart-related .cat-jewellery .bs-card-media img,
+.cart-page .cart-related .cat-jewellery:hover .bs-card-media img { transform: none; }
+
+/* Body — padded inside the box, flush with the image above it */
+.cart-page .cart-related .bs-card-body { padding: 14px 16px 16px; gap: 7px; }
+.cart-page .cart-related .bs-card-vendor {
+  color: var(--c-ink);
+  font-size: 12px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+.cart-page .cart-related .bs-card-name {
+  min-height: 0;
+  max-width: none;
+  color: var(--c-ink-2);
+  font-size: 13px;
+  font-weight: var(--fw-regular);
+  line-height: 1.4;
+}
+.cart-page .cart-related .bs-price-current { color: var(--c-ink); font-size: 14px; font-weight: var(--fw-semibold); }
+.cart-page .cart-related .bs-price-compare { color: var(--c-sale); font-size: 12px; }
+
+/* Swatches — small, square, monochrome */
+.cart-page .cart-related .bs-card-meta-row { color: var(--c-muted); font-size: 11px; }
+.cart-page .cart-related .bs-card-colour i {
+  width: 13px;
+  height: 13px;
+  border-color: var(--c-line-2);
+  box-shadow: inset 0 0 0 2px #fff;
+}
+.cart-page .cart-related .bs-card-type { color: var(--c-faint); }
+.cart-page .cart-related .bs-card-sizes { gap: 6px; margin-top: 8px; }
+.cart-page .cart-related .bs-card-sizes button {
+  min-width: 28px;
+  height: 26px;
+  padding: 0 8px;
+  border-radius: 0;
+  border-color: var(--c-line-2);
+  background: #fff;
+  color: var(--c-muted);
+  font-size: 11px;
+}
+.cart-page .cart-related .bs-card-sizes button:hover,
+.cart-page .cart-related .bs-card-sizes button.is-selected {
+  border-color: var(--c-ink);
+  color: var(--c-ink);
+  background: #fff;
+  box-shadow: none;
+}
+
+/* Badges + quick-add — sharp mono */
+.cart-page .cart-related .bs-badge {
+  border-radius: 0;
+  background: #fff;
+  border-color: var(--c-line-2);
+  color: var(--c-ink);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.cart-page .cart-related .bs-badge-sale { color: var(--c-sale); border-color: var(--c-line-2); }
+.cart-page .cart-related .bs-card-badge { top: 12px; left: 12px; }
+.cart-page .cart-related .bs-card-wish {
+  border-radius: 0;
+  background: #fff;
+  border-color: var(--c-line-2);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.cart-page .cart-related .bs-card-quick {
+  border-radius: 0;
+  background: #fff;
+  border-color: var(--c-line-2);
+  color: var(--c-ink);
+}
+.cart-page .cart-related .bs-card-quick:hover:not(:disabled) { background: var(--c-ink); border-color: var(--c-ink); color: #fff; }
 
 /* ── Sticky mobile bar — flat white, black button ─────────── */
 .cart-mobilebar {

@@ -616,7 +616,7 @@
   right: 22px;
   bottom: 20px;
   z-index: 2;
-  color: #fff;
+  color: #171717;
 }
 .plp-hero-media-caption span {
   display: block;
@@ -4571,11 +4571,6 @@
     linear-gradient(180deg, #fff 0, #fff 280px, #fbfaf7 680px, #fff 100%);
 }
 
-.listing-body .plp-hero-inner {
-  background: linear-gradient(135deg, #fff 0%, #fbfaf7 56%, #f2eee6 100%);
-  box-shadow: inset 0 0 0 1px rgba(15, 35, 65, 0.07);
-}
-
 .listing-body .plp-hero-inner::before {
   background: var(--listing-accent, #003976);
 }
@@ -4648,10 +4643,6 @@
   background: linear-gradient(180deg, #fff 0, #fff 260px, var(--bs-lux-ivory) 700px, #fff 100%);
 }
 
-.listing-body .plp-hero-inner {
-  background: linear-gradient(135deg, #fff 0%, var(--bs-lux-ivory) 58%, var(--bs-lux-stone) 100%);
-  box-shadow: inset 0 0 0 1px rgba(17, 24, 39, 0.055);
-}
 
 .listing-body .shop-chips,
 .listing-body .plp-toolbar {
@@ -4782,3 +4773,369 @@
   background: var(--bs-lux-ivory);
   color: var(--bs-lux-navy);
 }
+
+/* ============================================================
+   LISTING — THE OUTNET-STYLE CLEAN MONOCHROME + BOXED SYSTEM
+   Final override layer. Matches the cart redesign: no gold, no
+   ivory, no gradients. White canvas, flat grey product tiles,
+   near-black ink, thin hairline boxes, bold sharp uppercase
+   headings. Step 1 neutralises every gold/ivory design token so
+   all prior lux usages collapse to monochrome automatically;
+   step 2 boxes each region and restyles type. No markup/JS change.
+   ============================================================ */
+.listing-body {
+  --l-white: #ffffff;
+  --l-tile: #f4f3f1;
+  --l-ink: #171717;
+  --l-ink-2: #444444;
+  --l-muted: #767676;
+  --l-faint: #9a9a9a;
+  --l-line: #e4e3e1;
+  --l-line-2: #d6d5d3;
+  --l-sale: #b12704;
+  /* neutralise the luxury palette → mono */
+  --bs-lux-navy: #171717;
+  --bs-lux-ivory: #ffffff;
+  --bs-lux-ivory-deep: #ffffff;
+  --bs-lux-stone: #ffffff;
+  --bs-lux-grey: #f4f3f1;
+  --bs-lux-charcoal: #171717;
+  --bs-lux-burgundy: #b12704;
+  --bs-lux-champagne: #ffffff;
+}
+
+.listing-body main { background: #ffffff; }
+
+/* ── Hero — one clean box, bold uppercase heading ─────────── */
+.listing-body .plp-hero { margin-top: 24px; padding: 0; }
+.listing-body .plp-hero-inner {
+  gap: 0;
+  padding: 0;
+  border: 1px solid var(--l-line);
+  border-radius: 0;
+  background: #fff;
+  box-shadow: none;
+  overflow: hidden;
+  align-items: stretch;
+}
+.listing-body .plp-hero-inner::before { display: none; content: none; }
+.listing-body .plp-hero-copy {
+  padding: 44px 44px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.listing-body .plp-hero-copy .shop-crumbs { margin-bottom: 22px; font-size: 11px; letter-spacing: 0.06em; color: var(--l-muted); }
+.listing-body .plp-hero-copy .shop-head-kicker {
+  color: var(--l-muted);
+  font-size: 11px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.listing-body .plp-hero-copy .shop-head-title,
+.listing-body #plpTitle {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-bold);
+  font-size: clamp(36px, 5vw, 58px);
+  line-height: 0.96;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  color: var(--l-ink);
+  margin: 0;
+}
+.listing-body .plp-hero-copy .shop-head-sub {
+  margin-top: 16px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--l-muted);
+}
+.listing-body .plp-hero-copy .bs-rule-gold { display: none; }
+.listing-body .plp-hero-actions { margin-top: 26px; gap: 20px; }
+.listing-body .plp-hero-actions a {
+  color: var(--l-ink);
+  font-weight: var(--fw-semibold);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--l-ink);
+  padding-bottom: 3px;
+}
+.listing-body .plp-hero-actions a:hover { color: #000; border-color: #000; }
+.listing-body .plp-hero-actions span {
+  color: var(--l-muted);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.listing-body .plp-hero-media { aspect-ratio: auto; border-radius: 0; }
+.listing-body .plp-hero-media::after { display: none; }
+.listing-body .plp-hero-media img { border-radius: 0; }
+.listing-body .plp-hero-media-caption span { color: #171717; letter-spacing: 0.12em; }
+.listing-body .plp-hero-media-caption strong { font-family: var(--font-sans); font-weight: var(--fw-semibold); }
+
+/* ── Category chips — boxed bar, black active ─────────────── */
+.listing-body .shop-chips {
+  background: #fff;
+  border: 1px solid var(--l-line);
+  border-radius: 0;
+  padding: 12px 14px;
+  gap: 8px;
+  margin-top: 22px;
+}
+.listing-body .shop-chip {
+  border: 1px solid transparent;
+  border-radius: 0;
+  color: var(--l-muted);
+  font-size: 11px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 7px 14px;
+}
+.listing-body .shop-chip:hover { color: var(--l-ink); background: none; border-color: var(--l-line-2); box-shadow: none; }
+.listing-body .shop-chip.is-active {
+  background: var(--l-ink);
+  color: #fff;
+  border-color: var(--l-ink);
+  box-shadow: none;
+}
+
+/* ── Toolbar — boxed, bold collection name ────────────────── */
+.listing-body .plp-toolbar {
+  background: #fff;
+  border: 1px solid var(--l-line);
+  border-radius: 0;
+  padding: 14px 18px;
+  margin: 16px 0 22px;
+}
+.listing-body .plp-toolbar-label { color: var(--l-muted); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; }
+.listing-body .plp-toolbar-name {
+  color: var(--l-ink);
+  font-family: var(--font-sans);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.listing-body .plp-count { color: var(--l-muted); }
+.listing-body .plp-filter-btn,
+.listing-body .plp-sort select {
+  min-height: 40px;
+  border: 1px solid var(--l-line-2);
+  border-radius: 0;
+  background: #fff;
+  color: var(--l-ink);
+  font-size: 11px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: none;
+}
+.listing-body .plp-filter-btn:hover,
+.listing-body .plp-sort select:hover { border-color: var(--l-ink); background: #fff; color: var(--l-ink); }
+.listing-body .plp-sort-label { color: var(--l-muted); text-transform: uppercase; letter-spacing: 0.1em; font-size: 10px; }
+
+/* Applied filter tags */
+.listing-body .plp-tag {
+  border-radius: 0;
+  border-color: var(--l-line-2);
+  background: #fff;
+  color: var(--l-ink);
+}
+
+/* ── Product cards — one unified flat box each ────────────── */
+.listing-body .plp-grid { gap: 20px; }
+.listing-body .plp-grid .bs-card {
+  border: 1px solid var(--l-line);
+  border-radius: 0;
+  background: #fff;
+  overflow: hidden;
+  transition: border-color 200ms var(--ease-standard);
+}
+.listing-body .plp-grid .bs-card:hover { transform: none; filter: none; border-color: var(--l-ink); }
+.listing-body .plp-grid .bs-card-media,
+.listing-body .plp-grid .bs-card:hover .bs-card-media,
+.listing-body .plp-grid .bs-card:focus-within .bs-card-media {
+  aspect-ratio: 3 / 4;
+  padding: 0;
+  border: 0;
+  /* border-bottom: 1px solid var(--l-line); */
+  border-radius: 0;
+  background: var(--c-tile);
+  box-shadow: none;
+}
+.listing-body .plp-grid .bs-card-media::after { display: none; }
+.listing-body .plp-grid .bs-card-media img {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.listing-body .plp-grid .bs-card:hover .bs-card-media img { transform: none; }
+/* jewellery packshots — contain so nothing crops */
+.listing-body .plp-grid .cat-jewellery .bs-card-media { background: var(--l-tile); }
+.listing-body .plp-grid .cat-jewellery .bs-card-media img,
+.listing-body .plp-grid .cat-jewellery:hover .bs-card-media img {
+  inset: 18px;
+  width: calc(100% - 36px);
+  height: calc(100% - 36px);
+  object-fit: contain;
+  transform: none;
+}
+
+.listing-body .plp-grid .bs-card-body { padding: 14px 16px 16px; gap: 7px; }
+.listing-body .plp-grid .bs-card-vendor {
+  color: var(--l-ink);
+  font-size: 12px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+.listing-body .plp-grid .bs-card-name,
+.listing-body .plp-grid .bs-card:hover .bs-card-name,
+.listing-body .plp-grid .bs-card:focus-within .bs-card-name {
+  min-height: 0;
+  max-width: none;
+  color: var(--l-ink-2);
+  font-size: 13px;
+  font-weight: var(--fw-regular);
+  line-height: 1.4;
+}
+.listing-body .plp-grid .bs-price-current { color: var(--l-ink); font-size: 14px; font-weight: var(--fw-semibold); }
+.listing-body .plp-grid .bs-price.on-sale .bs-price-current,
+.listing-body .plp-grid .bs-price-current[style],
+.listing-body .plp-grid .bs-price .sale { color: var(--l-sale); }
+.listing-body .plp-grid .bs-price-compare { color: var(--l-sale); font-size: 12px; }
+
+/* Swatches — small square mono */
+.listing-body .plp-grid .bs-card-meta-row { color: var(--l-muted); font-size: 11px; }
+.listing-body .bs-card-colour i {
+  width: 13px;
+  height: 13px;
+  border-color: var(--l-line-2);
+  box-shadow: inset 0 0 0 2px #fff;
+}
+.listing-body .bs-card-colour i[aria-selected="true"],
+.listing-body .bs-card-colour.is-selected i,
+.listing-body .bs-card-colour:hover i {
+  border-color: var(--l-ink);
+  box-shadow: inset 0 0 0 2px #fff, 0 0 0 1px var(--l-ink);
+}
+.listing-body .plp-grid .bs-card-type { color: var(--l-faint); }
+.listing-body .bs-card-sizes { gap: 6px; }
+.listing-body .bs-card-sizes button {
+  min-width: 28px;
+  height: 26px;
+  padding: 0 8px;
+  border-radius: 0;
+  border-color: var(--l-line-2);
+  background: #fff;
+  color: var(--l-muted);
+  font-size: 11px;
+}
+.listing-body .bs-card-sizes button:hover,
+.listing-body .bs-card-sizes button.is-selected {
+  border-color: var(--l-ink);
+  background: #fff;
+  color: var(--l-ink);
+  box-shadow: none;
+}
+
+/* Badges / wish / quick-add — sharp mono */
+.listing-body .plp-grid .bs-badge {
+  border-radius: 0;
+  background: #fff;
+  border-color: var(--l-line-2);
+  color: var(--l-ink);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.listing-body .plp-grid .bs-badge-sale,
+.listing-body .plp-grid .bs-badge-soldout { color: var(--l-sale); border-color: var(--l-line-2); }
+.listing-body .plp-grid .bs-card-wish,
+.listing-body .plp-grid .bs-card-quick {
+  border-radius: 0;
+  background: #fff;
+  border-color: var(--l-line-2);
+  color: var(--l-ink);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.listing-body .plp-grid .bs-card-quick:hover:not(:disabled) { background: var(--l-ink); border-color: var(--l-ink); color: #fff; }
+
+/* ── Load more — mono ─────────────────────────────────────── */
+.listing-body .plp-more-bar { background: var(--l-line); }
+.listing-body .plp-more-fill { background: var(--l-ink); }
+.listing-body .plp-more-meta { color: var(--l-muted); }
+.listing-body .plp-more .bs-btn {
+  border-radius: 0;
+  border-color: var(--l-ink);
+  color: var(--l-ink);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.listing-body .plp-more .bs-btn:hover { background: var(--l-ink); color: #fff; }
+
+/* ── Signature editorial — boxed, bold clear ──────────────── */
+.listing-body .plp-signature {
+  margin-top: 24px;
+  border: 1px solid var(--l-line);
+  border-radius: 0;
+  background: #fff;
+}
+.listing-body .plp-signature-inner { padding: 56px 44px; }
+.listing-body .plp-signature .shop-head-kicker {
+  color: var(--l-muted);
+  font-size: 11px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.listing-body .plp-signature p {
+  color: var(--l-ink);
+  font-family: var(--font-sans);
+  font-weight: var(--fw-bold);
+  font-size: clamp(24px, 2.6vw, 36px);
+  line-height: 1.12;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+.listing-body .plp-signature a {
+  color: var(--l-ink);
+  font-weight: var(--fw-semibold);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--l-ink);
+  padding-bottom: 3px;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .listing-body .plp-hero-inner { grid-template-columns: 1fr; }
+  .listing-body .plp-hero-copy { padding: 32px 28px; }
+  .listing-body .plp-signature-inner { padding: 40px 28px; }
+}
+@media (max-width: 560px) {
+  .listing-body .plp-hero-copy { padding: 26px 20px; }
+  .listing-body .plp-grid { gap: 12px; }
+  .listing-body .plp-signature-inner { padding: 32px 20px; }
+}
+
+/* ============================================================
+   MONOCHROME CONSISTENCY — neutralize the legacy navy accent
+   system so every .shop-body page (kids rails, PDP-related and
+   cart-related card rails, chips, tags) matches the OUTNET-style
+   monochrome ladder already used by the listing / PDP / cart.
+   Kept last so it wins the cascade.
+   ============================================================ */
+.shop-body {
+  --bs-accent: #171717;
+  --bs-accent-deep: #000000;
+  --bs-accent-line: #d6d5d3;
+  --bs-accent-soft: #f4f3f1;
+  --bs-accent-wash: #f7f7f6;
+}
+/* Keep the hover-reveal quick-add pattern, just squared to match listing */
+.shop-body .bs-card-action.bs-card-add { border-radius: 0; }
