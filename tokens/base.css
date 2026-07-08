@@ -1,0 +1,54 @@
+/* ============================================================
+   BLUE SALON — BASE ELEMENT STYLES & UTILITIES
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  line-height: var(--lh-normal);
+  color: var(--text-body);
+  background: var(--surface-page);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 { margin: 0; color: var(--text-strong); }
+
+/* ---- Editorial display helper ---- */
+/* Qatar at light weight reads as elegant, modern luxury at large sizes. */
+.bs-display {
+  font-family: var(--font-display);
+  font-weight: var(--fw-light);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  color: var(--text-strong);
+}
+
+/* ---- Eyebrow / kicker — spaced caps, a Blue Salon signature ---- */
+.bs-eyebrow {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-medium);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ---- Thin gold rule used as a luxury divider ---- */
+.bs-rule-gold {
+  height: 1px;
+  width: 56px;
+  background: var(--gold-500);
+  border: 0;
+}
+
+a { color: var(--text-link); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+::selection { background: var(--blue-200); color: var(--ink-900); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}

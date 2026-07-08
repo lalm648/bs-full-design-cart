@@ -1,0 +1,3749 @@
+<!-- @dsCard group="Website" viewport="1320x720" name="Storefront — Kids" subtitle="Kids & Baby department landing: hero, category bento, kids edit" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blue Salon — Kids &amp; Baby</title>
+<link rel="icon" href="assets/app-icon.png">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="shop.css">
+<style>
+/* Kids department — editorial layout, homepage tokens (spacing / radii / boxed captions) */
+.kids-hero {
+  position: relative;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  aspect-ratio: 1920 / 640;
+  overflow: hidden;
+  isolation: isolate;
+}
+.kids-hero img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 30%;
+}
+.kids-hero::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,0.4) 100%);
+}
+.kids-hero-box {
+  position: absolute; z-index: 2;
+  left: 50%; bottom: 44px;
+  transform: translateX(-50%);
+  background: #fff;
+  padding: 26px 54px 30px;
+  text-align: center;
+}
+.kids-hero-title {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: 40px;
+  letter-spacing: -0.015em;
+  color: #111;
+  margin: 0 0 4px;
+  white-space: nowrap;
+}
+.kids-hero-sub {
+  margin: 0 0 14px;
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
+  color: #5c6672;
+}
+.kids-hero-link {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #111;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 57, 118, 0.28);
+  padding-bottom: 4px;
+  transition: color .28s ease, border-color .28s ease;
+}
+.kids-hero-link:hover { color: var(--blue-800, #003976); border-color: var(--blue-800, #003976); text-decoration: none; }
+
+/* Shop by age — boxed text links */
+.kids-ages {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 56px 24px 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.kids-age {
+  display: block;
+  border: 1px solid rgba(14,23,34,0.12);
+  background: #fff;
+  text-align: center;
+  padding: 30px 10px 26px;
+  text-decoration: none;
+  transition: border-color .25s var(--ease-standard), transform .25s var(--ease-standard);
+}
+.kids-age:hover {
+  border-color: var(--blue-800, #003976);
+  transform: translateY(-3px);
+  text-decoration: none;
+}
+.kids-age-name {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: var(--fw-light);
+  font-size: 24px;
+  color: var(--ink-900);
+}
+.kids-age-label {
+  display: block;
+  margin-top: 7px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted, #5a6572);
+}
+
+/* Category — asymmetric editorial bento (distinct from the home grid) */
+.kids-cats {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 56px 24px 0;
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 16px;
+}
+.kids-cats .bs-shopcat-card { aspect-ratio: 16 / 11; height: auto; }
+.kids-cats > a:first-child { grid-row: 1 / span 2; aspect-ratio: auto; }
+
+/* The Baby Shop — editorial split feature (image + copy), not a banner */
+.kids-feature {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 64px 24px 0;
+}
+.kids-feature-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: stretch;
+  overflow: hidden;
+  border: 1px solid rgba(15, 35, 65, 0.08);
+  border-radius: 4px;
+  background: #f7f4f1;
+  text-decoration: none;
+  transition: box-shadow .28s ease;
+}
+.kids-feature-inner:hover { box-shadow: 0 12px 32px rgba(10, 35, 65, 0.045); text-decoration: none; }
+.kids-feature-media { position: relative; min-height: 320px; overflow: hidden; }
+.kids-feature-media img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  transition: transform .5s var(--ease-standard, ease);
+}
+.kids-feature-inner:hover .kids-feature-media img { transform: scale(1.03); }
+.kids-feature-copy {
+  padding: clamp(28px, 4vw, 56px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.kids-feature-title {
+  margin: 6px 0 14px;
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: clamp(28px, 3vw, 38px);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  color: #111;
+}
+.kids-feature-copy p {
+  margin: 0 0 24px;
+  max-width: 40ch;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.65;
+  color: #5c6672;
+}
+.kids-feature-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--blue-800, #003976);
+}
+.kids-feature-cta svg { transition: transform .28s var(--ease-standard, ease); }
+.kids-feature-inner:hover .kids-feature-cta svg { transform: translateX(4px); }
+
+.kids-navy {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 24px 24px 0;
+}
+.kids-navy-inner {
+  background: var(--blue-800, #003976);
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 54px;
+  text-decoration: none;
+}
+.kids-navy-inner:hover { text-decoration: none; }
+.kids-navy-name {
+  font-family: var(--font-display);
+  font-weight: var(--fw-light);
+  font-size: 32px;
+  color: #fff;
+}
+.kids-navy-sub {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+}
+.kids-pagepad { padding-bottom: 80px; }
+
+@media (max-width: 900px) {
+  .kids-hero { aspect-ratio: 4 / 3; }
+  .kids-ages { grid-template-columns: repeat(2, 1fr); }
+  .kids-cats { grid-template-columns: 1fr; }
+  .kids-cats .bs-shopcat-card { aspect-ratio: 4 / 3; }
+  .kids-cats > a:first-child { grid-row: auto; aspect-ratio: 4 / 3; }
+  .kids-feature-inner { grid-template-columns: 1fr; }
+  .kids-feature-media { min-height: 240px; }
+}
+@media (max-width: 600px) {
+  .kids-hero-box { padding: 18px 28px 22px; width: max-content; max-width: calc(100% - 32px); }
+  .kids-hero-title { font-size: 28px; white-space: normal; }
+  .kids-navy-inner { flex-direction: column; align-items: flex-start; justify-content: center; gap: 14px; padding: 0 24px; }
+}
+.kids-picks { max-width: var(--container-max); margin: 0 auto; padding: 0 24px; }
+.kids-picks-grid { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 1000px) { .kids-picks-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .kids-picks-grid { grid-template-columns: 1fr; } }
+
+/* ── Section headers — consistent hierarchy across the department ── */
+.kids-sec-head {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 64px 24px 0;
+}
+.kids-sec-kicker {
+  display: block;
+  margin-bottom: 10px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blue-800, #003976);
+}
+/* Short navy rule above the kicker — same editorial mark as the PDP */
+.kids-sec-head .kids-sec-kicker::before,
+.kids-shelf-head .kids-sec-kicker::before,
+.kids-feature-copy .kids-sec-kicker::before,
+.kids-band-head .kids-sec-kicker::before,
+.kids-brand-copy .kids-sec-kicker::before {
+  content: "";
+  display: block;
+  width: 26px;
+  height: 1px;
+  margin-bottom: 10px;
+  background: rgba(0, 57, 118, 0.35);
+}
+.kids-sec-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: clamp(26px, 3vw, 34px);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  color: #111;
+}
+/* Grid follows a header, so it no longer needs its own tall top pad */
+.kids-sec-head + .kids-ages,
+.kids-sec-head + .kids-cats { padding-top: 24px; }
+
+/* ── Shop by age — typographic tiles, department-store restraint ── */
+.kids-age {
+  border-color: rgba(15, 35, 65, 0.1);
+  border-radius: 4px;
+  padding: 30px 14px 28px;
+  transition: border-color .28s ease, transform .28s ease, box-shadow .28s ease, background .28s ease;
+}
+.kids-age:hover {
+  border-color: var(--blue-800, #003976);
+  background: rgba(0, 57, 118, 0.02);
+  box-shadow: 0 12px 32px rgba(10, 35, 65, 0.045);
+  transform: translateY(-2px);
+}
+.kids-age-label {
+  margin: 0 0 10px;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: #8c919a;
+}
+.kids-age-name {
+  font-weight: var(--fw-medium);
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  color: #111;
+}
+.kids-age:hover .kids-age-name { color: var(--blue-800, #003976); }
+
+/* ── Category imagery — softer frame, crisper caption ── */
+.kids-cats .bs-shopcat-card {
+  border-radius: 4px;
+  border: 1px solid rgba(15, 35, 65, 0.08);
+}
+.kids-cats .bs-shopcat-name {
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Kids' brands strip — higher-contrast, readable sub ── */
+.kids-navy-inner { border-radius: 4px; }
+.kids-navy-sub { color: rgba(255, 255, 255, 0.82); }
+
+/* ── Department product shelves — one base card, home-page rhythm ── */
+.kids-shelf {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 64px 24px 0;
+}
+.kids-shelf-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.kids-shelf-head .kids-sec-title { font-size: clamp(24px, 2.6vw, 30px); }
+.kids-shelf-viewall {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(0, 57, 118, 0.22);
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--blue-800, #003976);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color .28s ease, border-color .28s ease;
+}
+.kids-shelf-viewall svg { transition: transform .28s ease; }
+.kids-shelf-viewall:hover { color: var(--blue-900, #002a57); border-color: var(--blue-800, #003976); }
+.kids-shelf-viewall:hover svg { transform: translateX(4px); }
+.kids-shelf .kids-picks-grid { margin: 0; }
+
+@media (max-width: 600px) {
+  .kids-shelf, .kids-sec-head { padding-top: 44px; }
+  .kids-shelf-head { margin-bottom: 18px; }
+}
+
+/* ── Varied shelf presentation (same system, different rhythm) ── */
+.kids-picks-grid.bs-shelf--large > * {
+  flex: 0 0 clamp(258px, 30vw, 360px);
+  width: clamp(258px, 30vw, 360px);
+}
+.kids-picks-grid.bs-shelf--compact > * {
+  flex: 0 0 clamp(150px, 16vw, 194px);
+  width: clamp(150px, 16vw, 194px);
+}
+
+/* ── Editorial quote break ── */
+.kids-quote {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 96px 24px;
+  text-align: center;
+}
+.kids-quote .kids-sec-kicker { color: var(--blue-800, #003976); }
+.kids-quote::before {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 1px;
+  margin: 0 auto 22px;
+  background: rgba(0, 57, 118, 0.4);
+}
+.kids-quote-text {
+  margin: 14px 0 0;
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: clamp(22px, 2.8vw, 34px);
+  line-height: 1.32;
+  letter-spacing: -0.015em;
+  color: #111;
+}
+
+/* ══ Editorial split — 2×2 product grid beside a campaign image ══ */
+.kids-split { max-width: var(--container-max); margin: 0 auto; padding: 88px 24px 0; }
+.kids-split-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 20px;
+  align-items: stretch;
+}
+.kids-split-products { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.kids-split-media {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 4px;
+  border: 1px solid rgba(15, 35, 65, 0.08);
+  text-decoration: none;
+}
+.kids-split-media img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .5s var(--ease-standard, ease);
+}
+.kids-split-media:hover img { transform: scale(1.03); }
+.kids-split-media::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(8, 18, 32, 0.55) 100%);
+}
+.kids-split-caption { position: absolute; z-index: 2; left: 28px; right: 28px; bottom: 26px; color: #fff; }
+.kids-split-cap-kicker {
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.78);
+}
+.kids-split-cap-title {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: 24px;
+  letter-spacing: -0.01em;
+}
+.kids-split-cap-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.kids-split-media:hover .kids-split-cap-cta { border-color: #fff; }
+
+/* ══ Tonal band — side header beside a compact rail ══ */
+.kids-band {
+  margin-top: 88px;
+  padding: 64px 0;
+  background: #f7f5f1;
+  border-top: 1px solid rgba(15, 35, 65, 0.06);
+  border-bottom: 1px solid rgba(15, 35, 65, 0.06);
+}
+.kids-band-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 264px minmax(0, 1fr);
+  gap: 44px;
+  align-items: center;
+}
+.kids-band-head .kids-sec-title { font-size: clamp(24px, 2.6vw, 30px); }
+.kids-band-copy {
+  margin: 12px 0 20px;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: #5c6672;
+}
+/* ══ Occasion campaign — lifestyle lead + curated occasion cards ══ */
+.kids-occ-sec { max-width: var(--container-max); margin: 0 auto; padding: 88px 24px 0; }
+.kids-occ-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr 1fr;
+  grid-template-rows: repeat(2, minmax(220px, auto));
+  gap: 20px;
+}
+.kids-occ-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(15, 35, 65, 0.1);
+  border-radius: 4px;
+  background: #fff;
+  text-decoration: none;
+  transition: border-color .28s ease, transform .28s ease, box-shadow .28s ease;
+}
+.kids-occ-card:hover {
+  border-color: rgba(0, 57, 118, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px rgba(10, 35, 65, 0.06);
+  text-decoration: none;
+}
+.kids-occ-media { position: relative; overflow: hidden; flex: 1; min-height: 150px; }
+.kids-occ-media img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .5s var(--ease-standard, ease);
+}
+.kids-occ-card:hover .kids-occ-media img { transform: scale(1.04); }
+.kids-occ-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 15px 18px;
+  border-top: 1px solid rgba(15, 35, 65, 0.07);
+  background: #fff;
+}
+.kids-occ-name {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: 17px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #111;
+}
+.kids-occ-sub {
+  display: block;
+  margin-top: 3px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  color: #8c919a;
+}
+.kids-occ-go {
+  flex: none;
+  color: var(--blue-800, #003976);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity .28s ease, transform .28s ease;
+}
+.kids-occ-card:hover .kids-occ-go { opacity: 1; transform: none; }
+/* Lead card — full-bleed image with an overlaid caption */
+.kids-occ-lead { grid-row: 1 / span 2; }
+.kids-occ-lead .kids-occ-media { min-height: 340px; }
+.kids-occ-lead .kids-occ-media::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(8, 18, 32, 0.6) 100%);
+}
+.kids-occ-lead-caption { position: absolute; z-index: 2; left: 28px; right: 28px; bottom: 26px; color: #fff; }
+.kids-occ-lead-kicker {
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.78);
+}
+.kids-occ-lead-name {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: clamp(22px, 2.2vw, 28px);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.kids-occ-lead-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.kids-occ-lead:hover .kids-occ-lead-cta { border-color: #fff; }
+
+/* ══ Footwear rail — navy editorial tile leads the slider ══ */
+.kids-rail-intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 30px 28px;
+  border-radius: 4px;
+  background: var(--blue-800, #003976);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.1));
+  color: #fff;
+  text-decoration: none;
+}
+.kids-rail-intro:hover { text-decoration: none; }
+.kids-rail-intro-kicker {
+  display: block;
+  margin-bottom: 10px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+.kids-rail-intro-kicker::before {
+  content: "";
+  display: block;
+  width: 26px;
+  height: 1px;
+  margin-bottom: 10px;
+  background: rgba(255, 255, 255, 0.35);
+}
+.kids-rail-intro-title {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: 28px;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+}
+.kids-rail-intro-line {
+  display: block;
+  margin-top: 10px;
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+}
+.kids-rail-intro-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #fff;
+  align-self: flex-start;
+}
+.kids-rail-intro:hover .kids-rail-intro-cta { border-color: #fff; }
+.kids-rail-intro-cta svg { transition: transform .28s ease; }
+.kids-rail-intro:hover .kids-rail-intro-cta svg { transform: translateX(4px); }
+
+/* ══ Accessories counter — centred head over a still, even grid ══ */
+.kids-counter { max-width: var(--container-max); margin: 0 auto; padding: 88px 24px 0; }
+.kids-counter-head { max-width: 560px; margin: 0 auto 30px; text-align: center; }
+.kids-counter-head .kids-sec-kicker::before {
+  content: "";
+  display: block;
+  width: 26px;
+  height: 1px;
+  margin: 0 auto 10px;
+  background: rgba(0, 57, 118, 0.35);
+}
+.kids-counter-sub {
+  margin: 10px 0 0;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #5c6672;
+}
+.kids-counter-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+
+/* ── Featured House — rich brand editorial (product hero + shop the house) ── */
+.kids-brand { max-width: var(--container-max); margin: 0 auto; padding: 72px 24px 0; }
+.kids-brand-inner {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: stretch;
+  overflow: hidden;
+  border: 1px solid rgba(15, 35, 65, 0.08);
+  border-radius: 8px;
+  background: #f6f2ec;
+}
+.kids-brand-media {
+  position: relative;
+  min-height: 400px;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 34%, #ffffff, #efe7db 78%);
+}
+.kids-brand-media img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: contain;
+  padding: clamp(32px, 4.5vw, 64px);
+  mix-blend-mode: multiply;
+  transition: transform .5s var(--ease-standard, ease);
+}
+.kids-brand-inner:hover .kids-brand-media img { transform: scale(1.03); }
+.kids-brand-copy { padding: clamp(32px, 4.5vw, 60px); display: flex; flex-direction: column; justify-content: center; }
+.kids-brand-copy .kids-sec-kicker { color: var(--blue-800, #003976); }
+.kids-brand-name {
+  margin: 8px 0 14px;
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: clamp(30px, 3.2vw, 42px);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  color: #111;
+}
+.kids-brand-copy p { margin: 0; max-width: 40ch; font-size: 14px; line-height: 1.65; color: #5c6672; }
+.kids-brand-shop { margin: 24px 0 24px; }
+.kids-brand-shop-label {
+  display: block;
+  margin-bottom: 12px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #8c919a;
+}
+.kids-brand-thumbs { display: flex; gap: 14px; }
+.kids-brand-thumb { display: block; width: 92px; text-decoration: none; }
+.kids-brand-thumb-img {
+  display: block;
+  width: 92px;
+  height: 92px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(15, 35, 65, 0.1);
+  background: #fff;
+  transition: border-color .28s ease, transform .28s ease;
+}
+.kids-brand-thumb:hover .kids-brand-thumb-img { border-color: var(--blue-800, #003976); transform: translateY(-2px); }
+.kids-brand-thumb-img img { width: 100%; height: 100%; object-fit: contain; padding: 8px; mix-blend-mode: multiply; }
+.kids-brand-thumb-price {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.04em;
+  color: #111;
+  text-align: center;
+}
+.kids-brand-thumb:hover .kids-brand-thumb-price { color: var(--blue-800, #003976); }
+.kids-brand-cta { color: var(--blue-800, #003976); }
+@media (max-width: 760px) {
+  .kids-brand-inner { grid-template-columns: 1fr; }
+  .kids-brand-media { min-height: 300px; }
+}
+
+/* ══ Responsive — new merchandising layouts ══ */
+@media (max-width: 1000px) {
+  .kids-split-grid { grid-template-columns: 1fr; }
+  .kids-split-media { min-height: 380px; }
+  .kids-band-inner { grid-template-columns: 1fr; gap: 26px; }
+  .kids-occ-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .kids-occ-lead { grid-column: 1 / -1; grid-row: auto; }
+  .kids-counter-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 640px) {
+  .kids-split { padding-top: 56px; }
+  .kids-split-products { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .kids-band { margin-top: 56px; padding: 44px 0; }
+  .kids-occ-sec, .kids-counter { padding-top: 56px; }
+  .kids-occ-grid { grid-template-columns: 1fr; }
+  .kids-occ-lead .kids-occ-media { min-height: 260px; }
+  .kids-counter-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+}
+
+/* ── Badge variety — subtle, coloured text on a soft chip.
+   Scoped to the rendered department so every product section
+   (rail, split, band, counter) presents the card identically. ── */
+#kidsShelves .bs-card-badge .bs-badge {
+  height: 22px;
+  padding: 0 9px;
+  border: 1px solid rgba(15, 35, 65, 0.12);
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.94);
+  color: #4f5563;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+#kidsShelves .bs-card-badge .bs-badge-new { color: var(--blue-800, #003976); border-color: rgba(0, 57, 118, 0.28); }
+#kidsShelves .bs-card-badge .bs-badge-gold { color: #9a6a25; border-color: rgba(154, 106, 37, 0.3); }
+#kidsShelves .bs-card-badge .bs-badge-bestseller { color: #2c7358; border-color: rgba(44, 115, 88, 0.3); }
+#kidsShelves .bs-card-badge .bs-badge-limited { color: #a33a36; border-color: rgba(176, 42, 42, 0.28); }
+
+/* ── Hover stability — transform-only, no layout animation (no shake) ── */
+#kidsShelves .bs-card {
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transition: transform .28s ease, box-shadow .28s ease;
+}
+#kidsShelves .bs-card:hover {
+  transform: translateY(-2px) scale(1.01);
+}
+#kidsShelves .bs-card-media {
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+#kidsShelves .bs-card-media img { -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+
+/* ── Kids' brands — centred navy destination (headline + houses + CTA) ── */
+.kids-navy { padding: 72px 24px 0; }
+.kids-navy-inner {
+  height: auto;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0;
+  padding: 60px 40px;
+  border-radius: 8px;
+  background: var(--blue-800, #003976);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.08));
+}
+.kids-navy-kicker {
+  display: block;
+  margin-bottom: 12px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+.kids-navy-kicker::before {
+  content: "";
+  display: block;
+  width: 26px;
+  height: 1px;
+  margin: 0 auto 12px;
+  background: rgba(255, 255, 255, 0.35);
+}
+.kids-navy-name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: clamp(26px, 2.9vw, 36px);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  color: #fff;
+}
+.kids-navy-desc { display: block; margin: 14px auto 0; max-width: 46ch; font-size: 13.5px; line-height: 1.6; color: rgba(255, 255, 255, 0.8); }
+.kids-navy-brands { display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 8px 26px; margin-top: 26px; }
+.kids-navy-brands span {
+  padding: 0;
+  border: 0;
+  font-family: var(--font-display);
+  font-weight: var(--fw-light);
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: rgba(255, 255, 255, 0.94);
+}
+.kids-navy-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+  padding: 12px 26px;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 2px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  transition: background .28s ease, border-color .28s ease;
+}
+.kids-navy-cta svg { transition: transform .28s ease; }
+.kids-navy-cta:hover { background: rgba(255, 255, 255, 0.1); border-color: #fff; }
+.kids-navy-cta:hover svg { transform: translateX(4px); }
+
+@media (max-width: 600px) { .kids-navy-inner { padding: 28px 24px; } }
+
+/* Final merchandising direction - varied luxury homepage rhythm */
+.kids-arrivals,
+.kids-occ-sec,
+.kids-counter,
+.kids-split,
+.kids-brand {
+  max-width: var(--container-max);
+}
+
+.kids-arrivals {
+  margin: 0 auto;
+  padding: 78px 24px 0;
+}
+
+.kids-arrivals-grid {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.92fr) minmax(0, 1.08fr);
+  gap: 28px;
+  align-items: stretch;
+}
+
+.kids-arrival-story {
+  position: relative;
+  min-height: 560px;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  overflow: hidden;
+  border: 1px solid rgba(15, 35, 65, 0.09);
+  border-radius: 6px;
+  background: #f5f1ea;
+  text-decoration: none;
+}
+
+.kids-arrival-story:hover {
+  text-decoration: none;
+}
+
+.kids-arrival-media {
+  position: relative;
+  display: block;
+  min-height: 410px;
+}
+
+.kids-arrival-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: clamp(38px, 5vw, 78px);
+  mix-blend-mode: multiply;
+  transition: transform .5s var(--ease-standard, ease);
+}
+
+.kids-arrival-story:hover .kids-arrival-media img {
+  transform: scale(1.035);
+}
+
+.kids-arrival-copy {
+  display: grid;
+  gap: 8px;
+  padding: 28px 32px 32px;
+  background: #fff;
+  border-top: 1px solid rgba(15, 35, 65, 0.08);
+}
+
+.kids-arrival-copy .kids-sec-kicker {
+  margin-bottom: 2px;
+}
+
+.kids-arrival-copy strong,
+.kids-arrival-copy span:not(.kids-sec-kicker),
+.kids-arrival-copy em {
+  display: block;
+}
+
+.kids-arrival-copy strong {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #7b838d;
+}
+
+.kids-arrival-copy span:not(.kids-sec-kicker) {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: var(--fw-medium);
+  line-height: 1.14;
+  color: #111;
+}
+
+.kids-arrival-copy em {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: var(--fw-semibold);
+  color: var(--blue-800, #003976);
+}
+
+.kids-arrival-rail {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-width: 0;
+  gap: 24px;
+  padding-top: 22px;
+}
+
+.kids-arrival-rail > p {
+  max-width: 58ch;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: var(--fw-light);
+  line-height: 1.38;
+  color: #1c2530;
+}
+
+.kids-picks-grid.bs-shelf--arrival > * {
+  flex: 0 0 clamp(190px, 19vw, 242px);
+  width: clamp(190px, 19vw, 242px);
+}
+
+.kids-split {
+  padding-top: 96px;
+}
+
+.kids-split-grid {
+  grid-template-columns: minmax(0, 0.98fr) minmax(340px, 1.02fr);
+  gap: 28px;
+}
+
+.kids-split-products {
+  align-content: stretch;
+}
+
+.kids-split-products .bs-card:nth-child(2),
+.kids-split-products .bs-card:nth-child(3) {
+  transform: translateY(28px);
+}
+
+.kids-split-media {
+  min-height: 680px;
+}
+
+.kids-brand {
+  padding-top: 104px;
+}
+
+.kids-brand-inner {
+  grid-template-columns: minmax(0, 0.88fr) minmax(360px, 1fr);
+  border-radius: 6px;
+  background: linear-gradient(90deg, #f4efe7 0%, #fbfaf7 100%);
+}
+
+.kids-brand-media {
+  min-height: 520px;
+}
+
+.kids-brand-copy {
+  position: relative;
+}
+
+.kids-brand-name {
+  max-width: 9ch;
+  font-size: clamp(38px, 4.8vw, 64px);
+}
+
+.kids-brand-copy p {
+  font-size: 15px;
+}
+
+.kids-brand-notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.kids-brand-notes span {
+  padding: 8px 11px;
+  border: 1px solid rgba(0, 57, 118, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.64);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: #52606d;
+}
+
+.kids-band {
+  margin-top: 104px;
+  padding: 78px 0;
+  background: #f6f5f1;
+}
+
+.kids-band-inner {
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 56px;
+}
+
+.kids-band-merch {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 22px;
+  align-items: stretch;
+}
+
+.kids-band-feature {
+  display: grid;
+  grid-template-rows: 1fr auto auto;
+  min-height: 330px;
+  padding: 18px;
+  border: 1px solid rgba(15, 35, 65, 0.1);
+  border-radius: 6px;
+  background: #fff;
+  text-decoration: none;
+}
+
+.kids-band-feature:hover {
+  text-decoration: none;
+}
+
+.kids-band-feature span {
+  position: relative;
+  display: block;
+  min-height: 210px;
+}
+
+.kids-band-feature img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 18px;
+  transition: transform .4s var(--ease-standard, ease);
+}
+
+.kids-band-feature:hover img {
+  transform: scale(1.04);
+}
+
+.kids-band-feature strong {
+  margin-top: 14px;
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #7b838d;
+}
+
+.kids-band-feature em {
+  margin-top: 5px;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-style: normal;
+  line-height: 1.2;
+  color: #111;
+}
+
+.kids-occ-sec {
+  padding-top: 104px;
+}
+
+.kids-occ-sec .kids-shelf-head {
+  margin-bottom: 14px;
+}
+
+.kids-occ-intro {
+  max-width: 760px;
+  margin: 0 0 30px auto;
+}
+
+.kids-occ-intro p {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: var(--fw-light);
+  line-height: 1.42;
+  color: #1b2530;
+}
+
+.kids-occ-grid {
+  grid-template-columns: minmax(360px, 1.1fr) minmax(0, 0.78fr) minmax(0, 0.78fr);
+  grid-auto-rows: minmax(235px, auto);
+  gap: 18px;
+}
+
+.kids-occ-card {
+  border-radius: 6px;
+}
+
+.kids-occ-lead .kids-occ-media {
+  min-height: 540px;
+}
+
+.kids-occ-products {
+  display: grid;
+  grid-template-columns: 270px minmax(0, 1fr);
+  gap: 28px;
+  align-items: center;
+  margin-top: 28px;
+  padding: 28px;
+  border: 1px solid rgba(15, 35, 65, 0.08);
+  border-radius: 6px;
+  background: #fbfaf7;
+}
+
+.kids-occ-products-copy h3 {
+  margin: 8px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.6vw, 34px);
+  font-weight: var(--fw-medium);
+  line-height: 1.12;
+  color: #111;
+}
+
+.kids-occ-products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.kids-rail-intro {
+  background:
+    linear-gradient(180deg, rgba(0, 42, 87, 0.55), rgba(0, 42, 87, 0.95)),
+    url("https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=700&q=80") center/cover;
+  min-height: 420px;
+}
+
+.kids-counter {
+  padding-top: 104px;
+}
+
+.kids-counter-grid {
+  grid-template-columns: repeat(6, 1fr);
+  gap: 18px;
+}
+
+.kids-counter-grid .bs-card:nth-child(1),
+.kids-counter-grid .bs-card:nth-child(4) {
+  grid-column: span 2;
+}
+
+.kids-counter-grid .bs-card:nth-child(2),
+.kids-counter-grid .bs-card:nth-child(3),
+.kids-counter-grid .bs-card:nth-child(n + 5) {
+  grid-column: span 1;
+}
+
+.kids-counter-grid .bs-card:nth-child(4) {
+  margin-top: 34px;
+}
+
+.kids-navy {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 98px 24px 0;
+}
+
+.kids-navy-inner {
+  min-height: 380px;
+  display: grid;
+  grid-template-columns: minmax(280px, 0.84fr) minmax(0, 1.16fr);
+  gap: 48px;
+  align-items: center;
+  padding: clamp(38px, 5vw, 70px);
+  border-radius: 6px;
+  background:
+    linear-gradient(135deg, rgba(0, 57, 118, 0.97), rgba(0, 42, 87, 0.96)),
+    radial-gradient(circle at 85% 0%, rgba(255, 255, 255, 0.18), transparent 34%);
+  text-align: left;
+}
+
+.kids-navy-copy {
+  max-width: 460px;
+}
+
+.kids-navy-kicker::before {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.kids-navy-name {
+  font-size: clamp(34px, 4.2vw, 58px);
+  max-width: 10ch;
+}
+
+.kids-navy-brands {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+}
+
+.kids-navy-brands span {
+  min-height: 86px;
+  display: flex;
+  align-items: center;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  font-size: clamp(17px, 1.7vw, 25px);
+}
+
+.kids-navy-brands span:first-child {
+  grid-column: span 2;
+  min-height: 116px;
+  font-size: clamp(26px, 3.2vw, 42px);
+}
+
+@media (max-width: 1050px) {
+  .kids-arrivals-grid,
+  .kids-band-inner,
+  .kids-occ-products,
+  .kids-navy-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .kids-band-merch {
+    grid-template-columns: 190px minmax(0, 1fr);
+  }
+
+  .kids-counter-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .kids-counter-grid .bs-card {
+    grid-column: span 1 !important;
+    margin-top: 0 !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .kids-arrivals,
+  .kids-split,
+  .kids-brand,
+  .kids-occ-sec,
+  .kids-counter,
+  .kids-navy {
+    padding-top: 58px;
+  }
+
+  .kids-arrival-story,
+  .kids-split-media,
+  .kids-occ-lead .kids-occ-media {
+    min-height: 360px;
+  }
+
+  .kids-arrival-media {
+    min-height: 250px;
+  }
+
+  .kids-split-products .bs-card:nth-child(2),
+  .kids-split-products .bs-card:nth-child(3) {
+    transform: none;
+  }
+
+  .kids-brand-inner,
+  .kids-split-grid,
+  .kids-occ-grid,
+  .kids-band-merch {
+    grid-template-columns: 1fr;
+  }
+
+  .kids-brand-media {
+    min-height: 320px;
+  }
+
+  .kids-occ-products-grid,
+  .kids-counter-grid,
+  .kids-navy-brands {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .kids-occ-products {
+    padding: 20px;
+  }
+
+  .kids-occ-products-copy {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 560px) {
+  .kids-arrivals,
+  .kids-split,
+  .kids-brand,
+  .kids-occ-sec,
+  .kids-counter,
+  .kids-navy {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .kids-arrival-copy {
+    padding: 22px;
+  }
+
+  .kids-occ-products-grid,
+  .kids-counter-grid,
+  .kids-navy-brands {
+    grid-template-columns: 1fr;
+  }
+
+  .kids-navy-brands span:first-child {
+    grid-column: auto;
+  }
+
+  .kids-navy-inner {
+    padding: 30px 22px;
+  }
+}
+
+/* Art-directed homepage chapters - stronger scale changes, fewer repeated rails */
+.kids-editorial-chapters {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 96px 24px 0;
+}
+
+.kids-chapter-manifest {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.95fr) minmax(0, 1.05fr);
+  gap: clamp(36px, 6vw, 92px);
+  align-items: end;
+}
+
+.kids-chapter-manifest h2,
+.kids-room-title,
+.kids-designer-title,
+.kids-campaign-title,
+.kids-house-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0;
+  color: #111;
+}
+
+.kids-chapter-manifest h2 {
+  max-width: 11ch;
+  font-size: clamp(38px, 5.6vw, 76px);
+  line-height: 0.98;
+}
+
+.kids-chapter-manifest p {
+  margin: 0;
+  max-width: 58ch;
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.25vw, 30px);
+  font-weight: var(--fw-light);
+  line-height: 1.4;
+  color: #2d3641;
+}
+
+.kids-chapter-nav {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: 18px;
+  background: rgba(15, 35, 65, 0.1);
+  border: 1px solid rgba(15, 35, 65, 0.1);
+}
+
+.kids-chapter-nav a {
+  min-height: 126px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 22px;
+  background: #fff;
+  color: #111;
+  text-decoration: none;
+}
+
+.kids-chapter-nav strong,
+.kids-room-kicker,
+.kids-campaign-kicker {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--blue-800, #003976);
+}
+
+.kids-chapter-nav span {
+  font-family: var(--font-display);
+  font-size: 22px;
+  line-height: 1.1;
+}
+
+.kids-room {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 104px 24px 0;
+}
+
+.kids-room-head {
+  display: grid;
+  grid-template-columns: minmax(250px, 0.78fr) minmax(0, 1.22fr);
+  gap: 32px;
+  align-items: end;
+  margin-bottom: 28px;
+}
+
+.kids-room-title {
+  margin-top: 10px;
+  font-size: clamp(32px, 4vw, 58px);
+  line-height: 1.03;
+}
+
+.kids-room-head p {
+  margin: 0;
+  max-width: 58ch;
+  font-family: var(--font-display);
+  font-size: clamp(18px, 1.8vw, 25px);
+  font-weight: var(--fw-light);
+  line-height: 1.45;
+  color: #3a4450;
+}
+
+.kids-room-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 22px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(0, 57, 118, 0.28);
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--blue-800, #003976);
+  text-decoration: none;
+}
+
+.kids-room-cta svg {
+  transition: transform .28s ease;
+}
+
+.kids-room-cta:hover {
+  text-decoration: none;
+  border-color: var(--blue-800, #003976);
+}
+
+.kids-room-cta:hover svg {
+  transform: translateX(4px);
+}
+
+.kids-designer-copy .kids-room-cta,
+.kids-campaign-copy .kids-room-cta,
+.kids-house-inner .kids-room-cta {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.42);
+}
+
+.kids-designer-copy .kids-room-cta:hover,
+.kids-campaign-copy .kids-room-cta:hover,
+.kids-house-inner .kids-room-cta:hover {
+  border-color: #fff;
+}
+
+.kids-atelier-grid {
+  display: grid;
+  grid-template-columns: minmax(340px, 1.15fr) minmax(0, 0.85fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.kids-product-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  min-height: 620px;
+  overflow: hidden;
+  border: 1px solid rgba(15, 35, 65, 0.08);
+  border-radius: 6px;
+  background: #f4efe7;
+  text-decoration: none;
+}
+
+.kids-product-stage:hover {
+  text-decoration: none;
+}
+
+.kids-product-stage-media {
+  position: relative;
+  min-height: 100%;
+}
+
+.kids-product-stage-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: clamp(48px, 7vw, 96px);
+  mix-blend-mode: multiply;
+  transition: transform .5s var(--ease-standard, ease);
+}
+
+.kids-product-stage:hover img {
+  transform: scale(1.035);
+}
+
+.kids-product-stage-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 34px;
+  background: #fff;
+  border-left: 1px solid rgba(15, 35, 65, 0.08);
+}
+
+.kids-product-stage-copy strong {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #7b838d;
+}
+
+.kids-product-stage-copy span {
+  display: block;
+  margin-top: 10px;
+  font-family: var(--font-display);
+  font-size: clamp(25px, 2.8vw, 38px);
+  line-height: 1.08;
+  color: #111;
+}
+
+.kids-product-stage-copy em {
+  margin-top: 16px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: var(--fw-semibold);
+  color: var(--blue-800, #003976);
+}
+
+.kids-atelier-side {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 24px;
+  min-width: 0;
+}
+
+.kids-arrival-notes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(15, 35, 65, 0.1);
+  border: 1px solid rgba(15, 35, 65, 0.1);
+}
+
+.kids-arrival-notes span {
+  min-height: 144px;
+  display: flex;
+  align-items: flex-end;
+  padding: 18px;
+  background: #fff;
+  font-family: var(--font-display);
+  font-size: 20px;
+  line-height: 1.18;
+  color: #111;
+}
+
+.kids-atelier-products {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.kids-first-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(360px, 1.18fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.kids-first-copy {
+  padding: clamp(30px, 4vw, 56px);
+  border: 1px solid rgba(15, 35, 65, 0.08);
+  border-radius: 6px;
+  background: #fbfaf7;
+}
+
+.kids-first-copy p {
+  margin: 18px 0 0;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: #586473;
+}
+
+.kids-first-media {
+  position: relative;
+  min-height: 620px;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.kids-first-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.kids-first-products {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.kids-designer {
+  max-width: var(--container-max);
+  margin: 104px auto 0;
+  padding: 0 24px;
+}
+
+.kids-designer-inner {
+  display: grid;
+  grid-template-columns: minmax(360px, 1fr) minmax(320px, 0.82fr);
+  min-height: 680px;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #0a2342;
+}
+
+.kids-designer-media {
+  position: relative;
+  background: linear-gradient(140deg, #f3ece0, #fff);
+}
+
+.kids-designer-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: clamp(56px, 8vw, 112px);
+  mix-blend-mode: multiply;
+}
+
+.kids-designer-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(38px, 5vw, 72px);
+  color: #fff;
+}
+
+.kids-designer-copy .kids-room-kicker,
+.kids-campaign-kicker {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.kids-designer-title {
+  max-width: 8ch;
+  margin-top: 12px;
+  font-size: clamp(44px, 5vw, 78px);
+  line-height: 0.98;
+  color: #fff;
+}
+
+.kids-designer-copy p {
+  max-width: 42ch;
+  margin: 22px 0 0;
+  font-size: 15px;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.kids-designer-thumbs {
+  display: flex;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.kids-designer-thumbs a {
+  width: 96px;
+  height: 112px;
+  display: block;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.kids-designer-thumbs img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 10px;
+}
+
+.kids-uniform-grid {
+  display: grid;
+  grid-template-columns: 0.86fr 1.14fr;
+  gap: 24px;
+}
+
+.kids-uniform-categories {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(15, 35, 65, 0.1);
+  border: 1px solid rgba(15, 35, 65, 0.1);
+}
+
+.kids-uniform-categories a {
+  min-height: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 24px;
+  background: #fff;
+  color: #111;
+  text-decoration: none;
+}
+
+.kids-uniform-categories a:first-child {
+  grid-column: span 2;
+  min-height: 280px;
+  background: #f6f5f1;
+}
+
+.kids-uniform-categories strong {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.4vw, 36px);
+  line-height: 1.05;
+}
+
+.kids-uniform-categories span {
+  font-size: 12.5px;
+  color: #6b7480;
+}
+
+.kids-campaign {
+  max-width: var(--container-max);
+  margin: 112px auto 0;
+  padding: 0 24px;
+}
+
+.kids-campaign-hero {
+  position: relative;
+  min-height: 760px;
+  display: grid;
+  grid-template-columns: minmax(320px, 0.86fr) minmax(0, 1.14fr);
+  overflow: hidden;
+  border-radius: 6px;
+  background: #111;
+}
+
+.kids-campaign-hero > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.82;
+}
+
+.kids-campaign-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(5, 12, 22, 0.76), rgba(5, 12, 22, 0.2) 54%, rgba(5, 12, 22, 0.72));
+}
+
+.kids-campaign-copy,
+.kids-campaign-panel {
+  position: relative;
+  z-index: 2;
+}
+
+.kids-campaign-copy {
+  align-self: end;
+  padding: clamp(34px, 5vw, 72px);
+  color: #fff;
+}
+
+.kids-campaign-title {
+  max-width: 10ch;
+  margin-top: 12px;
+  font-size: clamp(44px, 6vw, 86px);
+  line-height: 0.96;
+  color: #fff;
+}
+
+.kids-campaign-copy p {
+  max-width: 43ch;
+  margin: 22px 0 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.kids-campaign-panel {
+  align-self: end;
+  justify-self: end;
+  width: min(430px, calc(100% - 36px));
+  margin: 0 36px 36px 0;
+  padding: 22px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.kids-campaign-links {
+  display: grid;
+  gap: 1px;
+  background: rgba(15, 35, 65, 0.1);
+  border: 1px solid rgba(15, 35, 65, 0.1);
+}
+
+.kids-campaign-links a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 76px;
+  padding: 18px;
+  background: #fff;
+  color: #111;
+  text-decoration: none;
+}
+
+.kids-campaign-links strong {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: var(--fw-medium);
+}
+
+.kids-campaign-products {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.kids-footwear-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.kids-footwear-story {
+  min-height: 560px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(32px, 5vw, 66px);
+  border-radius: 6px;
+  background:
+    linear-gradient(180deg, rgba(0, 42, 87, 0.08), rgba(0, 42, 87, 0.88)),
+    url("https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=1000&q=80") center/cover;
+  color: #fff;
+}
+
+.kids-footwear-story h3 {
+  max-width: 9ch;
+  margin: 12px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4.6vw, 66px);
+  line-height: 1;
+  font-weight: var(--fw-medium);
+}
+
+.kids-footwear-story p {
+  max-width: 38ch;
+  margin: 18px 0 0;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.7;
+}
+
+.kids-footwear-products {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  align-content: end;
+}
+
+.kids-accessory-gallery {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 24px;
+}
+
+.kids-accessory-lead {
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(32px, 5vw, 64px);
+  border-radius: 6px;
+  background: #f7f4ef;
+}
+
+.kids-accessory-lead p {
+  max-width: 36ch;
+  margin: 16px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.1vw, 30px);
+  line-height: 1.35;
+  color: #26313d;
+}
+
+.kids-accessory-products {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.kids-house-finale {
+  max-width: var(--container-max);
+  margin: 112px auto 0;
+  padding: 0 24px;
+}
+
+.kids-house-inner {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.78fr) minmax(0, 1.22fr);
+  gap: clamp(32px, 5vw, 70px);
+  min-height: 520px;
+  padding: clamp(38px, 5vw, 76px);
+  border-radius: 6px;
+  background: var(--blue-800, #003976);
+  color: #fff;
+}
+
+.kids-house-title {
+  max-width: 9ch;
+  margin-top: 12px;
+  font-size: clamp(42px, 5.4vw, 82px);
+  line-height: 0.98;
+  color: #fff;
+}
+
+.kids-house-inner p {
+  max-width: 40ch;
+  margin: 22px 0 0;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.kids-house-wall {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  align-content: stretch;
+}
+
+.kids-house-wall a {
+  min-height: 128px;
+  display: flex;
+  align-items: flex-end;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.07);
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.5vw, 36px);
+  color: #fff;
+  text-decoration: none;
+}
+
+.kids-house-wall a:first-child {
+  grid-column: span 2;
+  min-height: 190px;
+  font-size: clamp(34px, 4vw, 58px);
+}
+
+@media (max-width: 1050px) {
+  .kids-chapter-manifest,
+  .kids-room-head,
+  .kids-atelier-grid,
+  .kids-first-grid,
+  .kids-designer-inner,
+  .kids-uniform-grid,
+  .kids-campaign-hero,
+  .kids-footwear-grid,
+  .kids-accessory-gallery,
+  .kids-house-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .kids-product-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .kids-product-stage-copy {
+    border-left: 0;
+    border-top: 1px solid rgba(15, 35, 65, 0.08);
+  }
+}
+
+@media (max-width: 720px) {
+  .kids-editorial-chapters,
+  .kids-room,
+  .kids-designer,
+  .kids-campaign,
+  .kids-house-finale {
+    padding-top: 62px;
+  }
+
+  .kids-chapter-nav,
+  .kids-atelier-products,
+  .kids-arrival-notes,
+  .kids-first-products,
+  .kids-uniform-categories,
+  .kids-campaign-products,
+  .kids-footwear-products,
+  .kids-accessory-products,
+  .kids-house-wall {
+    grid-template-columns: 1fr;
+  }
+
+  .kids-uniform-categories a:first-child,
+  .kids-house-wall a:first-child {
+    grid-column: auto;
+  }
+
+  .kids-product-stage,
+  .kids-first-media,
+  .kids-designer-inner,
+  .kids-campaign-hero,
+  .kids-footwear-story,
+  .kids-accessory-lead {
+    min-height: 420px;
+  }
+
+  .kids-campaign-panel {
+    width: auto;
+    margin: 0 18px 18px;
+  }
+}
+
+/* Retail correction - compact international fashion layout */
+.kids-retail-section,
+.kids-retail-designer,
+.kids-retail-campaign,
+.kids-retail-duo,
+.kids-retail-brandbar {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 64px 24px 0;
+}
+
+.kids-retail-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 22px;
+}
+
+.kids-retail-kicker {
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--blue-800, #003976);
+}
+
+.kids-retail-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.8vw, 36px);
+  font-weight: var(--fw-medium);
+  line-height: 1.08;
+  letter-spacing: 0;
+  color: #111;
+}
+
+.kids-retail-head p {
+  max-width: 48ch;
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: #5c6672;
+}
+
+.kids-retail-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(0, 57, 118, 0.24);
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--blue-800, #003976);
+  text-decoration: none;
+}
+
+.kids-retail-link:hover {
+  text-decoration: none;
+  border-color: var(--blue-800, #003976);
+}
+
+.kids-retail-arrival-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 330px;
+  gap: 22px;
+  align-items: stretch;
+}
+
+.kids-retail-products {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.kids-retail-look {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: 420px;
+  overflow: hidden;
+  border: 1px solid rgba(15, 35, 65, 0.08);
+  border-radius: 6px;
+  background: #f6f2ec;
+  text-decoration: none;
+}
+
+.kids-retail-look:hover {
+  text-decoration: none;
+}
+
+.kids-retail-look-media {
+  position: relative;
+  min-height: 300px;
+}
+
+.kids-retail-look-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 38px;
+  mix-blend-mode: multiply;
+}
+
+.kids-retail-look-copy {
+  padding: 20px 22px 22px;
+  border-top: 1px solid rgba(15, 35, 65, 0.08);
+  background: #fff;
+}
+
+.kids-retail-look-copy strong,
+.kids-retail-look-copy span,
+.kids-retail-look-copy em {
+  display: block;
+}
+
+.kids-retail-look-copy strong {
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #7a838d;
+}
+
+.kids-retail-look-copy span {
+  margin-top: 7px;
+  font-family: var(--font-display);
+  font-size: 21px;
+  line-height: 1.15;
+  color: #111;
+}
+
+.kids-retail-look-copy em {
+  margin-top: 10px;
+  font-style: normal;
+  font-size: 12px;
+  font-weight: var(--fw-semibold);
+  color: var(--blue-800, #003976);
+}
+
+.kids-retail-wardrobe {
+  display: grid;
+  grid-template-columns: 0.82fr 1.18fr;
+  gap: 22px;
+  align-items: stretch;
+}
+
+.kids-retail-wardrobe-img {
+  position: relative;
+  min-height: 430px;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.kids-retail-wardrobe-img img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.kids-retail-wardrobe-edit {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  align-content: end;
+}
+
+.kids-retail-designer-inner {
+  min-height: 360px;
+  display: grid;
+  grid-template-columns: 0.48fr 0.52fr;
+  overflow: hidden;
+  border-radius: 6px;
+  background: var(--blue-800, #003976);
+}
+
+.kids-retail-designer-media {
+  position: relative;
+  background: #f4efe8;
+}
+
+.kids-retail-designer-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 42px;
+  mix-blend-mode: multiply;
+}
+
+.kids-retail-designer-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(32px, 4vw, 56px);
+  color: #fff;
+}
+
+.kids-retail-designer-copy .kids-retail-kicker,
+.kids-retail-campaign-copy .kids-retail-kicker,
+.kids-retail-brandbar .kids-retail-kicker {
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.kids-retail-designer-copy .kids-retail-title,
+.kids-retail-campaign-copy .kids-retail-title,
+.kids-retail-brandbar .kids-retail-title {
+  color: #fff;
+}
+
+.kids-retail-designer-copy p,
+.kids-retail-brandbar p {
+  max-width: 44ch;
+  margin: 14px 0 0;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.kids-retail-designer-thumbs {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.kids-retail-designer-thumbs a {
+  width: 72px;
+  height: 72px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.kids-retail-designer-thumbs img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 8px;
+}
+
+.kids-retail-campaign-inner {
+  position: relative;
+  min-height: 500px;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #111;
+}
+
+.kids-retail-campaign-inner > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.78;
+}
+
+.kids-retail-campaign-inner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(5, 12, 22, 0.72), rgba(5, 12, 22, 0.18) 58%, rgba(5, 12, 22, 0.56));
+}
+
+.kids-retail-campaign-copy,
+.kids-retail-campaign-panel {
+  position: relative;
+  z-index: 2;
+}
+
+.kids-retail-campaign-copy {
+  align-self: end;
+  padding: clamp(34px, 5vw, 62px);
+  color: #fff;
+}
+
+.kids-retail-campaign-copy p {
+  max-width: 42ch;
+  margin: 14px 0 0;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.65;
+}
+
+.kids-retail-campaign-panel {
+  align-self: center;
+  margin-right: 28px;
+  padding: 18px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.kids-retail-campaign-links {
+  display: grid;
+  gap: 1px;
+  margin-bottom: 16px;
+  background: rgba(15, 35, 65, 0.1);
+}
+
+.kids-retail-campaign-links a {
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: #fff;
+  color: #111;
+  text-decoration: none;
+}
+
+.kids-retail-campaign-links strong {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: var(--fw-medium);
+}
+
+.kids-retail-campaign-products {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.kids-retail-duo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.kids-retail-duo-panel {
+  padding: 24px;
+  border: 1px solid rgba(15, 35, 65, 0.08);
+  border-radius: 6px;
+  background: #fbfaf7;
+}
+
+.kids-retail-duo-panel .kids-retail-title {
+  font-size: clamp(23px, 2.4vw, 32px);
+}
+
+.kids-retail-duo-products {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.kids-retail-brandbar-inner {
+  min-height: 250px;
+  display: grid;
+  grid-template-columns: 330px minmax(0, 1fr);
+  gap: 34px;
+  align-items: center;
+  padding: clamp(28px, 4vw, 46px);
+  border-radius: 6px;
+  background: var(--blue-800, #003976);
+  color: #fff;
+}
+
+.kids-retail-brand-list {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.kids-retail-brand-list a {
+  min-height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.07);
+  font-family: var(--font-display);
+  font-size: 18px;
+  line-height: 1.15;
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+}
+
+.kids-clean-section {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 58px 24px 0;
+}
+
+.kids-clean-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.kids-clean-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: 22px;
+  align-items: stretch;
+}
+
+.kids-clean-media {
+  position: relative;
+  min-height: 330px;
+  overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid rgba(15, 35, 65, 0.08);
+  background: #f7f4f1;
+}
+
+.kids-clean-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.kids-clean-product-media img {
+  object-fit: contain;
+  padding: 42px;
+  mix-blend-mode: multiply;
+}
+
+.kids-clean-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(26px, 4vw, 44px);
+  border: 1px solid rgba(15, 35, 65, 0.08);
+  border-radius: 6px;
+  background: #fbfaf7;
+}
+
+.kids-clean-copy p {
+  max-width: 46ch;
+  margin: 12px 0 20px;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: #5c6672;
+}
+
+.kids-clean-mini-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.kids-clean-occasion-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.kids-clean-occasion-card {
+  position: relative;
+  min-height: 180px;
+  overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid rgba(15, 35, 65, 0.08);
+  color: #fff;
+  text-decoration: none;
+}
+
+.kids-clean-occasion-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.kids-clean-occasion-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.04), rgba(8, 18, 32, 0.58));
+}
+
+.kids-clean-occasion-card span {
+  position: absolute;
+  z-index: 2;
+  left: 18px;
+  right: 18px;
+  bottom: 16px;
+  font-family: var(--font-display);
+  font-size: 22px;
+  line-height: 1.1;
+}
+
+.kids-clean-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.kids-clean-panel {
+  padding: 24px;
+  border: 1px solid rgba(15, 35, 65, 0.08);
+  border-radius: 6px;
+  background: #fbfaf7;
+}
+
+.kids-clean-panel .kids-retail-title {
+  font-size: clamp(22px, 2.4vw, 30px);
+}
+
+.kids-clean-panel-products {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.kids-clean-brand-strip {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 18px;
+  padding: 18px;
+  border: 1px solid rgba(0, 57, 118, 0.1);
+  border-radius: 6px;
+  background: linear-gradient(135deg, #f7f9fb 0%, #eef4f8 100%);
+}
+
+.kids-clean-brand-intro,
+.kids-clean-brand-list a {
+  background: #fff;
+}
+
+.kids-clean-brand-intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 26px;
+  border-radius: 4px;
+  box-shadow: 0 8px 24px rgba(0, 42, 87, 0.04);
+}
+
+.kids-clean-brand-intro p {
+  margin: 12px 0 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #5c6672;
+}
+
+.kids-clean-brand-list {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.kids-clean-brand-list a {
+  min-height: 112px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border: 1px solid rgba(0, 57, 118, 0.09);
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: 17px;
+  line-height: 1.18;
+  color: #111;
+  text-align: center;
+  text-decoration: none;
+  transition: border-color .24s ease, color .24s ease, transform .24s ease, box-shadow .24s ease;
+}
+
+.kids-clean-brand-list a:hover {
+  border-color: rgba(0, 57, 118, 0.28);
+  color: var(--blue-800, #003976);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0, 42, 87, 0.06);
+}
+
+@media (max-width: 1050px) {
+  .kids-retail-arrival-grid,
+  .kids-retail-wardrobe,
+  .kids-retail-designer-inner,
+  .kids-retail-campaign-inner,
+  .kids-retail-brandbar-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .kids-retail-products,
+  .kids-retail-wardrobe-edit {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .kids-retail-campaign-panel {
+    align-self: end;
+    margin: 0 20px 20px;
+  }
+
+  .kids-retail-brand-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .kids-clean-feature,
+  .kids-clean-pair,
+  .kids-clean-brand-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .kids-clean-grid,
+  .kids-clean-mini-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .kids-clean-brand-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .kids-retail-section,
+  .kids-retail-designer,
+  .kids-retail-campaign,
+  .kids-retail-duo,
+  .kids-retail-brandbar {
+    padding: 48px 16px 0;
+  }
+
+  .kids-retail-head {
+    display: block;
+  }
+
+  .kids-retail-head p {
+    margin-top: 10px;
+  }
+
+  .kids-retail-products,
+  .kids-retail-wardrobe-edit,
+  .kids-retail-duo-grid,
+  .kids-retail-duo-products,
+  .kids-retail-campaign-products,
+  .kids-retail-brand-list {
+    grid-template-columns: 1fr;
+  }
+
+  .kids-retail-look,
+  .kids-retail-wardrobe-img,
+  .kids-retail-campaign-inner {
+    min-height: 360px;
+  }
+
+  .kids-retail-campaign-panel {
+    margin: 0 14px 14px;
+  }
+
+  .kids-clean-section {
+    padding: 44px 16px 0;
+  }
+
+  .kids-clean-grid,
+  .kids-clean-mini-grid,
+  .kids-clean-occasion-grid,
+  .kids-clean-pair,
+  .kids-clean-panel-products,
+  .kids-clean-brand-list {
+    grid-template-columns: 1fr;
+  }
+
+  .kids-clean-media {
+    min-height: 280px;
+  }
+}
+
+/* Kids product cards: no hover shake or slide motion */
+#kidsShelves .bs-card,
+#kidsShelves .bs-card:hover,
+#kidsShelves .bs-card:focus-within {
+  transform: none !important;
+  will-change: auto !important;
+  transition: border-color .2s ease, box-shadow .2s ease !important;
+}
+
+#kidsShelves .bs-card-media,
+#kidsShelves .bs-card:hover .bs-card-media,
+#kidsShelves .bs-card:focus-within .bs-card-media {
+  transform: none !important;
+  transition: border-color .2s ease, box-shadow .2s ease !important;
+}
+
+#kidsShelves .bs-card-media img,
+#kidsShelves .bs-card:hover .bs-card-media img,
+#kidsShelves .bs-card:focus-within .bs-card-media img,
+#kidsShelves .cat-jewellery .bs-card-media img,
+#kidsShelves .cat-jewellery:hover .bs-card-media img {
+  transform: none !important;
+  transition: opacity .2s ease !important;
+}
+
+#kidsShelves .bs-card-hover-icons,
+#kidsShelves .bs-card-actions,
+#kidsShelves .bs-card.has-size-options .bs-card-sizes,
+#kidsShelves .bs-card:hover .bs-card-hover-icons,
+#kidsShelves .bs-card:hover .bs-card-actions,
+#kidsShelves .bs-card.has-size-options:hover .bs-card-sizes,
+#kidsShelves .bs-card:focus-within .bs-card-hover-icons,
+#kidsShelves .bs-card:focus-within .bs-card-actions,
+#kidsShelves .bs-card.has-size-options:focus-within .bs-card-sizes {
+  transform: none !important;
+}
+
+#kidsShelves .bs-card.has-size-options .bs-card-sizes {
+  min-height: 28px;
+  max-height: none;
+  margin-top: 8px;
+  opacity: 1;
+}
+
+/* Final luxury merchandising language after New In */
+.kids-luxe-section {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 72px 24px 0;
+}
+
+.kids-luxe-band {
+  margin-top: 72px;
+  padding: 56px 0;
+  background: #f8f5ef;
+}
+
+.kids-luxe-band > .kids-luxe-section {
+  padding-top: 0;
+}
+
+.kids-luxe-kicker {
+  display: block;
+  margin-bottom: 9px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--blue-800, #003976);
+}
+
+.kids-luxe-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(25px, 3vw, 40px);
+  font-weight: var(--fw-medium);
+  line-height: 1.08;
+  letter-spacing: 0;
+  color: #111;
+}
+
+.kids-luxe-copy {
+  margin: 12px 0 0;
+  max-width: 46ch;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: #5c6672;
+}
+
+.kids-luxe-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(0, 57, 118, 0.24);
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--blue-800, #003976);
+  text-decoration: none;
+}
+
+.kids-luxe-link:hover {
+  text-decoration: none;
+  border-color: var(--blue-800, #003976);
+}
+
+.kids-luxe-wardrobe {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(340px, 0.9fr);
+  gap: 28px;
+  align-items: stretch;
+}
+
+.kids-luxe-wardrobe-media {
+  position: relative;
+  min-height: 430px;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #ede7dd;
+}
+
+.kids-luxe-wardrobe-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.kids-luxe-wardrobe-copy {
+  align-self: center;
+  padding: clamp(28px, 4vw, 52px);
+  background: #fbfaf7;
+  border: 1px solid rgba(15, 35, 65, 0.07);
+  border-radius: 6px;
+}
+
+.kids-luxe-wardrobe-products {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.kids-luxe-house {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.82fr) minmax(0, 1.18fr);
+  gap: 28px;
+  align-items: center;
+  padding: clamp(28px, 4vw, 46px);
+  border-radius: 6px;
+  background: linear-gradient(135deg, #eef4f8 0%, #fbfaf7 100%);
+}
+
+.kids-luxe-house-stage {
+  position: relative;
+  min-height: 420px;
+  border-radius: 6px;
+  background: radial-gradient(circle at 48% 42%, #fff 0, #f0e8dc 78%);
+}
+
+.kids-luxe-house-stage img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: clamp(42px, 6vw, 78px);
+  mix-blend-mode: multiply;
+}
+
+.kids-luxe-house-content {
+  display: grid;
+  grid-template-columns: minmax(230px, 0.72fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: end;
+}
+
+.kids-luxe-house-products {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.kids-luxe-wall-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 22px;
+}
+
+.kids-luxe-product-wall {
+  display: grid;
+  grid-template-columns: 1.15fr repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  align-items: start;
+}
+
+.kids-luxe-wall-note {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 26px;
+  border-radius: 6px;
+  background: #f5f1ea;
+}
+
+.kids-luxe-wall-note p {
+  margin: 12px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.1vw, 30px);
+  line-height: 1.28;
+  color: #1d2733;
+}
+
+.kids-luxe-occasion {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(360px, 1.14fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.kids-luxe-occasion-copy {
+  position: sticky;
+  top: 90px;
+  padding: 34px;
+  border-radius: 6px;
+  background: #fff;
+  border: 1px solid rgba(15, 35, 65, 0.07);
+}
+
+.kids-luxe-occasion-products {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.kids-luxe-occasion-grid {
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  grid-auto-rows: 190px;
+  gap: 14px;
+}
+
+.kids-luxe-occasion-tile {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.kids-luxe-occasion-tile:first-child {
+  grid-row: span 2;
+}
+
+.kids-luxe-occasion-tile img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.kids-luxe-occasion-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8, 18, 32, 0.04), rgba(8, 18, 32, 0.58));
+}
+
+.kids-luxe-occasion-tile span {
+  position: absolute;
+  z-index: 2;
+  left: 18px;
+  right: 18px;
+  bottom: 16px;
+  font-family: var(--font-display);
+  font-size: 22px;
+  line-height: 1.1;
+}
+
+.kids-luxe-duo {
+  display: grid;
+  grid-template-columns: 0.94fr 1.06fr;
+  gap: 26px;
+}
+
+.kids-luxe-duo-panel {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.48fr) minmax(0, 0.52fr);
+  gap: 18px;
+  align-items: end;
+  padding: 24px;
+  border-radius: 6px;
+  background: #fbfaf7;
+  border: 1px solid rgba(15, 35, 65, 0.07);
+}
+
+.kids-luxe-duo-panel:nth-child(2) {
+  background: #eef4f8;
+}
+
+.kids-luxe-duo-products {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.kids-luxe-brands {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr);
+  gap: 34px;
+  align-items: center;
+  padding: clamp(34px, 5vw, 62px);
+  border-radius: 6px;
+  background:
+    linear-gradient(135deg, rgba(0, 57, 118, 0.94), rgba(0, 42, 87, 0.92)),
+    linear-gradient(135deg, #eef4f8, #fbfaf7);
+  color: #fff;
+}
+
+.kids-luxe-brands .kids-luxe-kicker,
+.kids-luxe-brands .kids-luxe-title {
+  color: #fff;
+}
+
+.kids-luxe-brands .kids-luxe-copy {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.kids-luxe-brands .kids-luxe-link {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.42);
+}
+
+.kids-luxe-brand-list {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+}
+
+.kids-luxe-brand-list a {
+  min-height: 94px;
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  font-family: var(--font-display);
+  font-size: 18px;
+  line-height: 1.14;
+  color: #fff;
+  text-decoration: none;
+}
+
+.kids-luxe-brand-list a:first-child {
+  grid-column: span 2;
+  min-height: 144px;
+  font-size: 30px;
+}
+
+.kids-luxe-brand-list a:nth-child(4) {
+  grid-column: span 2;
+}
+
+@media (max-width: 1050px) {
+  .kids-luxe-wardrobe,
+  .kids-luxe-house,
+  .kids-luxe-house-content,
+  .kids-luxe-occasion,
+  .kids-luxe-duo,
+  .kids-luxe-duo-panel,
+  .kids-luxe-brands {
+    grid-template-columns: 1fr;
+  }
+
+  .kids-luxe-product-wall {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .kids-luxe-wall-note {
+    min-height: 220px;
+  }
+
+  .kids-luxe-brand-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .kids-luxe-section {
+    padding: 48px 16px 0;
+  }
+
+  .kids-luxe-band {
+    margin-top: 48px;
+    padding: 42px 0;
+  }
+
+  .kids-luxe-wardrobe-products,
+  .kids-luxe-house-products,
+  .kids-luxe-product-wall,
+  .kids-luxe-occasion,
+  .kids-luxe-occasion-products,
+  .kids-luxe-occasion-grid,
+  .kids-luxe-duo-products,
+  .kids-luxe-brand-list {
+    grid-template-columns: 1fr;
+  }
+
+  .kids-luxe-occasion-copy {
+    position: static;
+  }
+
+  .kids-luxe-occasion-tile:first-child,
+  .kids-luxe-brand-list a:first-child,
+  .kids-luxe-brand-list a:nth-child(4) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .kids-luxe-wardrobe-media,
+  .kids-luxe-house-stage {
+    min-height: 320px;
+  }
+}
+
+/* Clean kids page rails - reuse the homepage slider pattern */
+.kids-pagepad .kids-home-rail {
+  padding-top: 64px;
+}
+
+.kids-pagepad {
+  background: linear-gradient(180deg, #fff 0%, #fbfaf7 48%, #fff 100%);
+}
+
+.kids-pagepad .cat-fashion-head {
+  margin-bottom: 26px;
+}
+
+.kids-pagepad .cat-fashion-title {
+  font-size: clamp(25px, 2.5vw, 32px);
+  letter-spacing: 0;
+}
+
+.kids-pagepad .cat-fashion-sub {
+  max-width: 46ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.kids-pagepad [class*="-collection-home-card"] {
+  border-radius: 4px;
+  background: #f5f1ea;
+  box-shadow: 0 18px 46px rgba(10, 35, 65, 0.09);
+  outline: 1px solid rgba(15, 35, 65, 0.08);
+}
+
+.kids-pagepad [class*="-collection-home-title"] {
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: var(--fw-medium);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.48);
+}
+
+.kids-pagepad [class*="-collection-home-card"]::before {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.02) 28%, rgba(4, 12, 24, 0.72) 100%);
+}
+
+.kids-pagepad [class*="-collection-home-card"]:hover {
+  box-shadow: 0 24px 58px rgba(10, 35, 65, 0.14);
+  outline-color: rgba(0, 57, 118, 0.26);
+}
+
+.kids-pagepad [class*="-slider-arrow"] {
+  border: 1px solid rgba(0, 57, 118, 0.18);
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--blue-800, #003976);
+  box-shadow: 0 12px 30px rgba(10, 35, 65, 0.16);
+}
+
+.kids-pagepad .kids-brand-rail [class*="-collection-home-card"] {
+  aspect-ratio: 16 / 9;
+}
+
+/* Kids category tiles - separate from the homepage bento */
+.kids-pagepad .kids-cats {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  padding-top: 26px;
+}
+
+.kids-pagepad .kids-cats > a:first-child {
+  grid-row: auto;
+  aspect-ratio: auto;
+}
+
+.kids-pagepad .kids-cats .bs-shopcat-card {
+  height: auto;
+  aspect-ratio: auto;
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 14px;
+  padding: 10px 10px 18px;
+  overflow: visible;
+  border: 1px solid rgba(0, 57, 118, 0.14);
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 18px 46px rgba(10, 35, 65, 0.08);
+}
+
+.kids-pagepad .kids-cats .bs-shopcat-card::after {
+  display: none;
+}
+
+.kids-pagepad .kids-cats .bs-shopcat-img {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  border-radius: 4px;
+  object-fit: cover;
+  object-position: center top;
+  box-shadow: inset 0 0 0 1px rgba(15, 35, 65, 0.08);
+}
+
+.kids-pagepad .kids-cats .bs-shopcat-card:nth-child(3) .bs-shopcat-img {
+  object-position: center;
+}
+
+.kids-pagepad .kids-cats .bs-shopcat-caption {
+  position: static;
+  display: block;
+  color: #111;
+  text-align: center;
+}
+
+.kids-pagepad .kids-cats .bs-shopcat-name {
+  color: #0c1520;
+  font-size: clamp(23px, 2.3vw, 30px);
+  font-weight: var(--fw-medium);
+  text-shadow: none;
+}
+
+.kids-pagepad .kids-cats .bs-shopcat-name::after {
+  content: "Shop now";
+  display: block;
+  margin-top: 8px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--blue-800, #003976);
+}
+
+.kids-pagepad .kids-cats .bs-shopcat-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 57, 118, 0.3);
+  box-shadow: 0 24px 56px rgba(10, 35, 65, 0.13);
+}
+
+@media (max-width: 560px) {
+  .kids-pagepad .kids-home-rail {
+    padding-top: 46px;
+  }
+
+  .kids-pagepad .kids-cats {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .kids-pagepad .kids-cats .bs-shopcat-img {
+    aspect-ratio: 5 / 4;
+  }
+}
+</style>
+</head>
+<body class="shop-body">
+
+  <!-- ════════════════ Header (shared shell) ════════════════ -->
+  <header class="bs-nav-root bs-header">
+
+    <div class="bs-announce">
+      <div class="bs-announce-inner">
+      <span class="bs-announce-msg">Complimentary shipping on orders over QAR 499 &nbsp;·&nbsp; Split your payment into 4 installments</span>
+      <div class="bs-announce-utils">
+        <span class="bs-util-wrap bs-locale">
+          <button class="bs-iconbtn bs-locale-btn" type="button" id="localeBtn" aria-label="Switch language" title="Switch language">
+            <span class="bs-lang-switch is-ar" id="localeLangSwitch" aria-hidden="true">ع</span>
+          </button>
+        </span>
+        <button class="bs-iconbtn bs-locale-btn" type="button" aria-label="Store locator" title="Store locator">
+          <span class="bs-lang-switch">Store</span>
+        </button>
+      </div>
+      </div>
+    </div>
+
+    <div class="bs-topbar">
+      <button class="bs-iconbtn bs-hamburger" type="button" id="hamburgerBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileDrawer">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <div class="bs-search">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-4.3-4.3"/><circle cx="11" cy="11" r="7"/></svg>
+        <input type="search" placeholder="Search 500+ luxury brands">
+      </div>
+      <a class="bs-logo" href="index.html">
+        <img src="assets/logo-horizontal.svg" alt="Blue Salon">
+      </a>
+      <div class="bs-utils">
+        <button class="bs-iconbtn" type="button" aria-label="Account" title="Account">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+        </button>
+        <span class="bs-util-wrap">
+          <button class="bs-iconbtn" type="button" aria-label="Wishlist" title="Wishlist">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l9 9 8.8-8.6a5.5 5.5 0 0 0-.2-7.8z"/></svg>
+          </button>
+          <span class="bs-count" id="wishCount" hidden>0</span>
+        </span>
+        <span class="bs-util-wrap">
+          <button class="bs-iconbtn" type="button" aria-label="Bag" title="Bag">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l1 13H5z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+          </button>
+          <span class="bs-count" id="cartCount" hidden>0</span>
+        </span>
+      </div>
+    </div>
+
+    <div id="navZone">
+      <nav class="bs-nav">
+        <div class="bs-nav-inner" id="navInner">
+          <div class="bs-nav-item" data-menu="new">New In</div>
+          <div class="bs-nav-item" data-menu="women">Women</div>
+          <div class="bs-nav-item" data-menu="men">Men</div>
+          <div class="bs-nav-item is-current" data-menu="kids">Kids &amp; Baby</div>
+          <div class="bs-nav-item" data-menu="beauty">Beauty</div>
+          <div class="bs-nav-item" data-menu="luggage">Luggage</div>
+          <div class="bs-nav-item" data-menu="home">Home &amp; Linen</div>
+          <div class="bs-nav-item" data-menu="gourmet">Gourmet</div>
+          <div class="bs-nav-item" data-menu="brands">Brands</div>
+          <div class="bs-nav-item" data-menu="gift">Gift</div>
+          <div class="bs-nav-item sale" data-menu="sale">Sale</div>
+          <div class="bs-mega-holder" id="megaHolder"></div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ════════════════ Mobile drawer (built by app.js) ════════════════ -->
+  <div class="bs-drawer-scrim" id="drawerScrim" hidden></div>
+  <aside class="bs-drawer" id="mobileDrawer" aria-hidden="true" hidden>
+    <div class="bs-drawer-head">
+      <img class="bs-drawer-logo" src="assets/logo-horizontal.svg" alt="Blue Salon">
+      <button class="bs-iconbtn bs-drawer-close" type="button" id="drawerClose" aria-label="Close menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <nav class="bs-drawer-nav" id="drawerNav"></nav>
+  </aside>
+
+  <main class="kids-pagepad">
+
+    <!-- ════════════════ Hero — full-bleed image, boxed caption ════════════════ -->
+    <section class="kids-hero">
+      <img src="https://www.bluesalon.com/cdn/shop/files/Mimisol_Kids_1920x.png?v=1782138258" alt="Kids campaign">
+      <div class="kids-hero-box">
+        <h1 class="kids-hero-title">Kids &amp; Baby</h1>
+        <p class="kids-hero-sub">Little wardrobes, beautifully curated.</p>
+        <a class="kids-hero-link" href="listing.html">Shop the edit</a>
+      </div>
+    </section>
+
+    <!-- ════════════════ Shop by age — boxed text ════════════════ -->
+    <div class="kids-sec-head">
+      <span class="kids-sec-kicker">By age</span>
+      <h2 class="kids-sec-title">Shop by Age</h2>
+    </div>
+    <nav class="kids-ages" aria-label="Shop by age">
+      <a class="kids-age" href="listing.html">
+        <span class="kids-age-label">0 – 9 months</span>
+        <span class="kids-age-name">Newborn</span>
+      </a>
+      <a class="kids-age" href="listing.html">
+        <span class="kids-age-label">9 – 36 months</span>
+        <span class="kids-age-name">Baby</span>
+      </a>
+      <a class="kids-age" href="listing.html">
+        <span class="kids-age-label">3 – 10 years</span>
+        <span class="kids-age-name">Kids</span>
+      </a>
+      <a class="kids-age" href="listing.html">
+        <span class="kids-age-label">10 – 16 years</span>
+        <span class="kids-age-name">Teens</span>
+      </a>
+    </nav>
+
+    <!-- ════════════════ Category trio — boxed captions ════════════════ -->
+    <div class="kids-sec-head">
+      <span class="kids-sec-kicker">By category</span>
+      <h2 class="kids-sec-title">Shop by Category</h2>
+    </div>
+    <section class="kids-cats" aria-label="Kids categories">
+
+      <a href="listing.html" class="bs-shopcat-card">
+        <img src="//www.bluesalon.com/cdn/shop/files/Girl_s_clothing_1200x.jpg?v=1771912756" alt="Girls" class="bs-shopcat-img" fetchpriority="high" loading="eager">
+        <span class="bs-shopcat-caption">
+          <span class="bs-display bs-shopcat-name">Girls</span>
+        </span>
+      </a>
+
+      <a href="listing.html" class="bs-shopcat-card">
+        <img src="//www.bluesalon.com/cdn/shop/files/Boy_s_clothing_1200x.jpg?v=1771912547" alt="Boys" class="bs-shopcat-img" loading="lazy">
+        <span class="bs-shopcat-caption">
+          <span class="bs-display bs-shopcat-name">Boys</span>
+        </span>
+      </a>
+
+      <a href="listing.html" class="bs-shopcat-card">
+        <img src="//www.bluesalon.com/cdn/shop/files/Shoes_b0e1304c-d5c6-4c76-9b89-31c0d839a8d4_1200x.jpg?v=1771913018" alt="Footwear" class="bs-shopcat-img" loading="lazy">
+        <span class="bs-shopcat-caption">
+          <span class="bs-display bs-shopcat-name">Footwear</span>
+        </span>
+      </a>
+
+    </section>
+
+    <!-- ════════════════ The Baby Shop — editorial split feature ════════════════ -->
+    <section class="kids-feature">
+      <a class="kids-feature-inner" href="listing.html?cat=Kids">
+        <div class="kids-feature-media">
+          <img src="https://www.bluesalon.com/cdn/shop/files/New_Project_6_257299a2-e4bb-4de8-a31b-99686617df38_970x.jpg?v=1780488291" alt="The Baby Shop" loading="lazy">
+        </div>
+        <div class="kids-feature-copy">
+          <span class="kids-sec-kicker">0 – 24 months</span>
+          <h2 class="kids-feature-title">The Baby Shop</h2>
+          <p>Soft cottons, first shoes and newborn essentials — chosen for the very first wardrobe.</p>
+          <span class="kids-feature-cta">Discover the edit
+            <svg width="20" height="10" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
+          </span>
+        </div>
+      </a>
+    </section>
+
+    <section class="cat-fashion cat-fashion-kids kids-home-rail">
+      <div class="cat-fashion-inner">
+        <div class="cat-fashion-head">
+          <h2 class="cat-fashion-title">New In</h2>
+          <p class="cat-fashion-sub">Fresh arrivals for newborns, kids and teens.</p>
+        </div>
+        <div class="kids-new-collection-home-grid-wrapper">
+          <button class="kids-new-slider-arrow kids-new-slider-arrow-left" aria-label="Previous" type="button" disabled><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <div class="kids-new-collection-home-grid">
+            <a href="listing.html?cat=Kids" class="kids-new-collection-home-card"><div class="kids-new-collection-home-image-wrapper"><img src="https://www.bluesalon.com/cdn/shop/files/Moschino_Baby_White_T-Shirt_Navy_Logo_Shorts_Set_back_view_MOS124COM02720_1_540x.jpg?v=1777813096" alt="Moschino Baby set" class="kids-new-collection-home-image" loading="lazy"></div><div class="kids-new-collection-home-title">Moschino Baby</div></a>
+            <a href="listing.html?cat=Kids" class="kids-new-collection-home-card"><div class="kids-new-collection-home-image-wrapper"><img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/Moschino_Kid_Black_Cotton_T-Shirt_with_Star_Teddy_Bear_Embroidery_back_view_MOS124TOP04383_1_540x.jpg?v=1777822238" alt="Moschino Kids t-shirt" class="kids-new-collection-home-image" loading="lazy"></div><div class="kids-new-collection-home-title">Logo T-Shirts</div></a>
+            <a href="listing.html?cat=Kids" class="kids-new-collection-home-card"><div class="kids-new-collection-home-image-wrapper"><img src="https://www.bluesalon.com/cdn/shop/files/Moschino_Kids_Beige_Circular_Logo_Print_Baseball_Cap_side_right_view_MOS124ACC00363_5_360x.jpg?v=1777808022" alt="Kids cap" class="kids-new-collection-home-image" loading="lazy"></div><div class="kids-new-collection-home-title">Caps &amp; Extras</div></a>
+            <a href="listing.html?cat=Kids" class="kids-new-collection-home-card"><div class="kids-new-collection-home-image-wrapper"><img src="//www.bluesalon.com/cdn/shop/files/New_Project_10_bc7e0bd2-1185-41c7-a02c-56d341757fa6_600x.jpg?v=1778154026" alt="Newborn boys" class="kids-new-collection-home-image" loading="lazy"></div><div class="kids-new-collection-home-title">Newborn Boys</div></a>
+          </div>
+          <button class="kids-new-slider-arrow kids-new-slider-arrow-right" aria-label="Next" type="button"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="cat-fashion cat-fashion-kids kids-home-rail">
+      <div class="cat-fashion-inner">
+        <div class="cat-fashion-head">
+          <h2 class="cat-fashion-title">Clothing</h2>
+          <p class="cat-fashion-sub">Everyday outfits, occasion pieces and soft first layers.</p>
+        </div>
+        <div class="kids-clothing-collection-home-grid-wrapper">
+          <button class="kids-clothing-slider-arrow kids-clothing-slider-arrow-left" aria-label="Previous" type="button" disabled><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <div class="kids-clothing-collection-home-grid">
+            <a href="listing.html?cat=Kids" class="kids-clothing-collection-home-card"><div class="kids-clothing-collection-home-image-wrapper"><img src="//www.bluesalon.com/cdn/shop/files/Girl_s_clothing_600x.jpg?v=1771912756" alt="Girls clothing" class="kids-clothing-collection-home-image" loading="lazy"></div><div class="kids-clothing-collection-home-title">Girls Clothing</div></a>
+            <a href="listing.html?cat=Kids" class="kids-clothing-collection-home-card"><div class="kids-clothing-collection-home-image-wrapper"><img src="//www.bluesalon.com/cdn/shop/files/Boy_s_clothing_600x.jpg?v=1771912547" alt="Boys clothing" class="kids-clothing-collection-home-image" loading="lazy"></div><div class="kids-clothing-collection-home-title">Boys Clothing</div></a>
+            <a href="listing.html?cat=Kids" class="kids-clothing-collection-home-card"><div class="kids-clothing-collection-home-image-wrapper"><img src="//www.bluesalon.com/cdn/shop/files/New_Project_11_3c02abdb-e76c-4749-91df-bb654320bf6c_600x.jpg?v=1778154421" alt="Newborn girls" class="kids-clothing-collection-home-image" loading="lazy"></div><div class="kids-clothing-collection-home-title">Newborn Girls</div></a>
+            <a href="listing.html?cat=Kids" class="kids-clothing-collection-home-card"><div class="kids-clothing-collection-home-image-wrapper"><img src="https://www.bluesalon.com/cdn/shop/files/Mimisol_Kids_1920x.png?v=1782138258" alt="Kids occasion edit" class="kids-clothing-collection-home-image" loading="lazy"></div><div class="kids-clothing-collection-home-title">Occasion Edit</div></a>
+          </div>
+          <button class="kids-clothing-slider-arrow kids-clothing-slider-arrow-right" aria-label="Next" type="button"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="cat-fashion cat-fashion-kids kids-home-rail">
+      <div class="cat-fashion-inner">
+        <div class="cat-fashion-head">
+          <h2 class="cat-fashion-title">Shoes &amp; Accessories</h2>
+          <p class="cat-fashion-sub">Finishing pieces for school days, weekends and family occasions.</p>
+        </div>
+        <div class="kids-accessory-collection-home-grid-wrapper">
+          <button class="kids-accessory-slider-arrow kids-accessory-slider-arrow-left" aria-label="Previous" type="button" disabled><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <div class="kids-accessory-collection-home-grid">
+            <a href="listing.html?cat=Kids" class="kids-accessory-collection-home-card"><div class="kids-accessory-collection-home-image-wrapper"><img src="//www.bluesalon.com/cdn/shop/files/Shoes_b0e1304c-d5c6-4c76-9b89-31c0d839a8d4_600x.jpg?v=1771913018" alt="Kids footwear" class="kids-accessory-collection-home-image" loading="lazy"></div><div class="kids-accessory-collection-home-title">Footwear</div></a>
+            <a href="listing.html?cat=Kids" class="kids-accessory-collection-home-card"><div class="kids-accessory-collection-home-image-wrapper"><img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/FR2214FTW00056_1_540x.jpg?v=1770620141" alt="Missoni sneakers" class="kids-accessory-collection-home-image" loading="lazy"></div><div class="kids-accessory-collection-home-title">Sneakers</div></a>
+            <a href="listing.html?cat=Kids" class="kids-accessory-collection-home-card"><div class="kids-accessory-collection-home-image-wrapper"><img src="https://www.bluesalon.com/cdn/shop/files/Moschino_Kids_Beige_Circular_Logo_Print_Baseball_Cap_side_right_view_MOS124ACC00363_5_360x.jpg?v=1777808022" alt="Kids accessories" class="kids-accessory-collection-home-image" loading="lazy"></div><div class="kids-accessory-collection-home-title">Accessories</div></a>
+            <a href="listing.html?cat=Kids" class="kids-accessory-collection-home-card"><div class="kids-accessory-collection-home-image-wrapper"><img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/LOO124ACC00001_0_9040eabc-30ad-4c02-af89-952281946515_540x.jpg?v=1755508986" alt="Cashmere accessories" class="kids-accessory-collection-home-image" loading="lazy"></div><div class="kids-accessory-collection-home-title">Cashmere</div></a>
+          </div>
+          <button class="kids-accessory-slider-arrow kids-accessory-slider-arrow-right" aria-label="Next" type="button"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="cat-fashion cat-fashion-kids kids-home-rail kids-brand-rail">
+      <div class="cat-fashion-inner">
+        <div class="cat-fashion-head">
+          <h2 class="cat-fashion-title">Kids Brands</h2>
+          <p class="cat-fashion-sub">Designer houses and playful labels for the little wardrobe.</p>
+        </div>
+        <div class="kids-brands-collection-home-grid-wrapper">
+          <button class="kids-brands-slider-arrow kids-brands-slider-arrow-left" aria-label="Previous" type="button" disabled><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <div class="kids-brands-collection-home-grid">
+            <a href="listing.html?cat=Kids" class="kids-brands-collection-home-card"><div class="kids-brands-collection-home-image-wrapper"><img src="https://www.bluesalon.com/cdn/shop/files/Moschino_Baby_White_T-Shirt_Navy_Logo_Shorts_Set_back_view_MOS124COM02720_1_540x.jpg?v=1777813096" alt="Moschino Kids" class="kids-brands-collection-home-image" loading="lazy"></div><div class="kids-brands-collection-home-title">Moschino Kids</div></a>
+            <a href="listing.html?cat=Kids" class="kids-brands-collection-home-card"><div class="kids-brands-collection-home-image-wrapper"><img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/Aigner_Kids_Burgundy_T-Shirt_with_QATAR_Print_and_Horseshoe_Pattern_AIG124TOP07552_1_540x.jpg?v=1761633004" alt="Aigner Kids" class="kids-brands-collection-home-image" loading="lazy"></div><div class="kids-brands-collection-home-title">Aigner Kids</div></a>
+            <a href="listing.html?cat=Kids" class="kids-brands-collection-home-card"><div class="kids-brands-collection-home-image-wrapper"><img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/FR2214FTW00056_1_540x.jpg?v=1770620141" alt="Missoni Kids" class="kids-brands-collection-home-image" loading="lazy"></div><div class="kids-brands-collection-home-title">Missoni Kids</div></a>
+            <a href="listing.html?cat=Kids" class="kids-brands-collection-home-card"><div class="kids-brands-collection-home-image-wrapper"><img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/LOO124ACC00013_0_540x.jpg?v=1755509682" alt="Loro Piana Kids" class="kids-brands-collection-home-image" loading="lazy"></div><div class="kids-brands-collection-home-title">Loro Piana Kids</div></a>
+          </div>
+          <button class="kids-brands-slider-arrow kids-brands-slider-arrow-right" aria-label="Next" type="button"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ════════════════ Footer (shared shell) ════════════════ -->
+   <footer class="bs-footer">
+
+    <!-- Shop more -->
+    <div class="bs-shopmore">
+      <div class="bs-shopmore-inner">
+        <h2>Shop more</h2>
+        <div class="bs-shopmore-grid" id="shopMoreGrid"></div>
+      </div>
+    </div>
+
+    <!-- Newsletter / App download -->
+    <div class="bs-appband">
+      <div class="bs-appband-inner">
+
+        <!-- Newsletter -->
+        <div>
+          <h3>Never miss a thing</h3>
+          <p class="bs-appband-copy">Sign up for exclusive launches, offers, and in-store events.</p>
+          <form class="bs-newsletter-form" onsubmit="return false;">
+            <input type="email" placeholder="Your email address">
+            <button type="submit">Sign up</button>
+          </form>
+          <p class="bs-newsletter-fine">By subscribing you agree to our privacy policy. Unsubscribe anytime.</p>
+        </div>
+
+        <!-- App download -->
+        <div>
+          <h3>Download our App</h3>
+          <p class="bs-app-sub">Your pocket-sized Blue Salon</p>
+          <p class="bs-appband-copy bs-app-copy">
+            The iOS and Android app puts the extraordinary world of Blue Salon at your fingertips — with personalised style inspiration from the brands you love.
+          </p>
+        
+        </div>
+
+        <!-- QR code -->
+        <div class="bs-qr">
+          <div class="bs-qr-label">Scan to download</div>
+           <div class="foot-qr-code">
+            <a href="https://apps.apple.com/qa/app/blue-salon-%D8%A7%D9%84%D8%B5%D8%A7%D9%84%D9%88%D9%86-%D8%A7%D9%84%D8%A7%D8%B2%D8%B1%D9%82/id1512188214" target="_blank" rel="noopener">
+              <img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/qrapp-01.svg?v=1632989194" alt="App Store" width="98">
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=co.shopney.bluesaloncom&amp;hl=en&amp;gl=US" target="_blank" rel="noopener">
+              <img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/qrapp-02.svg?v=1632667366" alt="Play Store" width="120">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Original footer -->
+    <div class="bs-mainfooter">
+      <div class="bs-mainfooter-inner">
+        <div class="bs-mainfooter-about">
+          <img src="https://www.bluesalon.com/cdn/shop/files/BS_Logo_horizontal-01-white1.png?v=1644232279" alt="Blue Salon">
+          <p>Qatar's first and foremost luxury department store since 1981. Over 500 international and niche brands, curated for you.</p>
+
+          <ul class="bs-contact">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Suhaim Bin Hamad Street, Doha, Qatar</span>
+            </li>
+          </ul>
+        </div>
+        <div id="footerCols" class="bs-mainfooter-cols"></div>
+      </div>
+      <div class="bs-bottomstrip">
+        <div class="bs-bottomstrip-inner">
+          <span class="bs-copyright">Ⓒ Copyright 2026
+            <a class="bs-copyright-aih" href="https://www.abuissa.com" target="_blank" rel="noopener">
+              <img src="https://www.abuissa.com/wp-content/uploads/2024/09/cropped-aih-favicon-192x192.png" alt="AbuIssa Holding" width="16" height="16" loading="lazy">
+              AbuIssa Holding
+            </a>
+            all rights reserved.</span>
+          <ul class="payment-methods">
+            <li><img src="//www.bluesalon.com/cdn/shop/files/Visa_Inverted_x32_5700ab8c-cb49-4355-83c3-4d1146a8076c_x32.png?v=1644226717" alt="Visa" loading="lazy"></li>
+            <li><img src="//www.bluesalon.com/cdn/shop/files/mastercard-logo-design-history-1979_x32.jpg?v=1644232735" alt="Mastercard" loading="lazy"></li>
+            <li><img src="//www.bluesalon.com/cdn/shop/files/Group_1_x32.jpg?v=1660140162" alt="Apple Pay" loading="lazy"></li>
+            <li><img src="//www.bluesalon.com/cdn/shop/files/21Google_Pay9bc22ee1-7e10-4d6f-b0ec-57672824e23d_x32_1_x32.png?v=1709793011" alt="Google Pay" loading="lazy"></li>
+            <li><img src="//www.bluesalon.com/cdn/shop/files/unnamed_1_x32.webp?v=1776589537" alt="Western Union" loading="lazy"></li>
+            <li><img src="https://colehaan.qa/cdn/shop/files/Theqa-01.svg?v=1726476176&width=540" alt="Theqa" loading="lazy"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script src="shop.js"></script>
+<script>
+ </script>
+</body>
+</html>

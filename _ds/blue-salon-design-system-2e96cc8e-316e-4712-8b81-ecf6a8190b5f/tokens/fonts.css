@@ -1,0 +1,42 @@
+/* ============================================================
+   BLUE SALON — FONTS
+   "Qatar" is the brand typeface (supplied by the client) — a
+   humanist sans carrying both Latin and Arabic, used across the
+   entire system for display and UI alike. Weights: 300/400/500/700.
+   ============================================================ */
+@font-face {
+  font-family: "Qatar";
+  src: url("../assets/fonts/Qatar-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Qatar";
+  src: url("../assets/fonts/Qatar-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Qatar";
+  src: url("../assets/fonts/Qatar-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+/* 600 mapped to the Bold cut to avoid faux-bold synthesis */
+@font-face {
+  font-family: "Qatar";
+  src: url("../assets/fonts/Qatar-Bold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Qatar";
+  src: url("../assets/fonts/Qatar-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

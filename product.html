@@ -1,0 +1,438 @@
+<!-- @dsCard group="Website" viewport="1320x720" name="Storefront - Product Detail" subtitle="Blue Salon PDP rebuilt from dropped detail-page reference" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blue Salon - Product</title>
+<link rel="icon" href="assets/app-icon.png">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="shop.css">
+<link rel="stylesheet" href="pdp.css">
+</head>
+<body class="shop-body pdp-body">
+  <header class="bs-nav-root bs-header">
+    <div class="bs-announce">
+      <div class="bs-announce-inner">
+        <span class="bs-announce-msg">Complimentary shipping on orders over QAR 499 &nbsp;·&nbsp; Split your payment into 4 installments</span>
+        <div class="bs-announce-utils">
+          <span class="bs-util-wrap bs-locale">
+            <button class="bs-iconbtn bs-locale-btn" type="button" id="localeBtn" aria-label="Switch language" title="Switch language">
+              <span class="bs-lang-switch is-ar" id="localeLangSwitch" aria-hidden="true">ع</span>
+            </button>
+          </span>
+          <button class="bs-iconbtn bs-locale-btn" type="button" aria-label="Store locator" title="Store locator">
+            <span class="bs-lang-switch">Store</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bs-topbar">
+      <button class="bs-iconbtn bs-hamburger" type="button" id="hamburgerBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileDrawer">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <div class="bs-search">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-4.3-4.3"/><circle cx="11" cy="11" r="7"/></svg>
+        <input type="search" placeholder="Search 500+ luxury brands">
+      </div>
+      <a class="bs-logo" href="index.html">
+        <img src="assets/logo-horizontal.svg" alt="Blue Salon">
+      </a>
+      <div class="bs-utils">
+        <button class="bs-iconbtn" type="button" aria-label="Account" title="Account">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+        </button>
+        <span class="bs-util-wrap">
+          <button class="bs-iconbtn" type="button" aria-label="Wishlist" title="Wishlist">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l9 9 8.8-8.6a5.5 5.5 0 0 0-.2-7.8z"/></svg>
+          </button>
+          <span class="bs-count" id="wishCount" hidden>0</span>
+        </span>
+        <span class="bs-util-wrap">
+          <button class="bs-iconbtn" type="button" aria-label="Bag" title="Bag">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l1 13H5z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+          </button>
+          <span class="bs-count" id="cartCount" hidden>0</span>
+        </span>
+      </div>
+    </div>
+
+    <div id="navZone">
+      <nav class="bs-nav">
+        <div class="bs-nav-inner" id="navInner">
+          <div class="bs-nav-item" data-menu="new">New In</div>
+          <div class="bs-nav-item" data-menu="women">Women</div>
+          <div class="bs-nav-item" data-menu="men">Men</div>
+          <div class="bs-nav-item" data-menu="kids">Kids &amp; Baby</div>
+          <div class="bs-nav-item" data-menu="beauty">Beauty</div>
+          <div class="bs-nav-item" data-menu="luggage">Luggage</div>
+          <div class="bs-nav-item" data-menu="home">Home &amp; Linen</div>
+          <div class="bs-nav-item" data-menu="gourmet">Gourmet</div>
+          <div class="bs-nav-item" data-menu="brands">Brands</div>
+          <div class="bs-nav-item" data-menu="gift">Gift</div>
+          <div class="bs-nav-item sale" data-menu="sale">Sale</div>
+          <div class="bs-mega-holder" id="megaHolder"></div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="bs-drawer-scrim" id="drawerScrim" hidden></div>
+  <aside class="bs-drawer" id="mobileDrawer" aria-hidden="true" hidden>
+    <div class="bs-drawer-head">
+      <img class="bs-drawer-logo" src="assets/logo-horizontal.svg" alt="Blue Salon">
+      <button class="bs-iconbtn bs-drawer-close" type="button" id="drawerClose" aria-label="Close menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <nav class="bs-drawer-nav" id="drawerNav"></nav>
+  </aside>
+
+  <main class="shop-page pdp-reference-page">
+    <nav class="shop-crumbs" id="pdpCrumbs" aria-label="Breadcrumb"></nav>
+
+    <section class="pdp-layout" id="pdpRoot">
+      <div class="pdp-media">
+        <div class="pdp-gallery-shell">
+          <div class="pdp-stack" id="pdpStack"></div>
+          <div class="pdp-thumb-rail" id="pdpThumbs" aria-label="Product images"></div>
+        </div>
+        <div class="pdp-dots" id="pdpDots" hidden></div>
+      </div>
+
+      <div class="pdp-info">
+        <div class="pdp-topline">
+          <span class="bs-eyebrow pdp-vendor" data-pdp="vendor"></span>
+          <!-- <div class="pdp-rating">
+            <span class="pdp-stars" data-pdp="stars" aria-label=""></span>
+            <span class="pdp-rating-meta"><span data-pdp="rating"></span> / 5</span>
+          </div> -->
+        </div>
+
+        <h1 class="pdp-title" data-pdp="title"></h1>
+        <!-- <p class="pdp-editorial-line" data-pdp="editorialLine"></p> -->
+        <!-- <div class="pdp-promise-badges" id="pdpPromiseBadges" aria-label="Product highlights"></div> -->
+
+        <div class="pdp-price-block">
+          <div class="pdp-price" data-pdp="priceWrap">
+            <span class="pdp-price-current" data-pdp="price"></span>
+            <span class="pdp-price-compare" data-pdp="comparePrice" hidden></span>
+            <span class="pdp-price-save" data-pdp="save" hidden></span>
+          </div>
+          <div class="pdp-payment-note">
+            <!-- <p class="pdp-instalments">4 payments of <strong data-pdp="installment"></strong></p>
+            <p class="pdp-tax">VAT included</p> -->
+          </div>
+        </div>
+
+        <div class="pdp-experience-strip" aria-label="Shopping confidence">
+          <div>
+            <span>Buyer rating</span>
+            <strong><span data-pdp="rating"></span>/5</strong>
+          </div>
+          <div>
+            <span>Availability</span>
+            <strong data-pdp="stockNote"></strong>
+          </div>
+          <div>
+            <span>Blue Salon</span>
+            <strong>Boutique curated</strong>
+          </div>
+        </div>
+
+        <div class="pdp-feature-grid" aria-label="Blue Salon advantages">
+          <article class="pdp-feature-card">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7.5h10.5v8H4z"/><path d="M14.5 10.5h3.7l2.3 2.5v2.5h-6z"/><circle cx="7.5" cy="18" r="1.5"/><circle cx="18" cy="18" r="1.5"/></svg>
+            <span>Doha delivery</span>
+          </article>
+          <article class="pdp-feature-card">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v8H4v-8"/><path d="M2.5 7.5h19v4.5h-19z"/><path d="M12 20V7.5"/><path d="M12 7.5c-1.2-2.6-4.8-3.2-5.5-1.1-.6 1.8 1.6 2.6 5.5 1.1z"/><path d="M12 7.5c1.2-2.6 4.8-3.2 5.5-1.1.6 1.8-1.6 2.6-5.5 1.1z"/></svg>
+            <span>Gift packaging</span>
+          </article>
+          <article class="pdp-feature-card">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v16H7z"/><path d="M9.5 7h5"/><path d="M9.5 11h5"/><path d="M9.5 15h3"/><path d="M5 6h2M17 6h2M5 18h2M17 18h2"/></svg>
+            <span>Care guidance</span>
+          </article>
+        </div>
+        <div class="pdp-highlight-chips" id="pdpHighlightChips" aria-label="Product attributes"></div>
+
+        <hr class="pdp-rule">
+
+        <div class="pdp-commerce-panel">
+          <div class="pdp-opt" data-pdp="colorGroup">
+            <div class="pdp-opt-head">
+              <span class="pdp-opt-label">Colour</span>
+            </div>
+            <div class="pdp-swatch-row">
+              <span class="pdp-swatch" data-pdp="colorSwatch"></span>
+              <span class="pdp-color-name" data-pdp="colorName"></span>
+            </div>
+          </div>
+
+          <div class="pdp-opt" data-pdp="sizeGroup">
+            <div class="pdp-opt-head">
+              <span class="pdp-opt-label">Select size <span id="pdpSizeName">select</span></span>
+              <button class="pdp-size-guide" type="button">Size guide</button>
+            </div>
+            <div class="pdp-sizes" id="pdpSizes"></div>
+          </div>
+
+          <div class="pdp-buy">
+            <span class="pdp-qty" role="group" aria-label="Quantity">
+              <button type="button" id="qtyDown" aria-label="Decrease quantity">−</button>
+              <output id="qtyOut">1</output>
+              <button type="button" id="qtyUp" aria-label="Increase quantity">+</button>
+            </span>
+            <button class="bs-btn bs-btn-primary pdp-add" type="button" id="pdpAdd"></button>
+            <button class="bs-iconbtn pdp-wish" type="button" id="pdpWish" aria-label="Add to wishlist">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+            </button>
+          </div>
+
+          <div class="pdp-highlights" aria-label="Blue Salon services">
+            <div class="pdp-highlight">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5h10v7h-10z"/><path d="M13.5 11h3.8l2.7 2.7v1.8h-6.5z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg>
+            <span>Free premium shipping</span>
+            </div>
+            <div class="pdp-highlight">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l6.5 3.7v5.5c0 4-2.6 6.8-6.5 7.6-3.9-.8-6.5-3.6-6.5-7.6V7.2z"/><path d="M9.2 12.2l1.9 1.9 3.9-4.5"/></svg>
+            <span>Authenticity guarantee</span>
+            </div>
+            <div class="pdp-highlight">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 8.5 4 6l2.5-2.5"/><path d="M4 6h11a5 5 0 0 1 0 10H8"/></svg>
+            <span>Easy returns</span>
+            </div>
+          </div>
+
+          <div class="pdp-accordions">
+            <div class="pdp-acc">
+              <button class="pdp-acc-btn" type="button" aria-expanded="false">
+                <span>Details &amp; care</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
+              <div class="pdp-acc-body"><ul data-pdp="details"></ul></div>
+            </div>
+            <div class="pdp-acc">
+              <button class="pdp-acc-btn" type="button" aria-expanded="false">
+                <span>Delivery &amp; returns</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
+              <div class="pdp-acc-body">
+                <p>Complimentary delivery on orders over QAR 499 across Qatar. Same-day delivery is available in Doha for eligible orders placed before 2pm.</p>
+                <p>14-day returns on eligible items, in boutique or collected from your door.</p>
+              </div>
+            </div>
+            <div class="pdp-acc">
+              <button class="pdp-acc-btn" type="button" aria-expanded="false">
+                <span>Share</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
+              <div class="pdp-acc-body">
+                <div class="pdp-meta">
+                  <span data-pdp="ref"></span>
+                  <button class="pdp-share" type="button" id="pdpShare">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>
+                    Share this piece
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <template id="pdpFrameTemplate">
+      <div class="pdp-frame">
+        <img src="" alt="">
+        <span class="bs-badge" data-pdp-frame-badge hidden></span>
+      </div>
+    </template>
+
+    <template id="pdpDotTemplate">
+      <button class="pdp-dot" type="button" data-dot="" aria-label=""></button>
+    </template>
+
+    <template id="pdpThumbTemplate">
+      <button class="pdp-thumb" type="button" data-thumb="" aria-label="">
+        <img src="" alt="">
+        <span></span>
+      </button>
+    </template>
+
+    <template id="pdpSizeTemplate">
+      <button class="pdp-size" type="button" data-size=""></button>
+    </template>
+
+    <!-- Shared product card — identical to the listing page version -->
+    <template id="plpProductCardTemplate">
+      <article class="bs-card">
+        <div class="bs-card-media">
+          <a class="bs-card-image-link" data-card-link>
+            <img class="bs-card-img-main" data-card-image alt="" loading="lazy">
+            <img class="bs-card-img-hover" data-card-hover alt="" aria-hidden="true" loading="lazy" hidden>
+          </a>
+          <div class="bs-card-badge" data-card-badge hidden></div>
+          <div class="bs-card-hover-icons">
+            <a class="bs-card-icon-action bs-card-view" data-card-link aria-label="Quick view">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z"/><circle cx="12" cy="12" r="3"/></svg>
+            </a>
+            <button class="bs-iconbtn bs-card-wish" type="button" data-wish aria-label="Add to wishlist">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l9 9 8.8-8.6a5.5 5.5 0 0 0-.2-7.8z"/></svg>
+            </button>
+          </div>
+          <div class="bs-card-actions">
+            <button class="bs-card-action bs-card-add" type="button" data-card-add>Add to cart</button>
+          </div>
+        </div>
+        <div class="bs-card-body">
+          <a class="bs-card-text-link" data-card-link>
+            <span class="bs-eyebrow bs-card-vendor" data-card-vendor></span>
+            <span class="bs-card-name" data-card-name></span>
+            <span class="bs-price" data-card-price>
+              <span class="bs-price-current" data-card-price-current></span>
+              <span class="bs-price-compare" data-card-price-compare hidden></span>
+            </span>
+          </a>
+          <div class="bs-card-meta-row">
+            <span class="bs-card-colour" data-card-colour hidden><i data-card-colour-chip></i><span data-card-colour-name></span></span>
+            <span class="bs-card-type" data-card-type></span>
+          </div>
+          <div class="bs-card-sizes" data-card-sizes aria-label="Available sizes"></div>
+        </div>
+      </article>
+    </template>
+
+    <section class="pdp-detail-section">
+      <div class="pdp-detail-tabs" role="tablist" aria-label="Product information">
+        <button class="is-active" type="button" role="tab" aria-selected="true" data-pdp-tab="description">The Piece</button>
+        <button type="button" role="tab" aria-selected="false" data-pdp-tab="info">Craftsmanship</button>
+        <button type="button" role="tab" aria-selected="false" data-pdp-tab="reviews">Reviews (<span data-pdp="reviewCount"></span>)</button>
+      </div>
+
+      <div class="pdp-detail-panel is-active" data-pdp-panel="description">
+        <div class="pdp-detail-copy">
+          <span class="shop-head-kicker">The piece</span>
+          <h2 data-pdp="detailTitle"></h2>
+          <p data-pdp="description"></p>
+          <p data-pdp="stylingNote"></p>
+          <!-- <div class="pdp-story-grid" aria-label="Product story">
+            <article>
+              <span>Craftsmanship</span>
+              <p data-pdp="craftsmanship"></p>
+            </article>
+            <article>
+              <span>Materials</span>
+              <p data-pdp="materials"></p>
+            </article>
+            <article>
+              <span>Occasion</span>
+              <p data-pdp="occasion"></p>
+            </article>
+            <article>
+              <span>Styling notes</span>
+              <p data-pdp="stylingBlock"></p>
+            </article>
+          </div> -->
+        </div>
+       
+      </div>
+
+      <div class="pdp-detail-panel" data-pdp-panel="info" hidden>
+        <div class="pdp-info-list">
+          <h2>Additional information</h2>
+          <ul data-pdp="details"></ul>
+        </div>
+      </div>
+
+      <div class="pdp-detail-panel" data-pdp-panel="reviews" hidden>
+        <div class="pdp-review-panel">
+          <h2><span data-pdp="rating"></span> out of 5</h2>
+          <p><span data-pdp="reviewCount"></span> reviews from Blue Salon clients and boutique shoppers.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pdp-related">
+      <div class="pdp-related-head">
+        <div class="related-sub">
+          <span></span>
+          <strong>Curated pairings</strong>
+          <span></span>
+        </div>
+        <h2 class="bs-display pdp-related-title">Selected by <em>Our Buyers</em></h2>
+        <p>Handpicked pieces chosen to complement this product's mood and house codes.</p>
+      </div>
+      <div class="pdp-related-grid bs-shelf" id="pdpRelated"></div>
+    </section>
+
+    <div class="pdp-mobilebar" id="pdpMobilebar">
+      <span class="pdp-mobilebar-price">
+        <span class="pdp-mobilebar-vendor" data-pdp="barVendor"></span>
+        <span class="pdp-mobilebar-amount" id="pdpBarAmount"></span>
+      </span>
+      <button class="bs-btn bs-btn-primary" type="button" id="pdpBarAdd">Add to bag</button>
+    </div>
+  </main>
+
+  <footer class="bs-footer">
+    <div class="bs-shopmore">
+      <div class="bs-shopmore-inner">
+        <h2>Shop more</h2>
+        <div class="bs-shopmore-grid" id="shopMoreGrid"></div>
+      </div>
+    </div>
+
+    <div class="bs-appband">
+      <div class="bs-appband-inner">
+        <div>
+          <h3>Never miss a thing</h3>
+          <p class="bs-appband-copy">Sign up for exclusive launches, offers, and in-store events.</p>
+          <form class="bs-newsletter-form" onsubmit="return false;">
+            <input type="email" placeholder="Your email address">
+            <button type="submit">Sign up</button>
+          </form>
+          <p class="bs-newsletter-fine">By subscribing you agree to our privacy policy. Unsubscribe anytime.</p>
+        </div>
+        <div>
+          <h3>Download our App</h3>
+          <p class="bs-app-sub">Your pocket-sized Blue Salon</p>
+          <p class="bs-appband-copy bs-app-copy">The iOS and Android app puts the extraordinary world of Blue Salon at your fingertips.</p>
+        </div>
+        <div class="bs-qr">
+          <div class="bs-qr-label">Scan to download</div>
+          <div class="foot-qr-code">
+            <a href="https://apps.apple.com/qa/app/blue-salon-%D8%A7%D9%84%D8%B5%D8%A7%D9%84%D9%88%D9%86-%D8%A7%D9%84%D8%A7%D8%B2%D8%B1%D9%82/id1512188214" target="_blank" rel="noopener">
+              <img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/qrapp-01.svg?v=1632989194" alt="App Store" width="98">
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=co.shopney.bluesaloncom&amp;hl=en&amp;gl=US" target="_blank" rel="noopener">
+              <img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/qrapp-02.svg?v=1632667366" alt="Play Store" width="120">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bs-mainfooter">
+      <div class="bs-mainfooter-inner">
+        <div class="bs-mainfooter-about">
+          <img src="https://www.bluesalon.com/cdn/shop/files/BS_Logo_horizontal-01-white1.png?v=1644232279" alt="Blue Salon">
+          <p>Qatar's first and foremost luxury department store since 1981. Over 500 international and niche brands, curated for you.</p>
+        </div>
+        <div id="footerCols" class="bs-mainfooter-cols"></div>
+      </div>
+      <div class="bs-bottomstrip">
+        <div class="bs-bottomstrip-inner">
+          <span class="bs-copyright">Copyright 2026 AbuIssa Holding all rights reserved.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script src="shop.js"></script>
+</body>
+</html>

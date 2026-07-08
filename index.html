@@ -1,0 +1,609 @@
+<!-- @dsCard group="Website" viewport="1320x720" name="Storefront — Home" subtitle="bluesalon.com homepage: hero, categories, Trending Now, private client" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blue Salon — Home</title>
+<link rel="icon" href="assets/app-icon.png">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+  <!-- ════════════════ Header ════════════════ -->
+  <header class="bs-nav-root bs-header">
+
+    <!-- Announcement -->
+    <div class="bs-announce">
+      <div class="bs-announce-inner">
+      <span class="bs-announce-msg">Complimentary shipping on orders over QAR 499 &nbsp;·&nbsp; Split your payment into 4 installments</span>
+      <div class="bs-announce-utils">
+        <span class="bs-util-wrap bs-locale">
+          <button class="bs-iconbtn bs-locale-btn" type="button" id="localeBtn" aria-label="Switch language" title="Switch language">
+            <span class="bs-lang-switch is-ar" id="localeLangSwitch" aria-hidden="true">ع</span>
+          </button>
+        </span>
+        <button class="bs-iconbtn bs-locale-btn" type="button" aria-label="Store locator" title="Store locator">
+          <span class="bs-lang-switch">Store</span>
+        </button>
+      </div>
+      </div>
+    </div>
+
+    <!-- Main bar -->
+    <div class="bs-topbar">
+      <!-- Hamburger (mobile only) -->
+      <button class="bs-iconbtn bs-hamburger" type="button" id="hamburgerBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileDrawer">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button> 
+      <!-- Search -->
+      <div class="bs-search">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-4.3-4.3"/><circle cx="11" cy="11" r="7"/></svg>
+        <input type="search" placeholder="Search 500+ luxury brands">
+      </div>
+      <!-- Logo -->
+      <a class="bs-logo" href="#">
+        <img src="assets/logo-horizontal.svg" alt="Blue Salon">
+      </a>
+      <!-- Utilities -->
+      <div class="bs-utils">
+        <button class="bs-iconbtn" type="button" aria-label="Account" title="Account">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+        </button>
+        <span class="bs-util-wrap">
+          <button class="bs-iconbtn" type="button" aria-label="Wishlist" title="Wishlist">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l9 9 8.8-8.6a5.5 5.5 0 0 0-.2-7.8z"/></svg>
+          </button>
+          <span class="bs-count" id="wishCount" hidden>0</span>
+        </span>
+        <span class="bs-util-wrap">
+          <button class="bs-iconbtn" type="button" aria-label="Bag" title="Bag">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l1 13H5z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+          </button>
+          <span class="bs-count" id="cartCount" hidden>0</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Nav + mega menu hover zone -->
+    <div id="navZone">
+      <nav class="bs-nav">
+        <div class="bs-nav-inner" id="navInner">
+          <div class="bs-nav-item" data-menu="new">New In</div>
+          <div class="bs-nav-item" data-menu="women">Women</div>
+          <div class="bs-nav-item" data-menu="men">Men</div>
+          <div class="bs-nav-item" data-menu="kids">Kids &amp; Baby</div>
+          <div class="bs-nav-item" data-menu="beauty">Beauty</div>
+          <div class="bs-nav-item" data-menu="luggage">Luggage</div>
+          <div class="bs-nav-item" data-menu="home">Home &amp; Linen</div>
+          <div class="bs-nav-item" data-menu="gourmet">Gourmet</div>
+          <div class="bs-nav-item" data-menu="brands">Brands</div>
+          <div class="bs-nav-item" data-menu="gift">Gift</div>
+          <div class="bs-nav-item sale" data-menu="sale">Sale</div>
+          <div class="bs-mega-holder" id="megaHolder"></div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ════════════════ Mobile drawer (built by app.js) ════════════════ -->
+  <div class="bs-drawer-scrim" id="drawerScrim" hidden></div>
+  <aside class="bs-drawer" id="mobileDrawer" aria-hidden="true" hidden>
+    <div class="bs-drawer-head">
+      <img class="bs-drawer-logo" src="assets/logo-horizontal.svg" alt="Blue Salon">
+      <button class="bs-iconbtn bs-drawer-close" type="button" id="drawerClose" aria-label="Close menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <nav class="bs-drawer-nav" id="drawerNav"></nav>
+  </aside>
+
+  <main>
+
+    <!-- ════════════════ Hero ════════════════ -->
+    <section class="bs-hero">
+      <div class="bs-hero-panel">
+        <h1 class="bs-display bs-hero-title" id="heroTitle">ESCADA</h1>
+        <p class="bs-hero-sub" id="heroSub">Bold prints, gold jewellery and statement timepieces — the new collection.</p>
+        <div>
+          <button class="bs-btn bs-btn-primary" type="button" id="heroCta">Shop ESCADA</button>
+        </div>
+      </div>
+      <div class="bs-hero-media">
+        <img id="heroImg" src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/esca.jpg?v=1782906735" alt="">
+      </div>
+    </section>
+    <div class="bs-hero-dots" id="heroDots"></div>
+    <!-- Services strip -->
+    <div class="bs-services">
+      <div class="bs-services-inner">
+        <div class="bs-service">
+          <span class="bs-service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg>
+          </span>
+          <div>
+            <div class="bs-service-title">Free delivery</div>
+            <div class="bs-service-sub">On orders over QAR 499 across Qatar</div>
+          </div>
+        </div>
+        <div class="bs-service">
+          <span class="bs-service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l4-4 4 4"/><path d="M7 5v8a4 4 0 0 0 4 4h9"/></svg>
+          </span>
+          <div>
+            <div class="bs-service-title">Easy returns</div>
+            <div class="bs-service-sub">14-day returns on eligible items</div>
+          </div>
+        </div>
+        <div class="bs-service">
+          <span class="bs-service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v5c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg>
+          </span>
+          <div>
+            <div class="bs-service-title">100% authentic</div>
+            <div class="bs-service-sub">Sourced directly from the maisons</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════ Shop by Category ════════════════ -->
+    <section class="bs-shopcat">
+      <div class="bs-shopcat-inner">
+
+        <div class="bs-shopcat-head">
+          <h2 class="bs-display bs-shopcat-title">Shop by Category</h2>
+        </div>
+
+        <div class="bs-shopcat-grid">
+
+          <!-- Featured — Women -->
+          <a href="/pages/women" class="bs-shopcat-card bs-shopcat-women">
+            <img src="https://bluesalon-new-simple.vercel.app/assets/fashion-women.jpg" alt="Women" class="bs-shopcat-img" fetchpriority="high" loading="eager">
+            <span class="bs-shopcat-caption">
+              <span class="bs-display bs-shopcat-name">Women</span>
+            </span>
+          </a>
+
+          <!-- Men -->
+          <a href="/pages/men" class="bs-shopcat-card bs-shopcat-men">
+            <img src="https://bluesalon-new-simple.vercel.app/assets/fashion-belt.jpg" alt="Men" class="bs-shopcat-img" loading="lazy">
+            <span class="bs-shopcat-caption">
+              <span class="bs-display bs-shopcat-name">Men</span>
+            </span>
+          </a>
+
+          <!-- Beauty -->
+          <a href="/pages/beauty" class="bs-shopcat-card bs-shopcat-beauty">
+            <img src="https://bluesalon-new-simple.vercel.app/assets/section-beauty.jpg" alt="Beauty" class="bs-shopcat-img" loading="lazy">
+            <span class="bs-shopcat-caption">
+              <span class="bs-display bs-shopcat-name">Beauty</span>
+            </span>
+          </a>
+
+          <!-- Kids -->
+          <a href="kids.html" class="bs-shopcat-card bs-shopcat-kids">
+            <img src="https://cdn-static.farfetch-contents.com/cms-ccloud/caas/v1/media/10706096/data/bdc9961d891433a1eab9fac6d7a2959b/3x4_three-columns/480/2026-06-22-kw-webapp-chloe-kids-vacation-chloe-kids-multicategory-img.jpeg" alt="Kids" class="bs-shopcat-img" loading="lazy">
+            <span class="bs-shopcat-caption">
+              <span class="bs-display bs-shopcat-name">Kids</span>
+            </span>
+          </a>
+
+          <!-- Luggage -->
+          <a href="/pages/luggage" class="bs-shopcat-card bs-shopcat-luggage">
+            <img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/luggage_2ca6be6e-85a6-4e50-b0fb-a332f1e77c2b.jpg?v=1782894184" alt="Luggage" class="bs-shopcat-img" loading="lazy">
+            <span class="bs-shopcat-caption">
+              <span class="bs-display bs-shopcat-name">Luggage</span>
+            </span>
+          </a>
+
+          <!-- Gourmet — wide banner -->
+          <a href="/pages/gourmet" class="bs-shopcat-card bs-shopcat-banner bs-shopcat-gourmet">
+            <img src="https://www.godiva.com/cdn/shop/files/PLP_HERO_1065X420_ALL_KOSHR_GOLD_THANK_100UNDER.jpg?v=1758657499&width=1920" alt="Gourmet" class="bs-shopcat-img" loading="lazy">
+            <span class="bs-shopcat-caption bs-shopcat-caption-banner">
+              <span class="bs-display bs-shopcat-name">Gourmet</span>
+              <span class="bs-shopcat-discover">Discover
+                <svg width="20" height="10" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
+              </span>
+            </span>
+          </a>
+
+          <!-- Home & Linen — wide banner -->
+          <a href="/pages/home-furniture" class="bs-shopcat-card bs-shopcat-banner bs-shopcat-home">
+            <img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/home-banner.jpg?v=1782894322" alt="Home &amp; Linen" class="bs-shopcat-img" loading="lazy">
+            <span class="bs-shopcat-caption bs-shopcat-caption-banner bs-shopcat-caption-end">
+              <span class="bs-display bs-shopcat-name">Home &amp; Linen</span>
+              <span class="bs-shopcat-discover">Discover
+                <svg width="20" height="10" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
+              </span>
+            </span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+
+    
+
+    <!-- ════════════════ Women's Fashion ════════════════ -->
+    <section class="cat-fashion cat-fashion-women">
+      <div class="cat-fashion-inner">
+        <div class="cat-fashion-head">
+          <h2 class="cat-fashion-title">Women's Fashion</h2>
+          <p class="cat-fashion-sub">All the latest fashion trends and must-have products.</p>
+        </div>
+
+        <div class="women-collection-home-grid-wrapper">
+          <button class="women-slider-arrow women-slider-arrow-left" aria-label="Previous" type="button" disabled="">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+          </button>
+          <div class="women-collection-home-grid" data-women-slider="">
+
+            <a href="https://www.bluesalon.com/collections/gown" class="women-collection-home-card">
+              <div class="women-collection-home-image-wrapper">
+                <img src="//www.bluesalon.com/cdn/shop/files/New_Project_600x.jpg?v=1778078027" alt="CLOTHING" class="women-collection-home-image">
+              </div>
+              <div class="women-collection-home-title">Clothing</div>
+            </a>
+
+            <a href="/collections/womens-watches" class="women-collection-home-card">
+              <div class="women-collection-home-image-wrapper">
+                <img src="//www.bluesalon.com/cdn/shop/files/BS_Watches_600x.jpg?v=1771492826" alt="WATCHES" class="women-collection-home-image">
+              </div>
+              <div class="women-collection-home-title">Watches</div>
+            </a>
+
+            <a href="/collections/women-bags" class="women-collection-home-card">
+              <div class="women-collection-home-image-wrapper">
+                <img src="//www.bluesalon.com/cdn/shop/files/New_Project_79_600x.jpg?v=1776689958" alt="BAGS" class="women-collection-home-image">
+              </div>
+              <div class="women-collection-home-title">Bags</div>
+            </a>
+
+            <a href="https://www.bluesalon.com/collections/beauty-niche-fragrances" class="women-collection-home-card">
+              <div class="women-collection-home-image-wrapper">
+                <img src="//www.bluesalon.com/cdn/shop/files/Parfume_de_Marly_600x.jpg?v=1778160612" alt="PERFUMES" class="women-collection-home-image">
+              </div>
+              <div class="women-collection-home-title">Perfumes</div>
+            </a>
+
+            <a href="https://www.bluesalon.com/collections/women-footwear" class="women-collection-home-card">
+              <div class="women-collection-home-image-wrapper">
+                <img src="//www.bluesalon.com/cdn/shop/files/New_Project_7_16aa4789-aee1-4741-a7c6-0f3fd30903b0_600x.jpg?v=1778151902" alt="FOOTWEAR" class="women-collection-home-image">
+              </div>
+              <div class="women-collection-home-title">Footwear</div>
+            </a>
+
+            <a href="https://www.bluesalon.com/collections/women-fashion-jewelry?active=" class="women-collection-home-card">
+              <div class="women-collection-home-image-wrapper">
+                <img src="//www.bluesalon.com/cdn/shop/files/New_Project_1_5fe2ba48-9160-4650-b7ff-065ea291e2a6_600x.jpg?v=1778140218" alt="FASHION JEWELRY" class="women-collection-home-image">
+              </div>
+              <div class="women-collection-home-title">Fashion Jewellery</div>
+            </a>
+
+            <a href="https://www.bluesalon.com/collections/cosmetics-beauty" class="women-collection-home-card">
+              <div class="women-collection-home-image-wrapper">
+                <img src="//www.bluesalon.com/cdn/shop/files/Guerlain_Make_up-Blue_Salon_600x.jpg?v=1778160088" alt="BEAUTY" class="women-collection-home-image">
+              </div>
+              <div class="women-collection-home-title">Beauty</div>
+            </a>
+
+            <a href="https://www.bluesalon.com/collections/lingerie" class="women-collection-home-card">
+              <div class="women-collection-home-image-wrapper">
+                <img src="//www.bluesalon.com/cdn/shop/files/New_Project_6_e27b0143-e408-4c18-a241-834fabf6d437_600x.jpg?v=1778151636" alt="LINGERIE" class="women-collection-home-image">
+              </div>
+              <div class="women-collection-home-title">Lingerie</div>
+            </a>
+
+          </div>
+          <button class="women-slider-arrow women-slider-arrow-right" aria-label="Next" type="button">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════ Men's Fashion ════════════════ -->
+    <section class="cat-fashion cat-fashion-men">
+      <div class="cat-fashion-inner">
+        <div class="cat-fashion-head">
+          <h2 class="cat-fashion-title">Men's Fashion</h2>
+          <p class="cat-fashion-sub">Find the perfect t-shirt, your new go-to sneakers and more right here.</p>
+        </div>
+
+        <div class="men-collection-home-grid-wrapper">
+          <button class="men-slider-arrow men-slider-arrow-left" aria-label="Previous" type="button" disabled="">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+          </button>
+          <div class="men-collection-home-grid" data-men-slider="">
+
+            <a href="/collections/mens-tops-t-shirts" class="men-collection-home-card">
+              <div class="men-collection-home-image-wrapper">
+                <img src="//www.bluesalon.com/cdn/shop/files/Tshirt_600x.jpg?v=1771757883" alt="T-Shirts" class="men-collection-home-image">
+              </div>
+              <div class="men-collection-home-title">T-Shirts</div>
+            </a>
+
+            <a href="https://www.bluesalon.com/collections/mens-perfumes" class="men-collection-home-card">
+              <div class="men-collection-home-image-wrapper">
+                <img src="//www.bluesalon.com/cdn/shop/files/New_Project_8_7748af8b-f11e-4762-9b26-309fa3381940_600x.jpg?v=1778152597" alt="Perfumes" class="men-collection-home-image">
+              </div>
+              <div class="men-collection-home-title">Perfumes</div>
+            </a>
+
+            <a href="https://www.bluesalon.com/collections/mens-trousers-shorts" class="men-collection-home-card">
+              <div class="men-collection-home-image-wrapper">
+                <img src="//www.bluesalon.com/cdn/shop/files/Bottoms_600x.jpg?v=1771758080" alt="Bottoms" class="men-collection-home-image">
+              </div>
+              <div class="men-collection-home-title">Bottoms</div>
+            </a>
+
+            <a href="/collections/jackets" class="men-collection-home-card">
+              <div class="men-collection-home-image-wrapper">
+                <img src="//www.bluesalon.com/cdn/shop/files/jackets_600x.jpg?v=1771758064" alt="Jackets" class="men-collection-home-image">
+              </div>
+              <div class="men-collection-home-title">Jackets</div>
+            </a>
+
+            <a href="https://www.bluesalon.com/collections/mens-watches" class="men-collection-home-card">
+              <div class="men-collection-home-image-wrapper">
+                <img src="//www.bluesalon.com/cdn/shop/files/New_Project_3_4d986f89-cdda-4581-9205-e8df028f8930_600x.jpg?v=1778140893" alt="Watches" class="men-collection-home-image">
+              </div>
+              <div class="men-collection-home-title">Watches</div>
+            </a>
+
+            <a href="/collections/mens-footwear" class="men-collection-home-card">
+              <div class="men-collection-home-image-wrapper">
+                <img src="//www.bluesalon.com/cdn/shop/files/Cole_Haan-_SHOES_600x.jpg?v=1771757631" alt="Footwear" class="men-collection-home-image">
+              </div>
+              <div class="men-collection-home-title">Footwear</div>
+            </a>
+
+          </div>
+          <button class="men-slider-arrow men-slider-arrow-right" aria-label="Next" type="button">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════ Kids' Fashion ════════════════ -->
+    <section class="cat-fashion cat-fashion-kids">
+      <div class="cat-fashion-inner">
+        <div class="cat-fashion-head">
+          <h2 class="cat-fashion-title">Kids' Fashion</h2>
+          <p class="cat-fashion-sub">Playful pieces and tiny essentials for little ones.</p>
+        </div>
+
+        <div class="kids-collection-home-grid-wrapper">
+          <button class="kids-slider-arrow kids-slider-arrow-left" aria-label="Previous" type="button" disabled="">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+          </button>
+          <div class="kids-collection-home-grid" data-kids-slider="">
+
+            <a href="/collections/boys-clothing" class="kids-collection-home-card">
+              <div class="kids-collection-home-image-wrapper">
+                <img src="//www.bluesalon.com/cdn/shop/files/Boy_s_clothing_600x.jpg?v=1771912547" alt="Boys Clothing" class="kids-collection-home-image">
+              </div>
+              <div class="kids-collection-home-title">Boys Clothing</div>
+            </a>
+
+            <a href="/collections/girls-clothing" class="kids-collection-home-card">
+              <div class="kids-collection-home-image-wrapper">
+                <img src="//www.bluesalon.com/cdn/shop/files/Girl_s_clothing_600x.jpg?v=1771912756" alt="Girls Clothing" class="kids-collection-home-image">
+              </div>
+              <div class="kids-collection-home-title">Girls Clothing</div>
+            </a>
+
+            <a href="https://www.bluesalon.com/collections/new-born-boy-0m-9m" class="kids-collection-home-card">
+              <div class="kids-collection-home-image-wrapper">
+                <img src="//www.bluesalon.com/cdn/shop/files/New_Project_10_bc7e0bd2-1185-41c7-a02c-56d341757fa6_600x.jpg?v=1778154026" alt="Newborn Boys" class="kids-collection-home-image">
+              </div>
+              <div class="kids-collection-home-title">Newborn Boys</div>
+            </a>
+
+            <a href="https://www.bluesalon.com/collections/new-born-girl-0m-9m" class="kids-collection-home-card">
+              <div class="kids-collection-home-image-wrapper">
+                <img src="//www.bluesalon.com/cdn/shop/files/New_Project_11_3c02abdb-e76c-4749-91df-bb654320bf6c_600x.jpg?v=1778154421" alt="Newborn Girls" class="kids-collection-home-image">
+              </div>
+              <div class="kids-collection-home-title">Newborn Girls</div>
+            </a>
+
+            <a href="https://www.bluesalon.com/collections/kids-footwear?uff_7tm9an_tags=Girls" class="kids-collection-home-card">
+              <div class="kids-collection-home-image-wrapper">
+                <img src="//www.bluesalon.com/cdn/shop/files/Shoes_b0e1304c-d5c6-4c76-9b89-31c0d839a8d4_600x.jpg?v=1771913018" alt="Girls Footwear" class="kids-collection-home-image">
+              </div>
+              <div class="kids-collection-home-title">Girls Footwear</div>
+            </a>
+
+          </div>
+          <button class="kids-slider-arrow kids-slider-arrow-right" aria-label="Next" type="button">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════ Editorial edits (two-up) ════════════════ -->
+     
+    <section class="edit-duo">
+      <div class="edit-duo-inner">
+        <div class="cat-fashion-head">
+          <h2 class="cat-fashion-title">Editorial edits</h2>
+        </div>
+
+        <a href="/collections/occasion" class="edit-duo-card">
+          <img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/womens-fashion_56845cc2-ab69-42ba-ac03-2fe02d90f9bf.jpg?v=1782392049" alt="For Every Invitation" class="edit-duo-img" loading="lazy">
+          <span class="edit-duo-overlay"></span>
+          <span class="edit-duo-caption">
+            <span class="bs-display edit-duo-title">For Every Invitation</span>
+            <span class="edit-duo-link">Shop the edit</span>
+          </span>
+        </a>
+
+        <a href="/collections/evening" class="edit-duo-card">
+          <img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/womens-footwear.jpg?v=1782392049" alt="Summer Nights" class="edit-duo-img" loading="lazy">
+          <span class="edit-duo-overlay"></span>
+          <span class="edit-duo-caption">
+            <span class="bs-display edit-duo-title">Summer Nights</span>
+            <span class="edit-duo-link">Shop the edit</span>
+          </span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ════════════════ Featured Brands ════════════════ -->
+    <section class="cat-fashion cat-fashion-brands">
+      <div class="cat-fashion-inner">
+        <div class="cat-fashion-head">
+          <h2 class="cat-fashion-title">Featured Brands</h2>
+          <a class="cat-fashion-sub-link" href="/collections">All Brands →</a>
+        </div>
+
+        <div class="brands-collection-home-grid-wrapper">
+          <div class="brands-collection-home-grid" data-brands-slider="">
+
+            <a title="Floris London" href="/collections/floris-london" class="brand-item">
+              <span class="brand-logo"><img src="//www.bluesalon.com/cdn/shop/files/floris_250x_a3e21544-7a23-4a0a-bc28-8e1734e3fd54_250x.avif?v=1771916867" alt="Floris London" loading="lazy"></span>
+            </a>
+
+            <a title="La Perla" href="/collections/la-perla" class="brand-item">
+              <span class="brand-logo"><img src="//www.bluesalon.com/cdn/shop/files/la-perla_250x_fb3e3d61-b391-436c-8b52-e1792a457f80_250x.avif?v=1771916867" alt="La Perla" loading="lazy"></span>
+            </a>
+
+            <a title="Sensai" href="/collections/sensai" class="brand-item">
+              <span class="brand-logo"><img src="//www.bluesalon.com/cdn/shop/files/Untitled-2_250x_db6c3e68-8632-4d58-83fa-78317400f90c_250x.avif?v=1771916863" alt="Sensai" loading="lazy"></span>
+            </a>
+
+            <a title="Tom Ford" href="/collections/tom-ford" class="brand-item">
+              <span class="brand-logo"><img src="//www.bluesalon.com/cdn/shop/files/tomford_250x_5d1e944a-5c1b-4604-b294-ab9ff1bb8351_250x.avif?v=1771402650" alt="Tom Ford" loading="lazy"></span>
+            </a>
+
+            <a title="MCM" href="/collections/mcm" class="brand-item">
+              <span class="brand-logo"><img src="//www.bluesalon.com/cdn/shop/files/mcm_logo_250x_1_250x.avif?v=1771916863" alt="MCM" loading="lazy"></span>
+            </a>
+
+            <a title="Aigner" href="/collections/aigner" class="brand-item">
+              <span class="brand-logo"><img src="//www.bluesalon.com/cdn/shop/files/aigner_250x_65346155-e057-4adb-aae5-ddc4a61f9a72_250x.webp?v=1771916863" alt="Aigner" loading="lazy"></span>
+            </a>
+
+            <a title="Creed" href="/collections/creed" class="brand-item">
+              <span class="brand-logo"><img src="//www.bluesalon.com/cdn/shop/files/creed_250x_868053a3-0460-4a8d-9f00-9b2df02d3474_250x.avif?v=1771916863" alt="Creed" loading="lazy"></span>
+            </a>
+
+            <a title="Swarovski" href="/collections/swarovski" class="brand-item">
+              <span class="brand-logo"><img src="//www.bluesalon.com/cdn/shop/files/swarovski_250x_8ae97c0e-56d0-4cfb-b2e2-70120be6819e_250x.avif?v=1771916863" alt="Swarovski" loading="lazy"></span>
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ════════════════ Footer ════════════════ -->
+  <footer class="bs-footer">
+
+    <!-- Shop more -->
+    <div class="bs-shopmore">
+      <div class="bs-shopmore-inner">
+        <h2>Shop more</h2>
+        <div class="bs-shopmore-grid" id="shopMoreGrid"></div>
+      </div>
+    </div>
+
+    <!-- Newsletter / App download -->
+    <div class="bs-appband">
+      <div class="bs-appband-inner">
+
+        <!-- Newsletter -->
+        <div>
+          <h3>Never miss a thing</h3>
+          <p class="bs-appband-copy">Sign up for exclusive launches, offers, and in-store events.</p>
+          <form class="bs-newsletter-form" onsubmit="return false;">
+            <input type="email" placeholder="Your email address">
+            <button type="submit">Sign up</button>
+          </form>
+          <p class="bs-newsletter-fine">By subscribing you agree to our privacy policy. Unsubscribe anytime.</p>
+        </div>
+
+        <!-- App download -->
+        <div>
+          <h3>Download our App</h3>
+          <p class="bs-app-sub">Your pocket-sized Blue Salon</p>
+          <p class="bs-appband-copy bs-app-copy">
+            The iOS and Android app puts the extraordinary world of Blue Salon at your fingertips — with personalised style inspiration from the brands you love.
+          </p>
+        
+        </div>
+
+        <!-- QR code -->
+        <div class="bs-qr">
+          <div class="bs-qr-label">Scan to download</div>
+           <div class="foot-qr-code">
+            <a href="https://apps.apple.com/qa/app/blue-salon-%D8%A7%D9%84%D8%B5%D8%A7%D9%84%D9%88%D9%86-%D8%A7%D9%84%D8%A7%D8%B2%D8%B1%D9%82/id1512188214" target="_blank" rel="noopener">
+              <img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/qrapp-01.svg?v=1632989194" alt="App Store" width="98">
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=co.shopney.bluesaloncom&amp;hl=en&amp;gl=US" target="_blank" rel="noopener">
+              <img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/qrapp-02.svg?v=1632667366" alt="Play Store" width="120">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Original footer -->
+    <div class="bs-mainfooter">
+      <div class="bs-mainfooter-inner">
+        <div class="bs-mainfooter-about">
+          <img src="https://www.bluesalon.com/cdn/shop/files/BS_Logo_horizontal-01-white1.png?v=1644232279" alt="Blue Salon">
+          <p>Qatar's first and foremost luxury department store since 1981. Over 500 international and niche brands, curated for you.</p>
+
+          <ul class="bs-contact">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Suhaim Bin Hamad Street, Doha, Qatar</span>
+            </li>
+            <!-- <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+              <a href="mailto:info@bluesalon.com">info@bluesalon.com</a>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2z"/></svg>
+              <a href="tel:+97450109900">+974 5010 9900</a>
+            </li> -->
+          </ul>
+
+        </div>
+        <div id="footerCols" class="bs-mainfooter-cols"></div>
+      </div>
+      <div class="bs-bottomstrip">
+        <div class="bs-bottomstrip-inner">
+          <span class="bs-copyright">Ⓒ Copyright 2026
+            <a class="bs-copyright-aih" href="https://www.abuissa.com" target="_blank" rel="noopener">
+              <img src="https://www.abuissa.com/wp-content/uploads/2024/09/cropped-aih-favicon-192x192.png" alt="AbuIssa Holding" width="16" height="16" loading="lazy">
+              AbuIssa Holding
+            </a>
+            all rights reserved.</span>
+          <ul class="payment-methods">
+            <li><img src="//www.bluesalon.com/cdn/shop/files/Visa_Inverted_x32_5700ab8c-cb49-4355-83c3-4d1146a8076c_x32.png?v=1644226717" alt="Visa" loading="lazy"></li>
+            <li><img src="//www.bluesalon.com/cdn/shop/files/mastercard-logo-design-history-1979_x32.jpg?v=1644232735" alt="Mastercard" loading="lazy"></li>
+            <li><img src="//www.bluesalon.com/cdn/shop/files/Group_1_x32.jpg?v=1660140162" alt="Apple Pay" loading="lazy"></li>
+            <li><img src="//www.bluesalon.com/cdn/shop/files/21Google_Pay9bc22ee1-7e10-4d6f-b0ec-57672824e23d_x32_1_x32.png?v=1709793011" alt="Google Pay" loading="lazy"></li>
+            <li><img src="//www.bluesalon.com/cdn/shop/files/unnamed_1_x32.webp?v=1776589537" alt="Western Union" loading="lazy"></li>
+            <li><img src="https://colehaan.qa/cdn/shop/files/Theqa-01.svg?v=1726476176&width=540" alt="Theqa" loading="lazy"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

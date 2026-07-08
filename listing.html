@@ -1,0 +1,323 @@
+<!-- @dsCard group="Website" viewport="1320x720" name="Storefront — Listing" subtitle="bluesalon.com product listing: filter rail, sort, product grid" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blue Salon — Shop All</title>
+<link rel="icon" href="assets/app-icon.png">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="shop.css">
+</head>
+<body class="shop-body listing-body">
+
+  <!-- ════════════════ Header (shared shell) ════════════════ -->
+  <header class="bs-nav-root bs-header">
+
+    <!-- Announcement -->
+    <div class="bs-announce">
+      <div class="bs-announce-inner">
+      <span class="bs-announce-msg">Complimentary shipping on orders over QAR 499 &nbsp;·&nbsp; Split your payment into 4 installments</span>
+      <div class="bs-announce-utils">
+        <span class="bs-util-wrap bs-locale">
+          <button class="bs-iconbtn bs-locale-btn" type="button" id="localeBtn" aria-label="Switch language" title="Switch language">
+            <span class="bs-lang-switch is-ar" id="localeLangSwitch" aria-hidden="true">ع</span>
+          </button>
+        </span>
+        <button class="bs-iconbtn bs-locale-btn" type="button" aria-label="Store locator" title="Store locator">
+          <span class="bs-lang-switch">Store</span>
+        </button>
+      </div>
+      </div>
+    </div>
+
+    <!-- Main bar -->
+    <div class="bs-topbar">
+      <!-- Hamburger (mobile only) -->
+      <button class="bs-iconbtn bs-hamburger" type="button" id="hamburgerBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileDrawer">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <!-- Search -->
+      <div class="bs-search">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-4.3-4.3"/><circle cx="11" cy="11" r="7"/></svg>
+        <input type="search" placeholder="Search 500+ luxury brands">
+      </div>
+      <!-- Logo -->
+      <a class="bs-logo" href="index.html">
+        <img src="assets/logo-horizontal.svg" alt="Blue Salon">
+      </a>
+      <!-- Utilities -->
+      <div class="bs-utils">
+        <button class="bs-iconbtn" type="button" aria-label="Account" title="Account">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+        </button>
+        <span class="bs-util-wrap">
+          <button class="bs-iconbtn" type="button" aria-label="Wishlist" title="Wishlist">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l9 9 8.8-8.6a5.5 5.5 0 0 0-.2-7.8z"/></svg>
+          </button>
+          <span class="bs-count" id="wishCount" hidden>0</span>
+        </span>
+        <span class="bs-util-wrap">
+          <button class="bs-iconbtn" type="button" aria-label="Bag" title="Bag">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l1 13H5z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+          </button>
+          <span class="bs-count" id="cartCount" hidden>0</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Nav + mega menu hover zone -->
+    <div id="navZone">
+      <nav class="bs-nav">
+        <div class="bs-nav-inner" id="navInner">
+          <div class="bs-nav-item" data-menu="new">New In</div>
+          <div class="bs-nav-item" data-menu="women">Women</div>
+          <div class="bs-nav-item" data-menu="men">Men</div>
+          <div class="bs-nav-item" data-menu="kids">Kids &amp; Baby</div>
+          <div class="bs-nav-item" data-menu="beauty">Beauty</div>
+          <div class="bs-nav-item" data-menu="luggage">Luggage</div>
+          <div class="bs-nav-item" data-menu="home">Home &amp; Linen</div>
+          <div class="bs-nav-item" data-menu="gourmet">Gourmet</div>
+          <div class="bs-nav-item" data-menu="brands">Brands</div>
+          <div class="bs-nav-item" data-menu="gift">Gift</div>
+          <div class="bs-nav-item sale" data-menu="sale">Sale</div>
+          <div class="bs-mega-holder" id="megaHolder"></div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ════════════════ Mobile drawer (built by app.js) ════════════════ -->
+  <div class="bs-drawer-scrim" id="drawerScrim" hidden></div>
+  <aside class="bs-drawer" id="mobileDrawer" aria-hidden="true" hidden>
+    <div class="bs-drawer-head">
+      <img class="bs-drawer-logo" src="assets/logo-horizontal.svg" alt="Blue Salon">
+      <button class="bs-iconbtn bs-drawer-close" type="button" id="drawerClose" aria-label="Close menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <nav class="bs-drawer-nav" id="drawerNav"></nav>
+  </aside>
+
+  <main>
+
+    <!-- ════════════════ Editorial PLP hero — split copy / campaign image ════════════════ -->
+    <section class="plp-hero">
+      <div class="plp-hero-inner">
+        <div class="plp-hero-copy">
+          <nav class="shop-crumbs" aria-label="Breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="sep">/</span>
+            <span class="current" id="crumbCurrent">Shop All</span>
+          </nav>
+          <span class="shop-head-kicker">New Season · SS26</span>
+          <h1 class="bs-display shop-head-title" id="plpTitle">The Edit</h1>
+          <p class="shop-head-sub">Hand-picked by our buyers from the maisons — curated for Qatar.</p>
+          <div class="plp-hero-actions">
+            <a href="#plpGrid">Shop the edit</a>
+            <span>Blue Salon buyers' room</span>
+          </div>
+        </div>
+        <div class="plp-hero-media">
+          <img id="plpHeroImg" src="images/1_d90af013-05a4-447c-b48b-e2f61584c227_540x.webp" alt="">
+          <div class="plp-hero-media-caption">
+            <span>Campaign mood</span>
+            <strong>Curated for evenings in Doha</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="shop-page">
+
+      <!-- Department chips -->
+      <div class="shop-chips" id="plpChips" aria-label="Shop by category">
+        <button class="shop-chip is-active" type="button" data-cat="All">All</button>
+        <button class="shop-chip" type="button" data-cat="Gowns">Gowns</button>
+        <button class="shop-chip" type="button" data-cat="Jewellery">Jewellery</button>
+        <button class="shop-chip" type="button" data-cat="Bags">Bags</button>
+        <button class="shop-chip" type="button" data-cat="Footwear">Footwear</button>
+        <button class="shop-chip" type="button" data-cat="Gourmet">Gourmet</button>
+        <button class="shop-chip" type="button" data-cat="Men">Men</button>
+        <button class="shop-chip" type="button" data-cat="Kids">Kids</button>
+        <button class="shop-chip" type="button" data-cat="Beauty">Beauty</button>
+      </div>
+
+      <!-- Filter drawer (off-canvas on every viewport) -->
+      <aside class="plp-filters" id="plpFacets" aria-label="Filters"></aside>
+
+      <!-- Results -->
+      <section>
+        <div class="plp-toolbar">
+          <div class="plp-toolbar-context">
+            <span class="plp-toolbar-label">Collection</span>
+            <span class="plp-toolbar-name" id="plpToolbarCat">The Edit</span>
+            <span class="plp-count" id="plpCount"></span>
+          </div>
+          <div class="plp-sort">
+            <button class="plp-filter-btn" type="button" id="plpFilterBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 6h18M6 12h12M10 18h4"/></svg>
+              Filter
+            </button>
+            <span class="plp-toolbar-sep" aria-hidden="true"></span>
+            <label class="plp-sort-label" for="plpSort">Sort by</label>
+            <select id="plpSort">
+              <option value="featured">Featured</option>
+              <option value="newest">Newest</option>
+              <option value="price-asc">Price · low to high</option>
+              <option value="price-desc">Price · high to low</option>
+              <option value="rating">Top rated</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="plp-applied" id="plpApplied"></div>
+
+        <div class="plp-grid bs-shelf" id="plpGrid"></div>
+
+        <template id="plpProductCardTemplate">
+          <article class="bs-card">
+            <div class="bs-card-media">
+              <a class="bs-card-image-link" data-card-link>
+                <img class="bs-card-img-main" data-card-image alt="" loading="lazy">
+                <img class="bs-card-img-hover" data-card-hover alt="" aria-hidden="true" loading="lazy" hidden>
+              </a>
+              <div class="bs-card-badge" data-card-badge hidden></div>
+              <div class="bs-card-hover-icons">
+                <a class="bs-card-icon-action bs-card-view" data-card-link aria-label="Quick view">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z"/><circle cx="12" cy="12" r="3"/></svg>
+                </a>
+                <button class="bs-iconbtn bs-card-wish" type="button" data-wish aria-label="Add to wishlist">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l9 9 8.8-8.6a5.5 5.5 0 0 0-.2-7.8z"/></svg>
+                </button>
+              </div>
+              <div class="bs-card-actions">
+                <button class="bs-card-action bs-card-add" type="button" data-card-add>Add to cart</button>
+              </div>
+            </div>
+            <div class="bs-card-body">
+              <a class="bs-card-text-link" data-card-link>
+                <span class="bs-eyebrow bs-card-vendor" data-card-vendor></span>
+                <span class="bs-card-name" data-card-name></span>
+                <span class="bs-price" data-card-price>
+                  <span class="bs-price-current" data-card-price-current></span>
+                  <span class="bs-price-compare" data-card-price-compare hidden></span>
+                </span>
+              </a>
+              <div class="bs-card-meta-row">
+                <span class="bs-card-colour" data-card-colour hidden><i data-card-colour-chip></i><span data-card-colour-name></span></span>
+                <span class="bs-card-type" data-card-type></span>
+              </div>
+              <div class="bs-card-sizes" data-card-sizes aria-label="Available sizes"></div>
+            </div>
+          </article>
+        </template>
+
+        <div class="plp-more" id="plpMore" hidden>
+          <div class="plp-more-meta"></div>
+          <div class="plp-more-bar"><div class="plp-more-fill"></div></div>
+          <button class="bs-btn bs-btn-ghost" type="button">Load more</button>
+        </div>
+      </section>
+
+    </div>
+
+    <section class="plp-signature">
+      <div class="plp-signature-inner">
+        <span class="shop-head-kicker">Blue Salon since 1981</span>
+        <p>For grand entrances, private dinners, and the pieces kept long after the season ends.</p>
+        <a href="listing.html">Explore the house edit</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Scrim for the mobile filter drawer -->
+  <div class="plp-filters-scrim" id="plpScrim" hidden></div>
+
+  <!-- ════════════════ Footer (shared shell) ════════════════ -->
+  <footer class="bs-footer">
+
+    <!-- Shop more -->
+    <div class="bs-shopmore">
+      <div class="bs-shopmore-inner">
+        <h2>Shop more</h2>
+        <div class="bs-shopmore-grid" id="shopMoreGrid"></div>
+      </div>
+    </div>
+
+    <!-- Newsletter / App download -->
+    <div class="bs-appband">
+      <div class="bs-appband-inner">
+        <div>
+          <h3>Never miss a thing</h3>
+          <p class="bs-appband-copy">Sign up for exclusive launches, offers, and in-store events.</p>
+          <form class="bs-newsletter-form" onsubmit="return false;">
+            <input type="email" placeholder="Your email address">
+            <button type="submit">Sign up</button>
+          </form>
+          <p class="bs-newsletter-fine">By subscribing you agree to our privacy policy. Unsubscribe anytime.</p>
+        </div>
+        <div>
+          <h3>Download our App</h3>
+          <p class="bs-app-sub">Your pocket-sized Blue Salon</p>
+          <p class="bs-appband-copy bs-app-copy">
+            The iOS and Android app puts the extraordinary world of Blue Salon at your fingertips — with personalised style inspiration from the brands you love.
+          </p>
+        </div>
+        <div class="bs-qr">
+          <div class="bs-qr-label">Scan to download</div>
+           <div class="foot-qr-code">
+            <a href="https://apps.apple.com/qa/app/blue-salon-%D8%A7%D9%84%D8%B5%D8%A7%D9%84%D9%88%D9%86-%D8%A7%D9%84%D8%A7%D8%B2%D8%B1%D9%82/id1512188214" target="_blank" rel="noopener">
+              <img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/qrapp-01.svg?v=1632989194" alt="App Store" width="98">
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=co.shopney.bluesaloncom&amp;hl=en&amp;gl=US" target="_blank" rel="noopener">
+              <img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/qrapp-02.svg?v=1632667366" alt="Play Store" width="120">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Original footer -->
+    <div class="bs-mainfooter">
+      <div class="bs-mainfooter-inner">
+        <div class="bs-mainfooter-about">
+          <img src="https://www.bluesalon.com/cdn/shop/files/BS_Logo_horizontal-01-white1.png?v=1644232279" alt="Blue Salon">
+          <p>Qatar's first and foremost luxury department store since 1981. Over 500 international and niche brands, curated for you.</p>
+          <ul class="bs-contact">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Suhaim Bin Hamad Street, Doha, Qatar</span>
+            </li>
+          </ul>
+        </div>
+        <div id="footerCols" class="bs-mainfooter-cols"></div>
+      </div>
+      <div class="bs-bottomstrip">
+        <div class="bs-bottomstrip-inner">
+          <span class="bs-copyright">Ⓒ Copyright 2026
+            <a class="bs-copyright-aih" href="https://www.abuissa.com" target="_blank" rel="noopener">
+              <img src="https://www.abuissa.com/wp-content/uploads/2024/09/cropped-aih-favicon-192x192.png" alt="AbuIssa Holding" width="16" height="16" loading="lazy">
+              AbuIssa Holding
+            </a>
+            all rights reserved.</span>
+          <ul class="payment-methods">
+            <li><img src="//www.bluesalon.com/cdn/shop/files/Visa_Inverted_x32_5700ab8c-cb49-4355-83c3-4d1146a8076c_x32.png?v=1644226717" alt="Visa" loading="lazy"></li>
+            <li><img src="//www.bluesalon.com/cdn/shop/files/mastercard-logo-design-history-1979_x32.jpg?v=1644232735" alt="Mastercard" loading="lazy"></li>
+            <li><img src="//www.bluesalon.com/cdn/shop/files/Group_1_x32.jpg?v=1660140162" alt="Apple Pay" loading="lazy"></li>
+            <li><img src="//www.bluesalon.com/cdn/shop/files/21Google_Pay9bc22ee1-7e10-4d6f-b0ec-57672824e23d_x32_1_x32.png?v=1709793011" alt="Google Pay" loading="lazy"></li>
+            <li><img src="//www.bluesalon.com/cdn/shop/files/unnamed_1_x32.webp?v=1776589537" alt="Western Union" loading="lazy"></li>
+            <li><img src="https://colehaan.qa/cdn/shop/files/Theqa-01.svg?v=1726476176&width=540" alt="Theqa" loading="lazy"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script src="shop.js"></script>
+</body>
+</html>
