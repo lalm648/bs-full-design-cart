@@ -4307,10 +4307,10 @@
 /* Hard reset for the broken PDP hero. */
 .pdp-body .pdp-reference-page .pdp-layout {
   display: grid;
-  grid-template-columns: minmax(420px, 520px) minmax(420px, 560px);
+  grid-template-columns: minmax(480px, 640px) minmax(400px, 520px);
   align-items: start;
   justify-content: center;
-  column-gap: 72px;
+  column-gap: 64px;
   row-gap: 36px;
 }
 
@@ -4358,7 +4358,7 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  padding: 44px;
+  padding: 12px;
   object-fit: contain;
   object-position: center;
   opacity: 1;
@@ -4368,7 +4368,7 @@
 
 .pdp-body .pdp-reference-page .pdp-layout.cat-jewellery .pdp-frame img,
 .pdp-body .pdp-reference-page .pdp-layout.cat-jewellery .pdp-frame:hover img {
-  padding: 42px;
+  padding: 18px;
   transform: none;
 }
 
@@ -4414,7 +4414,7 @@
 @media (max-width: 640px) {
   .pdp-body .pdp-reference-page .pdp-frame img,
   .pdp-body .pdp-reference-page .pdp-layout.cat-jewellery .pdp-frame img {
-    padding: 24px;
+    padding: 10px;
   }
 
   .pdp-body .pdp-reference-page .pdp-thumb-rail {
@@ -5404,7 +5404,7 @@
   /* border: 1px solid var(--l-line); */
   border-radius: 0;
   background: #fff;
-  padding: 34px;
+  padding: 0 20px;
   align-self: start;
 }
 .pdp-body .pdp-reference-page .pdp-rule { border: 0; border-top: 1px solid var(--l-line); }
