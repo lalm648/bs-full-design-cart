@@ -1,0 +1,762 @@
+<!-- @dsCard group="Website" viewport="1320x720" name="Storefront — Women" subtitle="Women department landing: hero, category bento, occasion, accessories, beauty, designers" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blue Salon — Women</title>
+<link rel="icon" href="assets/app-icon.png">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="app.css">
+<style>
+/* ============================================================
+   WOMEN DEPARTMENT — minimal luxury, boxed to --container-max,
+   image-led cards with subtle dark gradient overlays, mostly
+   white, very few borders. Homepage tokens (spacing / fonts /
+   CTA) reused. Monochrome ladder consistent with listing/kids.
+   ============================================================ */
+.women-page {
+  --w-ink: #171717;
+  --w-ink-2: #444444;
+  --w-muted: #767676;
+  --w-faint: #9a9a9a;
+  --w-line: #e4e3e1;
+  --w-tile: #f4f3f1;
+  padding-bottom: clamp(56px, 7vw, 96px);
+  background: #fff;
+}
+
+/* Boxed section shell — everything sits inside the container */
+.wx-section {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.wx-section + .wx-section { margin-top: clamp(56px, 7vw, 96px); }
+
+/* Section header — left aligned, optional trailing link */
+.wx-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: clamp(22px, 2.4vw, 34px);
+}
+.wx-head.is-centered { flex-direction: column; align-items: center; text-align: center; }
+.wx-kicker {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--w-muted);
+  font-size: 11px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.wx-title {
+  margin: 0;
+  color: var(--w-ink);
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: clamp(24px, 2.8vw, 38px);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+.wx-sub {
+  margin: 12px 0 0;
+  max-width: 54ch;
+  color: var(--w-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.wx-head-link {
+  flex: none;
+  color: var(--w-ink);
+  font-size: 11px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 1px solid var(--w-ink);
+  padding-bottom: 3px;
+  white-space: nowrap;
+  transition: color .2s var(--ease-standard), border-color .2s var(--ease-standard);
+}
+.wx-head-link:hover { color: #000; border-color: #000; }
+
+/* Reusable image-led card with gradient overlay + bottom caption */
+.wx-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: var(--w-tile);
+  text-decoration: none;
+}
+.wx-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .8s var(--ease-standard);
+}
+.wx-card:hover img { transform: scale(1.05); }
+.wx-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(0deg, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.14) 44%, rgba(0,0,0,0) 72%);
+  transition: opacity .4s var(--ease-standard);
+}
+.wx-card-cap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: clamp(16px, 1.8vw, 26px);
+}
+.wx-card-name {
+  display: block;
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: clamp(15px, 1.4vw, 21px);
+  line-height: 1.1;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.wx-card-line {
+  display: none;
+  margin: 8px 0 0;
+  max-width: 34ch;
+  color: rgba(255,255,255,0.9);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.wx-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  color: #fff;
+  font-size: 10.5px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.wx-card-link svg { transition: transform .3s var(--ease-standard); }
+.wx-card:hover .wx-card-link svg { transform: translateX(4px); }
+
+/* ── 1 · HERO CAMPAIGN — wide banner, centred copy ─────────── */
+.wx-hero-wrap { margin-top: clamp(16px, 2vw, 28px); }
+.wx-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 380px;
+  aspect-ratio: 1320 / 540;
+  background: var(--w-tile);
+}
+.wx-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 28%; }
+.wx-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.28), rgba(0,0,0,0.15) 45%, rgba(0,0,0,0.42));
+}
+.wx-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+}
+.wx-hero-kicker {
+  color: rgba(255,255,255,0.86);
+  font-size: 12px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+}
+.wx-hero-title {
+  margin: 16px 0 0;
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: clamp(36px, 5.4vw, 68px);
+  line-height: 0.98;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.wx-hero-sub {
+  margin: 16px 0 0;
+  max-width: 46ch;
+  color: rgba(255,255,255,0.92);
+  font-size: 15px;
+  line-height: 1.6;
+}
+.wx-cta {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 15px 36px;
+  background: #fff;
+  color: var(--w-ink);
+  font-size: 11px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background .22s var(--ease-standard), color .22s var(--ease-standard);
+}
+.wx-cta:hover { background: var(--w-ink); color: #fff; }
+
+/* ── 2 · TOP-LEVEL CATEGORIES — editorial bento ────────────── */
+.wx-cats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.wx-cats .wx-card { aspect-ratio: 3 / 4; }
+.wx-cats .wx-card--feature { grid-column: 1; grid-row: 1 / span 2; aspect-ratio: auto; }
+.wx-cats .wx-card--feature img { object-position: center top; }
+.wx-cats .wx-card--feature .wx-card-name { font-size: clamp(22px, 2.2vw, 32px); }
+.wx-cats .wx-card--wide { grid-column: 1 / -1; aspect-ratio: 1320 / 300; }
+
+/* ── 3 · CLOTHING WARDROBE — three equal verticals ─────────── */
+.wx-trio {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.wx-trio .wx-card { aspect-ratio: 3 / 4; }
+
+/* ── 4 · OCCASION DRESSING — 1 large editorial + 2 side ────── */
+.wx-occasion {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 14px;
+}
+.wx-occasion-side { display: grid; grid-template-rows: 1fr 1fr; gap: 14px; }
+.wx-occasion .wx-card--feature { aspect-ratio: auto; min-height: 100%; }
+.wx-occasion .wx-card--feature img { object-position: right center; }
+.wx-occasion .wx-card--feature .wx-card-name { font-size: clamp(24px, 2.6vw, 40px); }
+.wx-occasion .wx-card--feature .wx-card-line { display: block; }
+.wx-occasion .wx-card--feature .wx-card-cap { padding: clamp(24px, 2.6vw, 44px); }
+.wx-occasion .wx-card--feature::after {
+  background: linear-gradient(0deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.05) 100%);
+}
+
+/* ── 5 · BAGS & SHOES — two-column split, equal height ─────── */
+.wx-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.wx-split .wx-card { aspect-ratio: 4 / 5; }
+.wx-split .wx-card-name { font-size: clamp(20px, 2vw, 30px); }
+
+/* ── 6 · JEWELLERY & WATCHES — refined three-card, close-ups ─ */
+.wx-jewel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.wx-jewel .wx-card { aspect-ratio: 1 / 1; }
+
+/* ── 7 · BEAUTY & FRAGRANCE — lighter four-card, label below ─ */
+.wx-quad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(14px, 1.6vw, 22px);
+}
+.wx-beauty {
+  display: block;
+  text-decoration: none;
+}
+.wx-beauty-img {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--w-tile);
+}
+.wx-beauty-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .7s var(--ease-standard); }
+.wx-beauty:hover .wx-beauty-img img { transform: scale(1.05); }
+.wx-beauty-name {
+  margin-top: 14px;
+  text-align: center;
+  color: var(--w-ink);
+  font-size: 12px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.wx-beauty-sub {
+  margin-top: 4px;
+  text-align: center;
+  color: var(--w-muted);
+  font-size: 11.5px;
+}
+
+/* ── 8 · FEATURED DESIGNERS — homepage-style logo marquee ──────
+   Uses the shared .cat-fashion-brands / .brand-item / .brand-logo
+   design from app.css (+ app.js marquee). Only spacing + a
+   wordmark tile for houses without a logo asset are set here. */
+.women-page .cat-fashion-brands { margin-top: clamp(56px, 7vw, 96px); }
+.women-page .brand-wordmark {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.15;
+  text-align: center;
+  color: var(--w-ink-2);
+  opacity: 0.7;
+  transition: color .25s var(--ease-standard), opacity .25s var(--ease-standard);
+}
+.women-page .brand-item:hover .brand-wordmark { color: var(--w-ink); opacity: 1; }
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .wx-cats { grid-template-columns: repeat(2, 1fr); }
+  .wx-cats .wx-card--feature { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 16 / 10; }
+  .wx-occasion { grid-template-columns: 1fr; }
+  .wx-occasion .wx-card--feature { aspect-ratio: 16 / 11; }
+  .wx-occasion-side { grid-template-columns: 1fr 1fr; grid-template-rows: none; }
+  .wx-jewel { grid-template-columns: repeat(3, 1fr); }
+  .wx-quad { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 620px) {
+  .wx-section { padding: 0 16px; }
+  .wx-head { flex-direction: column; align-items: flex-start; }
+  .wx-cats,
+  .wx-trio { grid-template-columns: 1fr 1fr; }
+  .wx-cats .wx-card { aspect-ratio: 3 / 4; }
+  .wx-split { grid-template-columns: 1fr; }
+  .wx-jewel { grid-template-columns: 1fr; }
+  .wx-occasion-side { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
+}
+</style>
+</head>
+<body class="women-body">
+
+  <!-- ════════════════ Header (shared shell) ════════════════ -->
+  <header class="bs-nav-root bs-header">
+
+    <!-- Announcement -->
+    <div class="bs-announce">
+      <div class="bs-announce-inner">
+      <span class="bs-announce-msg">Complimentary shipping on orders over QAR 499 &nbsp;·&nbsp; Split your payment into 4 installments</span>
+      <div class="bs-announce-utils">
+        <span class="bs-util-wrap bs-locale">
+          <button class="bs-iconbtn bs-locale-btn" type="button" id="localeBtn" aria-label="Switch language" title="Switch language">
+            <span class="bs-lang-switch is-ar" id="localeLangSwitch" aria-hidden="true">ع</span>
+          </button>
+        </span>
+        <button class="bs-iconbtn bs-locale-btn" type="button" aria-label="Store locator" title="Store locator">
+          <span class="bs-lang-switch">Store</span>
+        </button>
+      </div>
+      </div>
+    </div>
+
+    <!-- Main bar -->
+    <div class="bs-topbar">
+      <button class="bs-iconbtn bs-hamburger" type="button" id="hamburgerBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileDrawer">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <div class="bs-search">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-4.3-4.3"/><circle cx="11" cy="11" r="7"/></svg>
+        <input type="search" placeholder="Search 500+ luxury brands">
+      </div>
+      <a class="bs-logo" href="index.html">
+        <img src="assets/logo-horizontal.svg" alt="Blue Salon">
+      </a>
+      <div class="bs-utils">
+        <button class="bs-iconbtn" type="button" aria-label="Account" title="Account">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+        </button>
+        <span class="bs-util-wrap">
+          <button class="bs-iconbtn" type="button" aria-label="Wishlist" title="Wishlist">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l9 9 8.8-8.6a5.5 5.5 0 0 0-.2-7.8z"/></svg>
+          </button>
+          <span class="bs-count" id="wishCount" hidden>0</span>
+        </span>
+        <span class="bs-util-wrap">
+          <button class="bs-iconbtn" type="button" aria-label="Bag" title="Bag">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l1 13H5z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+          </button>
+          <span class="bs-count" id="cartCount" hidden>0</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Nav + mega menu hover zone -->
+    <div id="navZone">
+      <nav class="bs-nav">
+        <div class="bs-nav-inner" id="navInner">
+          <div class="bs-nav-item" data-menu="new">New In</div>
+          <div class="bs-nav-item" data-menu="women">Women</div>
+          <div class="bs-nav-item" data-menu="men">Men</div>
+          <div class="bs-nav-item" data-menu="kids">Kids &amp; Baby</div>
+          <div class="bs-nav-item" data-menu="beauty">Beauty</div>
+          <div class="bs-nav-item" data-menu="luggage">Luggage</div>
+          <div class="bs-nav-item" data-menu="home">Home &amp; Linen</div>
+          <div class="bs-nav-item" data-menu="gourmet">Gourmet</div>
+          <div class="bs-nav-item" data-menu="brands">Brands</div>
+          <div class="bs-nav-item" data-menu="gift">Gift</div>
+          <div class="bs-nav-item sale" data-menu="sale">Sale</div>
+          <div class="bs-mega-holder" id="megaHolder"></div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ════════════════ Mobile drawer (built by app.js) ════════════════ -->
+  <div class="bs-drawer-scrim" id="drawerScrim" hidden></div>
+  <aside class="bs-drawer" id="mobileDrawer" aria-hidden="true" hidden>
+    <div class="bs-drawer-head">
+      <img class="bs-drawer-logo" src="assets/logo-horizontal.svg" alt="Blue Salon">
+      <button class="bs-iconbtn bs-drawer-close" type="button" id="drawerClose" aria-label="Close menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <nav class="bs-drawer-nav" id="drawerNav"></nav>
+  </aside>
+
+  <main class="women-page">
+
+    <!-- ════════════════ 1 · Hero campaign ════════════════ -->
+    <section class="wx-section wx-hero-wrap">
+      <div class="wx-hero">
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1900&q=85" alt="Women's Fashion">
+        <div class="wx-hero-overlay">
+          <span class="wx-hero-kicker">Blue Salon · SS26</span>
+          <h1 class="wx-hero-title">Women's Fashion</h1>
+          <p class="wx-hero-sub">The season's most considered wardrobe — hand-picked by our buyers from the maisons.</p>
+          <a class="wx-cta" href="listing.html?cat=Women">Shop New In</a>
+        </div>
+      </div>
+    </section>
+<!-- ════════════════ 5 · New In & The Sale (two-up split) ════════════════ -->
+    <section class="wx-section">
+      <div class="wx-head">
+        <div>
+          <span class="wx-kicker">Now in store</span>
+          <h2 class="wx-title">New In &amp; The Sale</h2>
+        </div>
+      </div>
+
+      <div class="wx-split">
+        <a class="wx-card" href="listing.html?cat=Women">
+          <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=88" alt="New In">
+          <span class="wx-card-cap">
+            <span class="wx-card-name">New In</span>
+            <span class="wx-card-link">Shop the arrivals
+              <svg width="20" height="10" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
+            </span>
+          </span>
+        </a>
+        <a class="wx-card" href="listing.html?cat=Women">
+          <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1200&q=88" alt="The Sale">
+          <span class="wx-card-cap">
+            <span class="wx-card-name">The Sale</span>
+            <span class="wx-card-link">Up to 50% off
+              <svg width="20" height="10" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
+            </span>
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ════════════════ 2 · Top-level categories (bento) ════════════════ -->
+    <section class="wx-section">
+      <div class="wx-head">
+        <div>
+          <span class="wx-kicker">The Women's Department</span>
+          <h2 class="wx-title">Shop by Category</h2>
+        </div>
+        <a class="wx-head-link" href="listing.html?cat=Women">View all</a>
+      </div>
+
+      <div class="wx-cats">
+        <a class="wx-card wx-card--feature" href="listing.html?cat=Gowns">
+          <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?auto=format&fit=crop&w=1200&q=88" alt="Clothing">
+          <span class="wx-card-cap">
+            <span class="wx-card-name">Clothing</span>
+            <span class="wx-card-link">Explore
+              <svg width="20" height="10" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
+            </span>
+          </span>
+        </a>
+        <a class="wx-card" href="listing.html?cat=Bags">
+          <img src="https://www.bluesalon.com/cdn/shop/files/New_Project_79_600x.jpg?v=1776689958" alt="Bags">
+          <span class="wx-card-cap"><span class="wx-card-name">Bags</span></span>
+        </a>
+        <a class="wx-card" href="listing.html?cat=Footwear">
+          <img src="https://www.bluesalon.com/cdn/shop/files/New_Project_7_16aa4789-aee1-4741-a7c6-0f3fd30903b0_600x.jpg?v=1778151902" alt="Shoes">
+          <span class="wx-card-cap"><span class="wx-card-name">Shoes</span></span>
+        </a>
+        <a class="wx-card" href="listing.html?cat=Watches">
+          <img src="https://www.bluesalon.com/cdn/shop/files/BS_Watches_600x.jpg?v=1771492826" alt="Watches">
+          <span class="wx-card-cap"><span class="wx-card-name">Watches</span></span>
+        </a>
+        <a class="wx-card" href="listing.html?cat=Jewellery">
+          <img src="https://www.bluesalon.com/cdn/shop/files/New_Project_1_5fe2ba48-9160-4650-b7ff-065ea291e2a6_600x.jpg?v=1778140218" alt="Jewellery">
+          <span class="wx-card-cap"><span class="wx-card-name">Jewellery</span></span>
+        </a>
+        <a class="wx-card wx-card--wide" href="listing.html?cat=Women">
+          <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=1900&q=85" alt="Accessories">
+          <span class="wx-card-cap">
+            <span class="wx-card-name">Accessories</span>
+            <span class="wx-card-link">Discover
+              <svg width="20" height="10" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
+            </span>
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ════════════════ 3 · Clothing wardrobe ════════════════ -->
+    <section class="wx-section">
+      <div class="wx-head">
+        <div>
+          <span class="wx-kicker">The Wardrobe</span>
+          <h2 class="wx-title">Clothing</h2>
+          <p class="wx-sub">From red-carpet gowns to everyday tailoring — the pieces your season is built around.</p>
+        </div>
+      </div>
+
+      <div class="wx-trio">
+        <a class="wx-card" href="listing.html?cat=Gowns">
+          <img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=1000&q=85" alt="Dresses &amp; Gowns">
+          <span class="wx-card-cap"><span class="wx-card-name">Dresses &amp; Gowns</span></span>
+        </a>
+        <a class="wx-card" href="listing.html?cat=Women">
+          <img src="https://images.unsplash.com/photo-1485462537746-965f33f7f6a7?auto=format&fit=crop&w=1000&q=85" alt="Tops &amp; Blouses">
+          <span class="wx-card-cap"><span class="wx-card-name">Tops &amp; Blouses</span></span>
+        </a>
+        <a class="wx-card" href="listing.html?cat=Women">
+          <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=1000&q=85" alt="Trousers &amp; Skirts">
+          <span class="wx-card-cap"><span class="wx-card-name">Trousers &amp; Skirts</span></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ════════════════ 4 · Occasion dressing ════════════════ -->
+    <section class="wx-section">
+      <div class="wx-head">
+        <div>
+          <span class="wx-kicker">Curated for the moment</span>
+          <h2 class="wx-title">Occasion Dressing</h2>
+        </div>
+      </div>
+
+      <div class="wx-occasion">
+        <a class="wx-card wx-card--feature" href="listing.html?cat=Gowns">
+          <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=1200&q=88" alt="Evening Wear">
+          <span class="wx-card-cap">
+            <span class="wx-card-name">Evening Wear</span>
+            <span class="wx-card-line">For the nights that ask for something unforgettable — gowns and silhouettes made for grand entrances.</span>
+            <span class="wx-card-link">Shop the edit
+              <svg width="20" height="10" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
+            </span>
+          </span>
+        </a>
+        <div class="wx-occasion-side">
+          <a class="wx-card" href="listing.html?cat=Gowns">
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=85" alt="Wedding Guest">
+            <span class="wx-card-cap"><span class="wx-card-name">Wedding Guest</span></span>
+          </a>
+          <a class="wx-card" href="listing.html?cat=Women">
+            <img src="https://www.bluesalon.com/cdn/shop/files/Triumph_1024x1024_crop_center.png?v=1781698349" alt="Modest Luxury">
+            <span class="wx-card-cap"><span class="wx-card-name">Modest Luxury</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    
+    <!-- ════════════════ 6 · Trending Now (three-card edit) ════════════════ -->
+    <section class="wx-section">
+      <div class="wx-head">
+        <div>
+          <span class="wx-kicker">The season's obsessions</span>
+          <h2 class="wx-title">Trending Now</h2>
+        </div>
+      </div>
+
+      <div class="wx-jewel">
+        <a class="wx-card" href="listing.html?cat=Women">
+          <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=1000&q=85" alt="Bold Colour">
+          <span class="wx-card-cap"><span class="wx-card-name">Bold Colour</span></span>
+        </a>
+        <a class="wx-card" href="listing.html?cat=Women">
+          <img src="https://images.unsplash.com/photo-1583001809873-a128495da465?auto=format&fit=crop&w=1000&q=85" alt="Cosy Layers">
+          <span class="wx-card-cap"><span class="wx-card-name">Cosy Layers</span></span>
+        </a>
+        <a class="wx-card" href="listing.html?cat=Women">
+          <img src="https://images.unsplash.com/photo-1571513800374-df1bbe650e56?auto=format&fit=crop&w=1000&q=85" alt="Modern Minimal">
+          <span class="wx-card-cap"><span class="wx-card-name">Modern Minimal</span></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ════════════════ 7 · Beauty & Fragrance (lighter) ════════════════ -->
+    <section class="wx-section">
+      <div class="wx-head is-centered">
+        <div>
+          <span class="wx-kicker">The beauty hall</span>
+          <h2 class="wx-title">Beauty &amp; Fragrance</h2>
+        </div>
+      </div>
+
+      <div class="wx-quad">
+        <a class="wx-beauty" href="listing.html?cat=Beauty">
+          <span class="wx-beauty-img"><img src="https://www.bluesalon.com/cdn/shop/files/Guerlain_Make_up-Blue_Salon_600x.jpg?v=1778160088" alt="Makeup"></span>
+          <span class="wx-beauty-name">Makeup</span>
+          <span class="wx-beauty-sub">Colour &amp; complexion</span>
+        </a>
+        <a class="wx-beauty" href="listing.html?cat=Beauty">
+          <span class="wx-beauty-img"><img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=800&q=85" alt="Skincare"></span>
+          <span class="wx-beauty-name">Skincare</span>
+          <span class="wx-beauty-sub">Daily rituals</span>
+        </a>
+        <a class="wx-beauty" href="listing.html?cat=Beauty">
+          <span class="wx-beauty-img"><img src="https://www.bluesalon.com/cdn/shop/files/Parfume_de_Marly_600x.jpg?v=1778160612" alt="Fragrance"></span>
+          <span class="wx-beauty-name">Fragrance</span>
+          <span class="wx-beauty-sub">Signature scents</span>
+        </a>
+        <a class="wx-beauty" href="listing.html?cat=Beauty">
+          <span class="wx-beauty-img"><img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=85" alt="Gift Sets"></span>
+          <span class="wx-beauty-name">Gift Sets</span>
+          <span class="wx-beauty-sub">Ready to give</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ════════════════ 8 · Featured designers (homepage-style logo marquee) ════════════════ -->
+    <section class="cat-fashion cat-fashion-brands wx-brands">
+      <div class="cat-fashion-inner">
+        <div class="cat-fashion-head">
+          <h2 class="cat-fashion-title">Featured Designers</h2>
+          <a class="cat-fashion-sub-link" href="listing.html?cat=Women">All Designers →</a>
+        </div>
+
+        <div class="brands-collection-home-grid-wrapper">
+          <div class="brands-collection-home-grid" data-brands-slider="">
+
+            <a title="Zuhair Murad" href="listing.html?cat=Women" class="brand-item">
+              <span class="brand-logo"><span class="brand-wordmark">Zuhair Murad</span></span>
+            </a>
+            <a title="Elie Saab" href="listing.html?cat=Women" class="brand-item">
+              <span class="brand-logo"><span class="brand-wordmark">Elie Saab</span></span>
+            </a>
+            <a title="La Perla" href="listing.html?cat=Women" class="brand-item">
+              <span class="brand-logo"><img src="https://www.bluesalon.com/cdn/shop/files/la-perla_250x_fb3e3d61-b391-436c-8b52-e1792a457f80_250x.avif?v=1771916867" alt="La Perla" loading="lazy"></span>
+            </a>
+            <a title="Swarovski" href="listing.html?cat=Jewellery" class="brand-item">
+              <span class="brand-logo"><img src="https://www.bluesalon.com/cdn/shop/files/swarovski_250x_8ae97c0e-56d0-4cfb-b2e2-70120be6819e_250x.avif?v=1771916863" alt="Swarovski" loading="lazy"></span>
+            </a>
+            <a title="Tom Ford" href="listing.html?cat=Beauty" class="brand-item">
+              <span class="brand-logo"><img src="https://www.bluesalon.com/cdn/shop/files/tomford_250x_5d1e944a-5c1b-4604-b294-ab9ff1bb8351_250x.avif?v=1771402650" alt="Tom Ford" loading="lazy"></span>
+            </a>
+            <a title="Sensai" href="listing.html?cat=Beauty" class="brand-item">
+              <span class="brand-logo"><img src="https://www.bluesalon.com/cdn/shop/files/Untitled-2_250x_db6c3e68-8632-4d58-83fa-78317400f90c_250x.avif?v=1771916863" alt="Sensai" loading="lazy"></span>
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ════════════════ Footer (shared shell) ════════════════ -->
+  <footer class="bs-footer">
+
+    <!-- Shop more -->
+    <div class="bs-shopmore">
+      <div class="bs-shopmore-inner">
+        <h2>Shop more</h2>
+        <div class="bs-shopmore-grid" id="shopMoreGrid"></div>
+      </div>
+    </div>
+
+    <!-- Newsletter / App download -->
+    <div class="bs-appband">
+      <div class="bs-appband-inner">
+        <div>
+          <h3>Never miss a thing</h3>
+          <p class="bs-appband-copy">Sign up for exclusive launches, offers, and in-store events.</p>
+          <form class="bs-newsletter-form" onsubmit="return false;">
+            <input type="email" placeholder="Your email address">
+            <button type="submit">Sign up</button>
+          </form>
+          <p class="bs-newsletter-fine">By subscribing you agree to our privacy policy. Unsubscribe anytime.</p>
+        </div>
+        <div>
+          <h3>Download our App</h3>
+          <p class="bs-app-sub">Your pocket-sized Blue Salon</p>
+          <p class="bs-appband-copy bs-app-copy">
+            The iOS and Android app puts the extraordinary world of Blue Salon at your fingertips — with personalised style inspiration from the brands you love.
+          </p>
+        </div>
+        <div class="bs-qr">
+          <div class="bs-qr-label">Scan to download</div>
+           <div class="foot-qr-code">
+            <a href="https://apps.apple.com/qa/app/blue-salon-%D8%A7%D9%84%D8%B5%D8%A7%D9%84%D9%88%D9%86-%D8%A7%D9%84%D8%A7%D8%B2%D8%B1%D9%82/id1512188214" target="_blank" rel="noopener">
+              <img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/qrapp-01.svg?v=1632989194" alt="App Store" width="98">
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=co.shopney.bluesaloncom&amp;hl=en&amp;gl=US" target="_blank" rel="noopener">
+              <img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/qrapp-02.svg?v=1632667366" alt="Play Store" width="120">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Original footer -->
+    <div class="bs-mainfooter">
+      <div class="bs-mainfooter-inner">
+        <div class="bs-mainfooter-about">
+          <img src="https://www.bluesalon.com/cdn/shop/files/BS_Logo_horizontal-01-white1.png?v=1644232279" alt="Blue Salon">
+          <p>Qatar's first and foremost luxury department store since 1981. Over 500 international and niche brands, curated for you.</p>
+          <ul class="bs-contact">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Suhaim Bin Hamad Street, Doha, Qatar</span>
+            </li>
+          </ul>
+        </div>
+        <div id="footerCols" class="bs-mainfooter-cols"></div>
+      </div>
+      <div class="bs-bottomstrip">
+        <div class="bs-bottomstrip-inner">
+          <span class="bs-copyright">Ⓒ Copyright 2026
+            <a class="bs-copyright-aih" href="https://www.abuissa.com" target="_blank" rel="noopener">
+              <img src="https://www.abuissa.com/wp-content/uploads/2024/09/cropped-aih-favicon-192x192.png" alt="AbuIssa Holding" width="16" height="16" loading="lazy">
+              AbuIssa Holding
+            </a>
+            all rights reserved.</span>
+          <ul class="payment-methods">
+            <li><img src="https://www.bluesalon.com/cdn/shop/files/Visa_Inverted_x32_5700ab8c-cb49-4355-83c3-4d1146a8076c_x32.png?v=1644226717" alt="Visa" loading="lazy"></li>
+            <li><img src="https://www.bluesalon.com/cdn/shop/files/mastercard-logo-design-history-1979_x32.jpg?v=1644232735" alt="Mastercard" loading="lazy"></li>
+            <li><img src="https://www.bluesalon.com/cdn/shop/files/Group_1_x32.jpg?v=1660140162" alt="Apple Pay" loading="lazy"></li>
+            <li><img src="https://www.bluesalon.com/cdn/shop/files/21Google_Pay9bc22ee1-7e10-4d6f-b0ec-57672824e23d_x32_1_x32.png?v=1709793011" alt="Google Pay" loading="lazy"></li>
+            <li><img src="https://www.bluesalon.com/cdn/shop/files/unnamed_1_x32.webp?v=1776589537" alt="Western Union" loading="lazy"></li>
+            <li><img src="https://colehaan.qa/cdn/shop/files/Theqa-01.svg?v=1726476176&width=540" alt="Theqa" loading="lazy"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
