@@ -1179,6 +1179,35 @@
       }
     });
 
+    // Hover-zoom ("full effect") on the main product image — cursor-tracking magnify.
+    if (referenceLayout) {
+      var zoomFrame = stackEl.querySelector(".pdp-frame");
+      var zoomImg = zoomFrame && zoomFrame.querySelector("img");
+      if (zoomFrame && zoomImg && !zoomFrame.dataset.zoomBound) {
+        zoomFrame.dataset.zoomBound = "1";
+        var ZOOM = 2.1;
+        zoomFrame.addEventListener("mouseenter", function () {
+          if (zoomFrame.classList.contains("is-switching")) return;
+          zoomFrame.classList.add("is-zoom");
+        });
+        zoomFrame.addEventListener("mousemove", function (e) {
+          if (!zoomFrame.classList.contains("is-zoom")) return;
+          var r = zoomFrame.getBoundingClientRect();
+          var x = ((e.clientX - r.left) / r.width) * 100;
+          var y = ((e.clientY - r.top) / r.height) * 100;
+          x = Math.max(0, Math.min(100, x));
+          y = Math.max(0, Math.min(100, y));
+          zoomImg.style.transformOrigin = x + "% " + y + "%";
+          zoomImg.style.transform = "scale(" + ZOOM + ")";
+        });
+        zoomFrame.addEventListener("mouseleave", function () {
+          zoomFrame.classList.remove("is-zoom");
+          zoomImg.style.transform = "";
+          zoomImg.style.transformOrigin = "";
+        });
+      }
+    }
+
     var sizeWrap = document.getElementById("pdpSizes");
     var sizeName = document.getElementById("pdpSizeName");
     var sizeGroup = pdpField("sizeGroup");

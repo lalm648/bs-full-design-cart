@@ -3633,8 +3633,8 @@
   .pdp-body .pdp-reference-page .pdp-highlights,
   .pdp-body .pdp-reference-page .pdp-acc-btn,
   .pdp-body .pdp-reference-page .pdp-acc-body {
-    padding-left: 16px;
-    padding-right: 16px;
+    /* padding-left: 16px;
+    padding-right: 16px; */
   }
 
   .pdp-body .pdp-reference-page .pdp-story-grid {
@@ -5112,6 +5112,17 @@
   opacity: 0;
   transform: scale(0.99);
 }
+
+/* Hover-zoom magnify — image tracks the cursor and fills the box */
+.pdp-body .pdp-reference-page .pdp-frame.is-zoom {
+  cursor: zoom-in;
+}
+.pdp-body .pdp-reference-page .pdp-frame.is-zoom img {
+  padding: 0;
+  mix-blend-mode: normal;
+  transition: transform 60ms linear;
+  will-change: transform, transform-origin;
+}
 .pdp-body .pdp-reference-page .pdp-thumb {
   border: 1px solid var(--lux-line);
   border-radius: 4px;
@@ -5142,6 +5153,7 @@
   gap: clamp(24px, 4vw, 48px);
   margin: 0 auto 48px;
   border-bottom: 1px solid var(--lux-line);
+  padding: 30px 0;
 }
 .pdp-body .pdp-reference-page .pdp-detail-tabs button {
   padding: 0 0 16px;
@@ -5404,7 +5416,7 @@
   /* border: 1px solid var(--l-line); */
   border-radius: 0;
   background: #fff;
-  padding: 0 20px;
+  /* padding: 0 20px; */
   align-self: start;
 }
 .pdp-body .pdp-reference-page .pdp-rule { border: 0; border-top: 1px solid var(--l-line); }
@@ -5477,7 +5489,7 @@
 /* ── Story tabs — boxed section, heavy uppercase heading ──── */
 .pdp-body .pdp-reference-page .pdp-detail-section {
   margin-top: 24px;
-  padding: 40px 44px;
+  /* padding: 40px 44px; */
   border: 1px solid var(--l-line);
   background: #fff;
 }
@@ -5567,11 +5579,11 @@
 .pdp-body .pdp-mobilebar .bs-btn:hover:not(:disabled) { background: #000; border-color: #000; }
 .pdp-body .pdp-mobilebar .pdp-mobilebar-amount { color: var(--l-ink); font-family: var(--font-sans); font-weight: var(--fw-bold); }
 
-@media (max-width: 640px) {
+/* @media (max-width: 640px) {
   .pdp-body .pdp-reference-page .pdp-info { padding: 24px 20px; }
   .pdp-body .pdp-reference-page .pdp-detail-section,
   .pdp-body .pdp-reference-page .pdp-related { padding: 28px 20px; }
-}
+} */
 
 /* ============================================================
    MONOCHROME CONSISTENCY — final strays (kept LAST so it wins)
