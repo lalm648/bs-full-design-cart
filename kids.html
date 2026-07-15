@@ -33,7 +33,8 @@
   display: block;
   max-width: 1440px;
   margin: 0 auto;
-  padding-bottom: 104px;
+  /* The service strip closes the page — it meets the footer directly */
+  padding-bottom: 0;
   background: #fff;
   font-family: var(--font-sans);
   color: var(--bsk-ink);
@@ -42,11 +43,11 @@
 .bs-kids-page a:hover { text-decoration: none; }
 .bs-kids-page img { display: block; }
 
-/* ── Layout wrap — every section shares the full 1440px body ── */
+/* ── Layout wrap — sections run edge-to-edge, same 1440px as the hero ── */
 .bsk-wrap {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0;
 }
 
 /* Section rhythm — major editorial sections breathe more */
@@ -81,7 +82,7 @@
 .bsk-head { margin-bottom: 36px; }
 .bsk-head--center { max-width: 640px; margin-left: auto; margin-right: auto; text-align: center; }
 .bsk-head--center .bsk-sub { margin-left: auto; margin-right: auto; }
-.bsk-head--split { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+.bsk-head--split { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;}
 
 /* Arrow text link */
 .bsk-link {
@@ -89,7 +90,6 @@
   align-items: center;
   gap: 9px;
   padding-bottom: 4px;
-  border-bottom: 1px solid rgba(23, 28, 34, 0.25);
   font-size: 11.5px;
   font-weight: var(--fw-semibold);
   letter-spacing: 0.16em;
@@ -141,14 +141,14 @@
   left: 50%; bottom: 48px;
   transform: translateX(-50%);
   background: #fff;
-  padding: 34px 60px 38px;
+  padding: 42px 76px 46px;
   text-align: center;
   box-shadow: 0 1px 0 rgba(23, 28, 34, 0.04);
 }
-.bsk-hero-box .bsk-eyebrow { margin-bottom: 14px; }
+.bsk-hero-box .bsk-eyebrow { margin-bottom: 18px; }
 .bsk-hero-title {
-  margin: 0 0 10px;
-  font-size: clamp(34px, 3.8vw, 52px);
+  margin: 0 0 14px;
+  font-size: clamp(38px, 4.2vw, 58px);
   font-weight: var(--fw-medium);
   line-height: 1.02;
   letter-spacing: -0.012em;
@@ -156,47 +156,53 @@
   white-space: nowrap;
 }
 .bsk-hero-sub {
-  margin: 0 0 24px;
-  font-size: 15px;
+  margin: 0 0 30px;
+  font-size: 15.5px;
   line-height: 1.5;
-  color: var(--bsk-muted);
+  color: #4a525b;
 }
+.bsk-hero-box .bsk-btn { height: 48px; padding: 0 44px; }
 
-/* ════════════════ 2 · SHOP BY AGE — text-led band ════════════════ */
+/* ════════════════ 2 · SHOP BY AGE — white section, colored cards ════════════════ */
 .bsk-ages-band {
   margin-top: 0;
-  padding: 72px 0;
-  background: var(--bsk-blue);
+  padding: 72px 0 0;
+  background: #fff;
 }
-.bsk-ages-band .bsk-head { margin-bottom: 40px; }
+.bsk-ages-band .bsk-head { margin-bottom: 36px; }
 .bsk-ages {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 .bsk-age {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  padding: 26px 16px;
-  border-left: 1px solid rgba(23, 28, 34, 0.12);
+  gap: 11px;
+  padding: 46px 16px;
+  background: var(--bsk-blue);
   text-align: center;
+  transition: background .25s ease, box-shadow .25s ease;
 }
-.bsk-age:first-child { border-left: 0; }
+.bsk-age:hover {
+  background: #e2edf4;
+  box-shadow: inset 0 -3px 0 var(--bsk-navy);
+}
 .bsk-age-range {
-  font-size: 11.5px;
+  font-size: 12.5px;
   font-weight: var(--fw-semibold);
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--bsk-muted);
+  color: #525c66;
   transition: color .25s ease;
 }
 .bsk-age-name {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: clamp(22px, 2vw, 27px);
-  font-weight: var(--fw-medium);
+  font-size: clamp(24px, 2.1vw, 29px);
+  font-weight: var(--fw-semibold);
   letter-spacing: -0.01em;
   color: var(--bsk-ink);
   transition: color .25s ease;
@@ -312,31 +318,31 @@
   position: relative;
   aspect-ratio: 4 / 5;
   overflow: hidden;
-  background: var(--bsk-ivory);
+  background: var(--bsk-sand);
 }
 .bsk-prod-stage img {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: contain;
-  padding: 10%;
+  padding: 6%;
   mix-blend-mode: multiply;
   transition: transform .5s var(--ease-standard, ease);
 }
 /* Scale normalisation — small items sit smaller on the stage */
-.bsk-prod-stage--sm img { padding: 20%; }
+.bsk-prod-stage--sm img { padding: 15%; }
 .bsk-prod:hover .bsk-prod-stage img { transform: scale(1.045); }
 .bsk-prod-brand {
   display: block;
-  margin: 18px 0 5px;
-  font-size: 10.5px;
+  margin: 20px 0 9px;
+  font-size: 11px;
   font-weight: var(--fw-semibold);
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--bsk-muted);
 }
 .bsk-prod-name {
   display: block;
-  font-size: 15.5px;
+  font-size: 17px;
   font-weight: var(--fw-medium);
   line-height: 1.35;
   color: var(--bsk-ink);
@@ -345,12 +351,28 @@
 .bsk-prod:hover .bsk-prod-name { color: var(--bsk-navy); }
 .bsk-prod-price {
   display: block;
-  margin-top: 7px;
-  font-size: 14px;
+  margin-top: 9px;
+  font-size: 14.5px;
   font-weight: var(--fw-semibold);
   letter-spacing: 0.02em;
   color: var(--bsk-ink);
 }
+.bsk-prod-view {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 13px;
+  padding-bottom: 3px;
+  font-size: 10.5px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--bsk-navy);
+  transition: border-color .25s ease;
+}
+.bsk-prod-view svg { transition: transform .28s ease; }
+.bsk-prod:hover .bsk-prod-view { border-color: var(--bsk-navy); }
+.bsk-prod:hover .bsk-prod-view svg { transform: translateX(4px); }
 
 /* ════════════════ 6 · THE EDITS — asymmetric editorial bento ════════════════ */
 .bsk-edits {
@@ -408,7 +430,6 @@
   gap: 8px;
   margin-top: 14px;
   padding-bottom: 3px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.55);
   font-size: 10.5px;
   font-weight: var(--fw-semibold);
   letter-spacing: 0.16em;
@@ -439,22 +460,22 @@
 .bsk-banner::after {
   content: "";
   position: absolute; inset: 0;
-  background: linear-gradient(270deg, rgba(9, 17, 27, 0.62) 0%, rgba(9, 17, 27, 0.3) 42%, rgba(9, 17, 27, 0) 68%);
+  background: linear-gradient(270deg, rgba(9, 17, 27, 0.78) 0%, rgba(9, 17, 27, 0.5) 34%, rgba(9, 17, 27, 0) 62%);
 }
 .bsk-banner-copy {
   position: relative; z-index: 2;
   margin-left: auto;
-  max-width: 480px;
-  padding: clamp(36px, 5vw, 72px);
+  max-width: 500px;
+  padding: clamp(36px, 5vw, 72px) clamp(48px, 6.5vw, 96px) clamp(36px, 5vw, 72px) clamp(36px, 5vw, 72px);
   color: #fff;
   text-align: left;
 }
-.bsk-banner-copy .bsk-eyebrow { color: rgba(255, 255, 255, 0.85); }
+.bsk-banner-copy .bsk-eyebrow { color: rgba(255, 255, 255, 0.88); }
 .bsk-banner-title {
   margin: 0 0 14px;
   font-size: clamp(32px, 3.6vw, 48px);
   font-weight: var(--fw-medium);
-  line-height: 1.05;
+  line-height: 1.14;
   letter-spacing: -0.012em;
   color: #fff;
 }
@@ -469,7 +490,10 @@
 /* ════════════════ 8 · SHOES & ACCESSORIES — feature + supporting ════════════════ */
 .bsk-shoes-band {
   margin-top: 96px;
-  padding: 88px 0 92px;
+  padding-bottom:20px;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
   background: var(--bsk-sand);
 }
 .bsk-shoes {
@@ -501,12 +525,13 @@
 .bsk-shoe--stage img { object-fit: contain; padding: 13% 13% 23%; mix-blend-mode: multiply; }
 .bsk-shoe-cap {
   position: absolute; z-index: 2;
-  left: 26px; right: 26px; bottom: 24px;
+  left: 30px; right: 30px; bottom: 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
 }
+.bsk-shoe-cap svg { width: 28px; height: 12px; }
 .bsk-shoe-name {
   font-size: clamp(19px, 1.7vw, 24px);
   font-weight: var(--fw-medium);
@@ -522,10 +547,11 @@
 .bsk-shoe--stage .bsk-shoe-cap svg { color: var(--bsk-navy); }
 .bsk-shoe:hover .bsk-shoe-cap svg { transform: translateX(4px); }
 
-/* ════════════════ 9 · THIS WEEK'S FAVOURITE — integrated split ════════════════ */
+/* ════════════════ 9 · THIS WEEK'S FAVOURITE — clean white split ════════════════ */
 .bsk-pick {
   display: grid;
   grid-template-columns: 1.08fr 0.92fr;
+  gap: clamp(36px, 5vw, 72px);
   align-items: stretch;
 }
 .bsk-pick-media {
@@ -546,26 +572,27 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: clamp(40px, 4.5vw, 68px);
-  background: var(--bsk-blush);
+  padding: 0 clamp(0px, 2vw, 32px) 0 0;
+  background: transparent;
 }
 .bsk-pick-thumb {
   display: block;
-  width: min(100%, 300px);
+  width: min(100%, 320px);
   aspect-ratio: 1;
-  margin-bottom: 30px;
-  background: #fff;
+  margin-bottom: 24px;
+  background: var(--bsk-ivory);
   overflow: hidden;
 }
 .bsk-pick-thumb img {
   width: 100%; height: 100%;
   object-fit: contain;
-  padding: 26px;
+  padding: 18px;
   mix-blend-mode: multiply;
   transition: transform .5s var(--ease-standard, ease);
 }
 .bsk-pick-thumb:hover img { transform: scale(1.05); }
-.bsk-pick-card .bsk-eyebrow { margin-bottom: 8px; }
+.bsk-pick-card .bsk-eyebrow { margin-bottom: 8px; letter-spacing: 0.26em; }
+.bsk-pick-card .bsk-btn { padding: 0 46px; }
 .bsk-pick-name {
   margin: 0 0 14px;
   font-size: clamp(24px, 2.4vw, 32px);
@@ -647,6 +674,42 @@
 }
 .bsk-social-cell:hover img { transform: scale(1.06); opacity: 0.92; }
 
+/* ════════════════ 12 · SERVICE STRIP — transition into the footer ════════════════ */
+.bsk-services {
+  margin-top: 96px;
+  padding: 56px 0;
+  background: var(--bsk-ivory);
+}
+.bsk-services-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.bsk-service {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 0 16px;
+  text-align: center;
+}
+.bsk-service svg {
+  margin-bottom: 8px;
+  color: var(--bsk-navy);
+}
+.bsk-service strong {
+  font-size: 13px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bsk-ink);
+}
+.bsk-service span {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--bsk-muted);
+}
+
 /* ════════════════ RESPONSIVE ════════════════ */
 @media (max-width: 1024px) {
   .bsk-wrap { padding: 0 24px; }
@@ -674,11 +737,9 @@
   .bsk-hero { aspect-ratio: 4 / 3; }
   .bsk-hero-box { padding: 26px 32px 30px; max-width: calc(100% - 40px); }
   .bsk-hero-title { font-size: clamp(28px, 7vw, 34px); white-space: normal; }
-  .bsk-ages-band { padding: 52px 0; }
-  .bsk-ages { grid-template-columns: 1fr 1fr; }
-  .bsk-age { padding: 20px 12px; }
-  .bsk-age:nth-child(odd) { border-left: 0; }
-  .bsk-age:nth-child(n + 3) { border-top: 1px solid rgba(23, 28, 34, 0.12); }
+  .bsk-ages-band { padding: 52px 0 0; }
+  .bsk-ages { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .bsk-age { padding: 26px 12px; }
   .bsk-cats { grid-template-columns: 1fr 1fr; gap: 18px; }
   .bsk-cat--feature { grid-column: 1 / -1; }
   .bsk-cat--feature .bsk-cat-media { aspect-ratio: 4 / 3; }
@@ -692,7 +753,9 @@
   .bsk-wrap { padding: 0 16px; }
   .bsk-sec { padding-top: 56px; }
   .bsk-sec--soft { padding-top: 48px; }
-  .bs-kids-page { padding-bottom: 64px; }
+  .bs-kids-page { padding-bottom: 0; }
+  .bsk-services { margin-top: 56px; padding: 40px 0; }
+  .bsk-services-row { grid-template-columns: 1fr 1fr; gap: 26px 14px; }
   .bsk-edits { grid-template-columns: 1fr; grid-auto-rows: 240px; }
   .bsk-tile--lead, .bsk-tile--wide { grid-column: span 1; }
   .bsk-tile-cap { left: 20px; right: 20px; bottom: 18px; }
@@ -706,7 +769,7 @@
   .bsk-shoe { height: auto; aspect-ratio: 4 / 5; }
   .bsk-shoe--feature { aspect-ratio: 4 / 3; }
   .bsk-shoe-cap { left: 16px; right: 16px; bottom: 14px; }
-  .bsk-pick-card { padding: 28px 20px 36px; }
+  .bsk-pick-card { padding: 24px 0 0; }
   .bsk-shoes-band { margin-top: 56px; padding: 48px 0 56px; }
   .bsk-social-row { grid-template-columns: repeat(3, 1fr); gap: 8px; }
 }
@@ -928,18 +991,27 @@
             <span class="bsk-prod-brand">Moschino Baby</span>
             <span class="bsk-prod-name">Logo T-Shirt &amp; Shorts Set</span>
             <span class="bsk-prod-price">QAR 545</span>
+            <span class="bsk-prod-view">View Product
+              <svg width="18" height="8" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
+            </span>
           </a>
           <a class="bsk-prod" href="listing.html?cat=Kids">
             <span class="bsk-prod-stage"><img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/Moschino_Kid_Black_Cotton_T-Shirt_with_Star_Teddy_Bear_Embroidery_back_view_MOS124TOP04383_1_540x.jpg?v=1777822238" alt="Moschino Kids teddy bear t-shirt" loading="lazy"></span>
             <span class="bsk-prod-brand">Moschino Kids</span>
             <span class="bsk-prod-name">Teddy Bear Embroidery T-Shirt</span>
             <span class="bsk-prod-price">QAR 385</span>
+            <span class="bsk-prod-view">View Product
+              <svg width="18" height="8" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
+            </span>
           </a>
           <a class="bsk-prod bsk-prod--wide" href="listing.html?cat=Kids">
             <span class="bsk-prod-stage bsk-prod-stage--sm"><img src="https://www.bluesalon.com/cdn/shop/files/Moschino_Kids_Beige_Circular_Logo_Print_Baseball_Cap_side_right_view_MOS124ACC00363_5_360x.jpg?v=1777808022" alt="Moschino Kids logo baseball cap" loading="lazy"></span>
             <span class="bsk-prod-brand">Moschino Kids</span>
             <span class="bsk-prod-name">Logo-Print Baseball Cap</span>
             <span class="bsk-prod-price">QAR 295</span>
+            <span class="bsk-prod-view">View Product
+              <svg width="18" height="8" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
+            </span>
           </a>
         </div>
       </div>
@@ -1013,8 +1085,7 @@
 
     <!-- ════════════════ 8 · Shoes & Accessories — feature + supporting ════════════════ -->
     <section class="bsk-shoes-band" aria-label="Shoes and accessories">
-      <div class="bsk-wrap">
-        <div class="bsk-head bsk-head--split">
+       <div class="bsk-head bsk-head--split">
           <div>
             <span class="bsk-eyebrow">Finishing Touches</span>
             <h2 class="bsk-title">Shoes &amp; Accessories</h2>
@@ -1023,6 +1094,7 @@
             <svg width="22" height="9" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
           </a>
         </div>
+      <div class="bsk-wrap">
         <div class="bsk-shoes">
           <a class="bsk-shoe bsk-shoe--feature" href="listing.html?cat=Kids">
             <img src="https://www.bluesalon.com/cdn/shop/files/Shoes_b0e1304c-d5c6-4c76-9b89-31c0d839a8d4_1200x.jpg?v=1771913018" alt="Kids footwear" loading="lazy">
@@ -1076,45 +1148,30 @@
       </div>
     </section>
 
-    <!-- ════════════════ 10 · Iconic Kids' Labels — wordmarks ════════════════ -->
-    <section class="bsk-sec" aria-label="Kids brands">
+    <!-- ════════════════ 12 · Service strip — transition into the footer ════════════════ -->
+    <section class="bsk-services" aria-label="Client services">
       <div class="bsk-wrap">
-        <div class="bsk-head bsk-head--center">
-          <span class="bsk-eyebrow">Designer Houses</span>
-          <h2 class="bsk-title">Iconic Kids' Labels</h2>
-        </div>
-        <div class="bsk-labels-row">
-          <a class="bsk-label" href="listing.html?cat=Kids">Moschino</a>
-          <a class="bsk-label" href="listing.html?cat=Kids">Aigner</a>
-          <a class="bsk-label" href="listing.html?cat=Kids">Missoni</a>
-          <a class="bsk-label" href="listing.html?cat=Kids">Loro Piana</a>
-          <a class="bsk-label" href="listing.html?cat=Kids">Mimisol</a>
-          <a class="bsk-label" href="listing.html?cat=Kids">Il Gufo</a>
-        </div>
-        <div class="bsk-labels-foot">
-          <a class="bsk-link bsk-link--navy" href="listing.html?cat=Kids">View all kids brands
-            <svg width="22" height="9" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ════════════════ 11 · Social — compact strip ════════════════ -->
-    <section class="bsk-sec--soft bsk-sec" aria-label="Follow us">
-      <div class="bsk-wrap">
-        <div class="bsk-social-head">
-          <h2 class="bsk-social-title">@bluesalonkids</h2>
-          <a class="bsk-link" href="listing.html?cat=Kids">Follow Blue Salon Kids
-            <svg width="22" height="9" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
-          </a>
-        </div>
-        <div class="bsk-social-row">
-          <a class="bsk-social-cell" href="listing.html?cat=Kids"><img src="https://www.bluesalon.com/cdn/shop/files/Moschino_Baby_White_T-Shirt_Navy_Logo_Shorts_Set_back_view_MOS124COM02720_1_540x.jpg?v=1777813096" alt="Kids look" loading="lazy"></a>
-          <a class="bsk-social-cell" href="listing.html?cat=Kids"><img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/Moschino_Kid_Black_Cotton_T-Shirt_with_Star_Teddy_Bear_Embroidery_back_view_MOS124TOP04383_1_540x.jpg?v=1777822238" alt="Kids look" loading="lazy"></a>
-          <a class="bsk-social-cell" href="listing.html?cat=Kids"><img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/Aigner_Kids_Burgundy_T-Shirt_with_QATAR_Print_and_Horseshoe_Pattern_AIG124TOP07552_1_540x.jpg?v=1761633004" alt="Kids look" loading="lazy"></a>
-          <a class="bsk-social-cell" href="listing.html?cat=Kids"><img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/FR2214FTW00056_1_540x.jpg?v=1770620141" alt="Kids look" loading="lazy"></a>
-          <a class="bsk-social-cell" href="listing.html?cat=Kids"><img src="https://www.bluesalon.com/cdn/shop/files/Moschino_Kids_Beige_Circular_Logo_Print_Baseball_Cap_side_right_view_MOS124ACC00363_5_360x.jpg?v=1777808022" alt="Kids look" loading="lazy"></a>
-          <a class="bsk-social-cell" href="listing.html?cat=Kids"><img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/LOO124ACC00013_0_540x.jpg?v=1755509682" alt="Kids look" loading="lazy"></a>
+        <div class="bsk-services-row">
+          <div class="bsk-service">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M1 7h13v10H1zM14 10h4l4 4v3h-8z"/><circle cx="6" cy="17" r="2"/><circle cx="18" cy="17" r="2"/></svg>
+            <strong>Complimentary Delivery</strong>
+            <span>Across Qatar on orders over QAR 499</span>
+          </div>
+          <div class="bsk-service">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 22V7M12 7s-2-5-5-5-2.5 5 0 5h5zM12 7s2-5 5-5 2.5 5 0 5h-5z"/></svg>
+            <strong>Gift Wrapping</strong>
+            <span>Elegant packaging, available on request</span>
+          </div>
+          <div class="bsk-service">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg>
+            <strong>Easy Returns</strong>
+            <span>14-day returns &amp; exchanges</span>
+          </div>
+          <div class="bsk-service">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 0-9 9h9z"/><path d="M8 11h8M8 15h5"/></svg>
+            <strong>Boutique Support</strong>
+            <span>Personal advice from our kids team</span>
+          </div>
         </div>
       </div>
     </section>
