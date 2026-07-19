@@ -8,7 +8,6 @@
 <link rel="icon" href="assets/app-icon.png">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="app.css">
-<link rel="stylesheet" href="shop.css">
 <style>
 /* ============================================================
    BLUE SALON — KIDS & BABY department landing
@@ -55,15 +54,6 @@
 .bsk-sec--soft { padding-top: 80px; }
 
 /* ── Shared type system ──────────────────────────────────── */
-.bsk-eyebrow {
-  display: block;
-  margin-bottom: 12px;
-  font-size: 12px;
-  font-weight: var(--fw-semibold);
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--bsk-navy);
-}
 .bsk-title {
   margin: 0;
   font-size: clamp(30px, 3vw, 40px);
@@ -84,7 +74,7 @@
 .bsk-head--center .bsk-sub { margin-left: auto; margin-right: auto; }
 .bsk-head--split { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;}
 
-/* Arrow text link */
+/* Text links keep a simple colour change without arrows or underlines. */
 .bsk-link {
   display: inline-flex;
   align-items: center;
@@ -96,12 +86,10 @@
   text-transform: uppercase;
   color: var(--bsk-ink);
   white-space: nowrap;
-  transition: color .25s ease, border-color .25s ease;
+  transition: color .25s ease;
 }
-.bsk-link svg { transition: transform .28s ease; }
-.bsk-link:hover { color: var(--bsk-navy); border-color: var(--bsk-navy); }
-.bsk-link:hover svg { transform: translateX(4px); }
-.bsk-link--navy { color: var(--bsk-navy); border-color: rgba(0, 57, 118, 0.35); }
+.bsk-link:hover { color: var(--bsk-navy); }
+.bsk-link--navy { color: var(--bsk-navy); }
 
 /* Solid buttons */
 .bsk-btn {
@@ -209,7 +197,6 @@
   padding: 24px 40px;
   text-align: center;
 }
-.bsk-hero-box .bsk-eyebrow { margin-bottom: 18px; }
 .bsk-hero-title {
   margin: 0 0 14px;
   font-size: clamp(38px, 4.2vw, 58px);
@@ -247,11 +234,10 @@
   padding: 46px 16px;
   background: var(--bsk-blue);
   text-align: center;
-  transition: background .25s ease, box-shadow .25s ease;
+  transition: background .25s ease;
 }
 .bsk-age:hover {
   background: #e2edf4;
-  box-shadow: inset 0 -3px 0 var(--bsk-navy);
 }
 .bsk-age-range {
   font-size: 13px;
@@ -271,16 +257,8 @@
   color: var(--bsk-ink);
   transition: color .25s ease;
 }
-.bsk-age-name svg {
-  flex: none;
-  color: var(--bsk-navy);
-  opacity: 0;
-  transform: translateX(-6px);
-  transition: opacity .25s ease, transform .25s ease;
-}
 .bsk-age:hover .bsk-age-name { color: var(--bsk-navy); }
 .bsk-age:hover .bsk-age-range { color: var(--bsk-navy); }
-.bsk-age:hover .bsk-age-name svg { opacity: 1; transform: none; }
 
 /* ════════════════ 3 · SHOP BY CATEGORY — editorial cards ════════════════ */
 .bsk-cats {
@@ -303,18 +281,10 @@
   transition: transform .6s var(--ease-standard, ease);
 }
 .bsk-cat:hover .bsk-cat-media img { transform: scale(1.04); }
-.bsk-cat-eyebrow {
-  display: block;
-  margin: 20px 0 6px;
-  font-size: 11.5px;
-  font-weight: var(--fw-semibold);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--bsk-muted);
-}
 .bsk-cat-name {
   display: block;
-  font-size: 18px;
+  padding-top: 10px;
+  font-size: 29px;
   font-weight: var(--fw-semibold);
   letter-spacing: -0.005em;
   color: var(--bsk-ink);
@@ -332,8 +302,6 @@
   text-transform: uppercase;
   color: var(--bsk-navy);
 }
-.bsk-cat-link svg { transition: transform .28s ease; }
-.bsk-cat:hover .bsk-cat-link svg { transform: translateX(4px); }
 
 /* ════════════════ 4 · BABY SHOP — premium campaign split ════════════════ */
 .bsk-baby {
@@ -432,11 +400,7 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--bsk-navy);
-  transition: border-color .25s ease;
 }
-.bsk-prod-view svg { transition: transform .28s ease; }
-.bsk-prod:hover .bsk-prod-view { border-color: var(--bsk-navy); }
-.bsk-prod:hover .bsk-prod-view svg { transform: translateX(4px); }
 
 /* ════════════════ 6 · THE EDITS — asymmetric editorial bento ════════════════ */
 .bsk-edits {
@@ -471,16 +435,6 @@
   left: 28px; right: 28px; bottom: 26px;
   color: #fff;
 }
-.bsk-tile-kicker {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 11px;
-  font-weight: var(--fw-semibold);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.95);
-  text-shadow: 0 1px 8px rgba(8, 15, 24, 0.35);
-}
 .bsk-tile-name {
   display: block;
   font-size: clamp(22px, 2.1vw, 30px);
@@ -500,11 +454,7 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: #fff;
-  transition: border-color .25s ease;
 }
-.bsk-tile-cta svg { transition: transform .28s ease; }
-.bsk-tile:hover .bsk-tile-cta { border-color: #fff; }
-.bsk-tile:hover .bsk-tile-cta svg { transform: translateX(4px); }
 
 /* ════════════════ 7 · OCCASION — full-width campaign banner ════════════════ */
 .bsk-banner {
@@ -535,7 +485,6 @@
   color: #fff;
   text-align: left;
 }
-.bsk-banner-copy .bsk-eyebrow { color: rgba(255, 255, 255, 0.96); }
 .bsk-banner-title {
   margin: 0 0 14px;
   font-size: clamp(32px, 3.6vw, 48px);
@@ -598,7 +547,6 @@
   justify-content: space-between;
   gap: 12px;
 }
-.bsk-shoe-cap svg { width: 28px; height: 12px; }
 .bsk-shoe-name {
   font-size: clamp(19px, 1.7vw, 24px);
   font-weight: var(--fw-medium);
@@ -606,13 +554,6 @@
   color: #fff;
 }
 .bsk-shoe--stage .bsk-shoe-name { color: var(--bsk-ink); }
-.bsk-shoe-cap svg {
-  flex: none;
-  color: #fff;
-  transition: transform .28s ease;
-}
-.bsk-shoe--stage .bsk-shoe-cap svg { color: var(--bsk-navy); }
-.bsk-shoe:hover .bsk-shoe-cap svg { transform: translateX(4px); }
 
 /* ════════════════ 9 · THIS WEEK'S FAVOURITE — unified editorial feature ════════════════ */
 .bsk-fav .bsk-head { margin-bottom: 24px; }
@@ -647,7 +588,6 @@
   margin-bottom: 28px;
   mix-blend-mode: multiply;
 }
-.bsk-look-content .bsk-eyebrow { margin-bottom: 0; letter-spacing: 0.14em; }
 .bsk-look-name {
   margin: 10px 0 0;
   font-size: clamp(24px, 2.5vw, 30px);
@@ -738,7 +678,7 @@
 
 /* ════════════════ 12 · SERVICE STRIP — transition into the footer ════════════════ */
 .bsk-services {
-  margin-top: 96px;
+  margin: 96px 0;
   padding: 56px 0;
   background: var(--bsk-sand);
 }
@@ -844,7 +784,7 @@
 }
 </style>
 </head>
-<body class="shop-body">
+<body>
 
   <!-- ════════════════ Header (shared shell) ════════════════ -->
   <header class="bs-nav-root bs-header">
@@ -901,7 +841,7 @@
           <div class="bs-nav-item" data-menu="new">New In</div>
           <div class="bs-nav-item" data-menu="women">Women</div>
           <div class="bs-nav-item" data-menu="men">Men</div>
-          <div class="bs-nav-item is-current" data-menu="kids">Kids &amp; Baby</div>
+          <div class="bs-nav-item" data-menu="kids">Kids &amp; Baby</div>
           <div class="bs-nav-item" data-menu="beauty">Beauty</div>
           <div class="bs-nav-item" data-menu="luggage">Luggage</div>
           <div class="bs-nav-item" data-menu="home">Home &amp; Linen</div>
@@ -980,7 +920,6 @@
     <section class="bsk-hero">
       <img src="https://www.bluesalon.com/cdn/shop/files/Mimisol_Kids_1920x.png?v=1782138258" alt="Mimisol — the new kids collection" fetchpriority="high">
       <!-- <div class="bsk-hero-box">
-        <span class="bsk-eyebrow">Mimisol · The New Collection</span>
         <h1 class="bsk-hero-title">Kids &amp; Baby</h1>
         <p class="bsk-hero-sub">Little wardrobes, beautifully curated.</p>
         <a class="bsk-btn" href="listing.html?cat=Kids">Shop the Edit</a>
@@ -991,33 +930,24 @@
     <section class="bsk-ages-band" aria-label="Shop by age">
       <div class="bsk-wrap">
         <div class="bsk-head bsk-head--center">
-          <span class="bsk-eyebrow">By Age</span>
           <h2 class="bsk-title">Shop by Age</h2>
         </div>
         <nav class="bsk-ages">
           <a class="bsk-age" href="listing.html?cat=Kids">
             <span class="bsk-age-range">0 – 9 months</span>
-            <span class="bsk-age-name">Newborn
-              <svg width="20" height="9" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
-            </span>
+            <span class="bsk-age-name">Newborn</span>
           </a>
           <a class="bsk-age" href="listing.html?cat=Kids">
             <span class="bsk-age-range">9 – 36 months</span>
-            <span class="bsk-age-name">Baby
-              <svg width="20" height="9" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
-            </span>
+            <span class="bsk-age-name">Baby</span>
           </a>
           <a class="bsk-age" href="listing.html?cat=Kids">
             <span class="bsk-age-range">3 – 10 years</span>
-            <span class="bsk-age-name">Kids
-              <svg width="20" height="9" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
-            </span>
+            <span class="bsk-age-name">Kids</span>
           </a>
           <a class="bsk-age" href="listing.html?cat=Kids">
             <span class="bsk-age-range">10 – 16 years</span>
-            <span class="bsk-age-name">Teens
-              <svg width="20" height="9" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
-            </span>
+            <span class="bsk-age-name">Teens</span>
           </a>
         </nav>
       </div>
@@ -1028,37 +958,25 @@
       <div class="bsk-wrap">
         <div class="bsk-head bsk-head--split">
           <div>
-            <span class="bsk-eyebrow">The Department</span>
             <h2 class="bsk-title">Shop by Category</h2>
           </div>
-          <a class="bsk-link" href="listing.html?cat=Kids">View all
-            <svg width="22" height="9" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
-          </a>
+          <a class="bsk-link" href="listing.html?cat=Kids">View all</a>
         </div>
         <div class="bsk-cats">
           <a class="bsk-cat bsk-cat--feature" href="listing.html?cat=Kids">
             <span class="bsk-cat-media"><img src="https://www.bluesalon.com/cdn/shop/files/Girl_s_clothing_1200x.jpg?v=1771912756" alt="Girls clothing" loading="lazy"></span>
-            <span class="bsk-cat-eyebrow">Ages 3 – 16</span>
             <span class="bsk-cat-name">Girls</span>
-            <span class="bsk-cat-link">Shop now
-              <svg width="20" height="9" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
-            </span>
+            <!-- <span class="bsk-cat-link">Shop now</span> -->
           </a>
           <a class="bsk-cat" href="listing.html?cat=Kids">
             <span class="bsk-cat-media"><img src="https://www.bluesalon.com/cdn/shop/files/Boy_s_clothing_1200x.jpg?v=1771912547" alt="Boys clothing" loading="lazy"></span>
-            <span class="bsk-cat-eyebrow">Ages 3 – 16</span>
             <span class="bsk-cat-name">Boys</span>
-            <span class="bsk-cat-link">Shop now
-              <svg width="20" height="9" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
-            </span>
+            <!-- <span class="bsk-cat-link">Shop now</span> -->
           </a>
           <a class="bsk-cat" href="listing.html?cat=Kids">
             <span class="bsk-cat-media"><img src="https://www.bluesalon.com/cdn/shop/files/Shoes_b0e1304c-d5c6-4c76-9b89-31c0d839a8d4_1200x.jpg?v=1771913018" alt="Kids footwear" loading="lazy"></span>
-            <span class="bsk-cat-eyebrow">First steps to teens</span>
             <span class="bsk-cat-name">Footwear</span>
-            <span class="bsk-cat-link">Shop now
-              <svg width="20" height="9" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
-            </span>
+            <!-- <span class="bsk-cat-link">Shop now</span> -->
           </a>
         </div>
       </div>
@@ -1072,12 +990,9 @@
             <img src="https://www.bluesalon.com/cdn/shop/files/New_Project_10_bc7e0bd2-1185-41c7-a02c-56d341757fa6_600x.jpg?v=1778154026" alt="The Baby Shop" loading="lazy">
           </a>
           <div class="bsk-baby-copy">
-            <span class="bsk-eyebrow">0 – 24 Months</span>
             <h2 class="bsk-title">The Baby Shop</h2>
             <p>Soft cottons, first shoes and newborn essentials — every piece chosen for the very first wardrobe, and gift-wrapped beautifully on request.</p>
-            <a class="bsk-link bsk-link--navy" href="listing.html?cat=Kids">Discover the Baby Shop
-              <svg width="22" height="9" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
-            </a>
+            <a class="bsk-link bsk-link--navy" href="listing.html?cat=Kids">Discover the Baby Shop</a>
           </div>
         </div>
       </div>
@@ -1088,40 +1003,25 @@
       <div class="bsk-wrap">
         <div class="bsk-head bsk-head--split">
           <div>
-            <span class="bsk-eyebrow">Just Landed</span>
             <h2 class="bsk-title">New In</h2>
           </div>
-          <a class="bsk-link" href="listing.html?cat=Kids">Shop all new arrivals
-            <svg width="22" height="9" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
-          </a>
+          <a class="bsk-link" href="listing.html?cat=Kids">Shop all new arrivals</a>
         </div>
         <div class="bsk-newin">
           <a class="bsk-prod" href="listing.html?cat=Kids">
             <span class="bsk-prod-stage"><img src="https://www.bluesalon.com/cdn/shop/files/Moschino_Baby_White_T-Shirt_Navy_Logo_Shorts_Set_back_view_MOS124COM02720_1_540x.jpg?v=1777813096" alt="Moschino Baby logo t-shirt and shorts set" loading="lazy"></span>
             <span class="bsk-prod-brand">Moschino Baby</span>
             <span class="bsk-prod-name">Logo T-Shirt &amp; Shorts Set</span>
-            <span class="bsk-prod-price">QAR 545</span>
-            <span class="bsk-prod-view">View Product
-              <svg width="18" height="8" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
-            </span>
           </a>
           <a class="bsk-prod" href="listing.html?cat=Kids">
             <span class="bsk-prod-stage"><img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/Moschino_Kid_Black_Cotton_T-Shirt_with_Star_Teddy_Bear_Embroidery_back_view_MOS124TOP04383_1_540x.jpg?v=1777822238" alt="Moschino Kids teddy bear t-shirt" loading="lazy"></span>
             <span class="bsk-prod-brand">Moschino Kids</span>
             <span class="bsk-prod-name">Teddy Bear Embroidery T-Shirt</span>
-            <span class="bsk-prod-price">QAR 385</span>
-            <span class="bsk-prod-view">View Product
-              <svg width="18" height="8" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
-            </span>
           </a>
           <a class="bsk-prod bsk-prod--wide" href="listing.html?cat=Kids">
             <span class="bsk-prod-stage bsk-prod-stage--sm"><img src="https://www.bluesalon.com/cdn/shop/files/Moschino_Kids_Beige_Circular_Logo_Print_Baseball_Cap_side_right_view_MOS124ACC00363_5_360x.jpg?v=1777808022" alt="Moschino Kids logo baseball cap" loading="lazy"></span>
             <span class="bsk-prod-brand">Moschino Kids</span>
             <span class="bsk-prod-name">Logo-Print Baseball Cap</span>
-            <span class="bsk-prod-price">QAR 295</span>
-            <span class="bsk-prod-view">View Product
-              <svg width="18" height="8" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
-            </span>
           </a>
         </div>
       </div>
@@ -1132,45 +1032,32 @@
       <div class="bsk-wrap">
         <div class="bsk-head bsk-head--split">
           <div>
-            <span class="bsk-eyebrow">Curated by Our Buyers</span>
             <h2 class="bsk-title">The Edits</h2>
           </div>
-          <a class="bsk-link" href="listing.html?cat=Kids">Shop all clothing
-            <svg width="22" height="9" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
-          </a>
+          <a class="bsk-link" href="listing.html?cat=Kids">Shop all clothing</a>
         </div>
         <div class="bsk-edits">
           <a class="bsk-tile bsk-tile--lead" href="listing.html?cat=Kids">
             <img src="https://www.bluesalon.com/cdn/shop/files/Girl_s_clothing_1200x.jpg?v=1771912756" alt="The girls edit" loading="lazy">
             <span class="bsk-tile-cap">
-              <span class="bsk-tile-kicker">Ages 3 – 16</span>
               <span class="bsk-tile-name">The Girls Edit</span>
-              <span class="bsk-tile-cta">Shop now
-                <svg width="20" height="9" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
-              </span>
             </span>
           </a>
           <a class="bsk-tile bsk-tile--wide" href="listing.html?cat=Kids">
             <img src="https://cdn-static.farfetch-contents.com/cms-ccloud/caas/v1/media/10706096/data/bdc9961d891433a1eab9fac6d7a2959b/3x4_three-columns/480/2026-06-22-kw-webapp-chloe-kids-vacation-chloe-kids-multicategory-img.jpeg" alt="The vacation edit" loading="lazy">
             <span class="bsk-tile-cap">
-              <span class="bsk-tile-kicker">New Season</span>
               <span class="bsk-tile-name">The Vacation Edit</span>
-              <span class="bsk-tile-cta">Shop now
-                <svg width="20" height="9" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
-              </span>
             </span>
           </a>
           <a class="bsk-tile" href="listing.html?cat=Kids">
             <img src="https://www.bluesalon.com/cdn/shop/files/Boy_s_clothing_1200x.jpg?v=1771912547" alt="The boys edit" loading="lazy">
             <span class="bsk-tile-cap">
-              <span class="bsk-tile-kicker">Ages 3 – 16</span>
               <span class="bsk-tile-name">Boys</span>
             </span>
           </a>
           <a class="bsk-tile" href="listing.html?cat=Kids">
             <img src="https://www.bluesalon.com/cdn/shop/files/New_Project_11_3c02abdb-e76c-4749-91df-bb654320bf6c_600x.jpg?v=1778154421" alt="The newborn edit" loading="lazy">
             <span class="bsk-tile-cap">
-              <span class="bsk-tile-kicker">0 – 24 months</span>
               <span class="bsk-tile-name">Newborn</span>
             </span>
           </a>
@@ -1184,7 +1071,6 @@
         <a class="bsk-banner" href="listing.html?cat=Kids">
           <img src="https://www.bluesalon.com/cdn/shop/files/New_Project_6_257299a2-e4bb-4de8-a31b-99686617df38_970x.jpg?v=1780488291" alt="Dressed for the occasion" loading="lazy">
           <div class="bsk-banner-copy">
-            <span class="bsk-eyebrow">Family Celebrations</span>
             <h2 class="bsk-banner-title">Dressed for the Occasion</h2>
             <p>Birthdays, Eid mornings and first celebrations — dressed beautifully.</p>
             <span class="bsk-btn bsk-btn--light">Explore the Edit</span>
@@ -1197,12 +1083,9 @@
     <section class="bsk-shoes-band" aria-label="Shoes and accessories">
        <div class="bsk-head bsk-head--split">
           <div>
-            <span class="bsk-eyebrow">Finishing Touches</span>
             <h2 class="bsk-title">Shoes &amp; Accessories</h2>
           </div>
-          <a class="bsk-link" href="listing.html?cat=Kids">Shop all accessories
-            <svg width="22" height="9" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
-          </a>
+          <a class="bsk-link" href="listing.html?cat=Kids">Shop all accessories</a>
         </div>
       <div class="bsk-wrap">
         <div class="bsk-shoes">
@@ -1210,21 +1093,18 @@
             <img src="https://www.bluesalon.com/cdn/shop/files/Shoes_b0e1304c-d5c6-4c76-9b89-31c0d839a8d4_1200x.jpg?v=1771913018" alt="Kids footwear" loading="lazy">
             <span class="bsk-shoe-cap">
               <span class="bsk-shoe-name">Footwear</span>
-              <svg width="24" height="10" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
             </span>
           </a>
           <a class="bsk-shoe bsk-shoe--stage" href="listing.html?cat=Kids">
             <img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/FR2214FTW00056_1_540x.jpg?v=1770620141" alt="Kids sneakers" loading="lazy">
             <span class="bsk-shoe-cap">
               <span class="bsk-shoe-name">Sneakers</span>
-              <svg width="24" height="10" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
             </span>
           </a>
           <a class="bsk-shoe bsk-shoe--stage" href="listing.html?cat=Kids">
             <img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/LOO124ACC00001_0_9040eabc-30ad-4c02-af89-952281946515_540x.jpg?v=1755508986" alt="Kids accessories" loading="lazy">
             <span class="bsk-shoe-cap">
               <span class="bsk-shoe-name">Accessories</span>
-              <svg width="24" height="10" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
             </span>
           </a>
         </div>
@@ -1236,7 +1116,6 @@
       <div class="bsk-wrap">
         <div class="bsk-head bsk-head--split">
           <div>
-            <span class="bsk-eyebrow">Editor's Pick</span>
             <h2 class="bsk-title">This Week's Favourite</h2>
           </div>
         </div>
@@ -1246,14 +1125,10 @@
           </div>
           <div class="bsk-look-content">
             <img class="bsk-look-product" src="https://www.bluesalon.com/cdn/shop/files/Moschino_Baby_White_T-Shirt_Navy_Logo_Shorts_Set_back_view_MOS124COM02720_1_540x.jpg?v=1777813096" alt="Moschino Baby set" loading="lazy">
-            <span class="bsk-eyebrow">Moschino Baby</span>
             <h3 class="bsk-look-name">White T-Shirt &amp; Navy Logo Shorts Set</h3>
             <p class="bsk-look-note">A polished occasion set selected for effortless dressing.</p>
             <span class="bsk-look-price">QAR 545</span>
             <a class="bsk-btn" href="listing.html?cat=Kids">View Product</a>
-            <a class="bsk-link bsk-link--navy bsk-look-more" href="listing.html?cat=Kids">View Full Look
-              <svg width="20" height="9" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"/></svg>
-            </a>
           </div>
         </div>
       </div>
@@ -1379,8 +1254,5 @@
   </footer>
   <script src="data.js"></script>
   <script src="app.js"></script>
-  <script src="shop.js"></script>
-<script>
- </script>
 </body>
 </html>
